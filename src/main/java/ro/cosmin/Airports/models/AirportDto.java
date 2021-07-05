@@ -1,57 +1,26 @@
-package ro.cosmin.Airports.domain;
+package ro.cosmin.Airports.models;
 
-import javax.persistence.*;
+public class AirportDto {
 
-@Entity
-@Table(name = "airports")
-public class Airport {
-
-    @Id
-    @Column
-    @GeneratedValue
-    private Long id;
-
-    @Column(name = "airport_name", nullable = false)
     private String airportName;
 
-    @Column(name = "airport_city", nullable = false)
     private String airportCity;
 
-    @Column(name = "airport_country", nullable = false)
     private String airportCountry;
 
-    @Column(name = "airport_code", length = 4, nullable = false)
     private String airportCode;
 
-    @Column(name = "latitude")
     private String latitude;
 
-    @Column(name = "longitude")
     private String longitude;
 
-    @OneToOne(mappedBy = "airport")
-    private Flight flight;
-
-    public Airport(){
-
-    }
-
-    public Airport(Long id, String airportName, String airportCity, String airportCountry, String airportCode, String latitude, String longitude) {
-        this.id = id;
+    public AirportDto(String airportName, String airportCity, String airportCountry, String airportCode, String latitude, String longitude) {
         this.airportName = airportName;
         this.airportCity = airportCity;
         this.airportCountry = airportCountry;
         this.airportCode = airportCode;
         this.latitude = latitude;
         this.longitude = longitude;
-    }
-
-    public Long getId() {
-        return id;
-    }
-
-    public void setId(Long id) {
-        this.id = id;
     }
 
     public String getAirportName() {
@@ -100,13 +69,5 @@ public class Airport {
 
     public void setLongitude(String longitude) {
         this.longitude = longitude;
-    }
-
-    public Flight getFlight() {
-        return flight;
-    }
-
-    public void setFlight(Flight flight) {
-        this.flight = flight;
     }
 }

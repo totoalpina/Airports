@@ -80,6 +80,13 @@ We will insert the information about airports and airlines by script. Take the i
 - https://openflights.org/data.html
 - https://ourairports.com/data/
 
+Login & Register
+
+The application should be secured using Spring Security (applying the things that we learned). Therefore, the home page, and the search pages will be available to all users (even guests), but the administration pages will only be available to authenticated users. Moreover, the administration pages can be accessed by users having the ADMIN role. Please design the users table according to the requirements.
+
+Beside the necessary login page, please design and implement a register page, where a person can create an account. When you look at the header as a guest you will see links to "Login" and "Register". After the user authenticates, these two links are not visible anymore, and the "Logout" link is visible.
+
+
 ### Technical requirements
 
 - create a private GitHub repository (add me as colaborator)

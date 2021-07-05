@@ -1,0 +1,9 @@
+body {
+    background-color: lightgrey;
+    background-image: url("/src/main/resources/static/sky_background.jpg");
+    background: fixed;
+}
+
+nav #navigation {
+    background-color: red !important;
+}

@@ -1,0 +1,68 @@
+<!doctype html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <div th:replace="header :: css-link">
+        link css
+    </div>
+
+    <title>Airports</title>
+</head>
+<body style="background-image: url(/sky_background.jpg)">
+<div th:replace="header :: navigation-bar">
+    header
+</div>
+<div class="container overflow-hidden">
+    <div class="row gx-5">
+        <div class="col">
+            <div class="p-3 border bg-light">
+                <table>
+                    <th></th>
+                    <tr th:each="airport: ${airports}">
+                        <td>
+                            <a th:text="${airport.airportName} + ' (' + ${airport.airportCode} + ')' + ' - ' + ${airport.airportCountry}"
+                               href="https://www.google.com">link</a>
+                        </td>
+                        <!--                    <td>-->
+                        <!--                        <a th:text="${airport.airportName} + ' (' + ${airport.airportCode} + ')' + ' - ' + ${airport.airportCountry}"-->
+                        <!--                           href="https://www.google.com">link</a>-->
+                        <!--                    </td>-->
+                        <!--                    <td>-->
+                        <!--                        <a th:text="${airport.airportName} + ' (' + ${airport.airportCode} + ')' + ' - ' + ${airport.airportCountry}"-->
+                        <!--                           href="https://www.google.com">link</a>-->
+                        <!--                    </td>-->
+                    </tr>
+                </table>
+            </div>
+        </div>
+        <div class="col">
+            <div class="p-3 border bg-light">
+                <table>
+                    <th></th>
+                    <tr th:each="airport: ${airports}">
+                        <td>
+                            <a th:text="${airport.airportName} + ' (' + ${airport.airportCode} + ')' + ' - ' + ${airport.airportCountry}"
+                               href="https://www.google.com">link</a>
+                        </td>
+                        <!--                    <td>-->
+                        <!--                        <a th:text="${airport.airportName} + ' (' + ${airport.airportCode} + ')' + ' - ' + ${airport.airportCountry}"-->
+                        <!--                           href="https://www.google.com">link</a>-->
+                        <!--                    </td>-->
+                        <!--                    <td>-->
+                        <!--                        <a th:text="${airport.airportName} + ' (' + ${airport.airportCode} + ')' + ' - ' + ${airport.airportCountry}"-->
+                        <!--                           href="https://www.google.com">link</a>-->
+                        <!--                    </td>-->
+                    </tr>
+                </table>
+            </div>
+        </div>
+    </div>
+</div>
+<div th:replace="footer :: script-js">
+    footer
+</div>
+</body>
+</html>
