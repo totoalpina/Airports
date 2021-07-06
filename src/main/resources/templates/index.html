@@ -5,64 +5,86 @@
     <meta name="viewport"
           content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <div th:replace="header :: css-link">
-        link css
-    </div>
-
+    <link href="#" th:replace="base :: bootstrap-css"/>
+    <link href="#" th:replace="base :: custom-css"/>
+    <div th:replace="base :: fonts-akaya"></div>
     <title>Airports</title>
 </head>
-<body style="background-image: url(/sky_background.jpg)">
-<div th:replace="header :: navigation-bar">
-    header
-</div>
-<div class="container overflow-hidden">
-    <div class="row gx-5">
-        <div class="col">
-            <div class="p-3 border bg-light">
-                <table>
-                    <th></th>
-                    <tr th:each="airport: ${airports}">
-                        <td>
-                            <a th:text="${airport.airportName} + ' (' + ${airport.airportCode} + ')' + ' - ' + ${airport.airportCountry}"
-                               href="https://www.google.com">link</a>
-                        </td>
-                        <!--                    <td>-->
-                        <!--                        <a th:text="${airport.airportName} + ' (' + ${airport.airportCode} + ')' + ' - ' + ${airport.airportCountry}"-->
-                        <!--                           href="https://www.google.com">link</a>-->
-                        <!--                    </td>-->
-                        <!--                    <td>-->
-                        <!--                        <a th:text="${airport.airportName} + ' (' + ${airport.airportCode} + ')' + ' - ' + ${airport.airportCountry}"-->
-                        <!--                           href="https://www.google.com">link</a>-->
-                        <!--                    </td>-->
-                    </tr>
-                </table>
-            </div>
+<body>
+<section>
+    <div th:replace="header :: navigation-bar">
+        header
+    </div>
+</section>
+<section>
+    <div class="container">
+        <div id="jumbo_index" class="jumbotron">
+            <h1 class="display-4">Hello, world!</h1>
+            <p class="lead">This is a simple hero unit, a simple jumbotron-style component for calling extra attention
+                to featured content or information.</p>
+            <hr class="my-4">
         </div>
-        <div class="col">
-            <div class="p-3 border bg-light">
-                <table>
-                    <th></th>
-                    <tr th:each="airport: ${airports}">
-                        <td>
-                            <a th:text="${airport.airportName} + ' (' + ${airport.airportCode} + ')' + ' - ' + ${airport.airportCountry}"
-                               href="https://www.google.com">link</a>
-                        </td>
-                        <!--                    <td>-->
-                        <!--                        <a th:text="${airport.airportName} + ' (' + ${airport.airportCode} + ')' + ' - ' + ${airport.airportCountry}"-->
-                        <!--                           href="https://www.google.com">link</a>-->
-                        <!--                    </td>-->
-                        <!--                    <td>-->
-                        <!--                        <a th:text="${airport.airportName} + ' (' + ${airport.airportCode} + ')' + ' - ' + ${airport.airportCountry}"-->
-                        <!--                           href="https://www.google.com">link</a>-->
-                        <!--                    </td>-->
-                    </tr>
-                </table>
+    </div>
+</section>
+<section>
+    <div class="container">
+        <div class="jumbotron">
+            <div class="controls-row row">
+                <div class="control-group col-md-6">
+                    <div class="input-group">
+<!--                        <form class="form-inline my-2 my-lg-0">-->
+                            <input class="form-control mr-sm-2" type="search" placeholder="Search by airport" aria-label="Search by airport">
+                            <button class="btn btn-outline-light my-2 my-sm-0" type="submit">Search</button>
+<!--                        </form>-->
+                    </div>
+                </div>
+                <div class="control-group col-md-6">
+                    <div class="input-group">
+<!--                        <form class="form-inline my-2 my-lg-0">-->
+                            <input class="form-control mr-sm-2" type="search" placeholder="Search by airline" aria-label="Search by airline">
+                            <button class="btn btn-outline-light my-2 my-sm-0" type="submit">Search</button>
+<!--                        </form>-->
+                    </div>
+                </div>
             </div>
         </div>
     </div>
-</div>
-<div th:replace="footer :: script-js">
-    footer
-</div>
+</section>
+<section>
+    <div class="container">
+        <div class="jumbotron">
+            <div class="controls-row row">
+                <div class="control-group col-md-6">
+                    <div class="input-group">
+                        <table>
+                            <th></th>
+                            <tr th:each="airport: ${airports}">
+                                <td>
+                                    <a id="airport_list_index"
+                                       th:text="${airport.airportName} + ' (' + ${airport.airportCode} + ')' + ' - ' + ${airport.airportCountry}"
+                                       href="https://www.google.com">link</a>
+                                </td>
+                            </tr>
+                        </table>
+                    </div>
+                </div>
+                <div class="control-group col-md-6">
+                    <table>
+                        <th></th>
+                        <tr th:each="airport: ${airports}">
+                            <td>
+                                <a id="airport_list_index"
+                                   th:text="${airport.airportName} + ' (' + ${airport.airportCode} + ')' + ' - ' + ${airport.airportCountry}"
+                                   href="https://www.google.com">link</a>
+                            </td>
+                        </tr>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+<footer th:replace="footer::footer-base"></footer>>
+<script src="#" th:replace="base :: bootstrap-js"></script>
 </body>
 </html>

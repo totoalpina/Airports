@@ -32,7 +32,7 @@ public class Airport {
     @OneToOne(mappedBy = "airport")
     private Flight flight;
 
-    public Airport(){
+    public Airport() {
 
     }
 

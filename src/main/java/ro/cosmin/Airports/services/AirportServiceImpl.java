@@ -9,7 +9,7 @@ import java.util.List;
 import java.util.stream.Collectors;
 
 @Service
-public class AirportServiceImpl implements AirportService{
+public class AirportServiceImpl implements AirportService {
 
     @Autowired
     private AirportRepository airportRepository;

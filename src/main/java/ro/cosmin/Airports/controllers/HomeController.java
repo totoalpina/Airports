@@ -13,7 +13,7 @@ public class HomeController {
     private AirportService airportService;
 
     @GetMapping({"/", "/home", "/index"})
-    public String homePage(final Model model){
+    public String homePage(final Model model) {
         model.addAttribute("airports", airportService.findAll());
         return "index";
     }

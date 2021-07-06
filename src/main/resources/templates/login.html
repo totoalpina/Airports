@@ -5,44 +5,47 @@
     <meta name="viewport"
           content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <div th:replace="header :: css-link">
-        link css
-    </div>
+    <link href="#" th:replace="base :: bootstrap-css"/>
+    <link href="#" th:replace="base :: custom-css"/>
+    <div th:replace="base :: fonts-akaya"></div>
+
     <title>Log in</title>
 </head>
-<body class="text-center" style="background-color: #f1faee">
-<br>
-<br>
-<div class="container">
-    <div class="row">
-        <div class="col-4 offset-4">
-            <main class="form-signin">
-                <form>
-                    <h1 class="h3 mb-3 fw-normal">Please sign in</h1>
 
-                    <div class="form-floating">
-                        <input type="email" class="form-control" id="floatingInput" placeholder="name@example.com">
-                        <label for="floatingInput">Email address</label>
-                    </div>
-                    <div class="form-floating">
-                        <input type="password" class="form-control" id="floatingPassword" placeholder="Password">
-                        <label for="floatingPassword">Password</label>
-                    </div>
+<body>
 
-                    <div class="checkbox mb-3">
-                        <label>
-
-                        </label>
-                    </div>
-                    <button class="w-100 btn btn-lg btn-primary" type="submit">Sign in</button>
-                    <p class="mt-5 mb-3 text-muted"> Cosmin Bondoi - All rights reserved - 2021© </p>
-                </form>
-            </main>
+<div class="container" style="width: 100%">
+    <div class="row col-9">
+        <div class="mb-6 offset-md-4">
+            <p class="mt-5 mb-3 text-white">In order to see the content of the selected page you must be
+                logged in.</p>
         </div>
     </div>
+    <div class="col-md-6 offset-md-3">
+        <form method="post" th:action="@{/login}">
+            <div class="mb-6">
+                <div th:if="${param.logout}">
+                    You have been successfully logged out.
+                </div>
+            </div>
+
+            <div class="mb-6">
+                <label for="username" class="form-label text-white">Username</label>
+                <input class="form-control" type="text" id="username" name="username"/>
+            </div>
+
+            <div class="mb-6">
+                <label for="username" class="form-label text-white">Password</label>
+                <input class="form-control" type="password" id="password" name="password"/>
+            </div>
+            <br>
+            <br>
+            <div class="mb-6">
+                <button style="width: 100%" type="submit" class="btn btn-outline-primary text-white">Login</button>
+            </div>
+        </form>
+    </div>
 </div>
-<div th:replace="footer :: script-js">
-    footer
-</div>
+<script src="#" th:replace="base :: bootstrap-js"></script>
 </body>
 </html>
