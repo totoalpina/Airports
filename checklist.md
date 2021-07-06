@@ -9,3 +9,4 @@
     - [ ] add functionality
     - [ ] edit functionality
     - [ ] delete functionality
+- [ ] custom error pages
