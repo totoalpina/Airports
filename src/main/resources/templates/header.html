@@ -21,17 +21,17 @@
 
                     <ul class="nav col-12 col-lg-auto my-2 justify-content-center my-md-0 text-small">
                         <li>
-                            <a th:href="@{/index}" id="home_header" class="nav-link text-white">
+                            <a th:href="@{/}" id="home_header" class="nav-link text-white">
                                 Home
                             </a>
                         </li>
                         <li>
-                            <a href="" id="airport_header" class="nav-link text-white">
+                            <a th:href="@{/airports/{page}(page=1)}" id="airport_header" class="nav-link text-white">
                                 Airports
                             </a>
                         </li>
                         <li>
-                            <a href="#" id="airline_header" class="nav-link text-white">
+                            <a th:href="@{/airlines/{page}(page=1)}" id="airline_header" class="nav-link text-white">
                                 Airlines
                             </a>
                         </li>

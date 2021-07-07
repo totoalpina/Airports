@@ -25,9 +25,11 @@ body {
     
 } */
 
-#airport_list_index, #jumbo_index{
-    color: white;
-}
+#airport_list_index,
+#airline_list_index,
+#jumbo_index        {
+                    color: white;
+                }
 
 a {
     text-decoration: none;

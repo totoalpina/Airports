@@ -39,15 +39,6 @@
                         <!--                        </form>-->
                     </div>
                 </div>
-                <div class="control-group col-md-6">
-                    <div class="input-group">
-                        <!--                        <form class="form-inline my-2 my-lg-0">-->
-                        <input class="form-control mr-sm-2" type="search" placeholder="Search by airline"
-                               aria-label="Search by airline">
-                        <button class="btn btn-outline-light my-2 my-sm-0" type="submit">Search</button>
-                        <!--                        </form>-->
-                    </div>
-                </div>
             </div>
         </div>
     </div>
@@ -69,18 +60,7 @@
                         </tr>
                     </table>
                 </div>
-                <div class="control-group col-md-6">
-                    <table>
-                        <th></th>
-                        <tr th:each="airline: ${airlines}">
-                            <td>
-                                <a id="airline_list_index"
-                                   th:text="${airline.airlineName} + ' (' + ${airline.airlineCode} + ')' + ' - ' + ${airline.airlineCountry}"
-                                   href="https://www.google.com">link</a>
-                            </td>
-                        </tr>
-                    </table>
-                </div>
+
                 <div class="row" th:fragment="pagination">
                     <div class="col-md-2"></div>
                     <div class="col-md-8">

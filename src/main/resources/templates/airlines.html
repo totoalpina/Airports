@@ -33,15 +33,6 @@
                 <div class="control-group col-md-6">
                     <div class="input-group">
                         <!--                        <form class="form-inline my-2 my-lg-0">-->
-                        <input class="form-control mr-sm-2" type="search" placeholder="Search by airport"
-                               aria-label="Search by airport">
-                        <button class="btn btn-outline-light my-2 my-sm-0" type="submit">Search</button>
-                        <!--                        </form>-->
-                    </div>
-                </div>
-                <div class="control-group col-md-6">
-                    <div class="input-group">
-                        <!--                        <form class="form-inline my-2 my-lg-0">-->
                         <input class="form-control mr-sm-2" type="search" placeholder="Search by airline"
                                aria-label="Search by airline">
                         <button class="btn btn-outline-light my-2 my-sm-0" type="submit">Search</button>
@@ -53,26 +44,13 @@
     </div>
 </section>
 <section>
-
     <div class="container">
         <div class="jumbotron">
             <div class="controls-row row">
                 <div class="control-group col-md-6">
                     <table>
                         <th></th>
-                        <tr th:each="airport : ${airportList}">
-                            <td>
-                                <a id="airport_list_index"
-                                   th:text="${airport.airportName} + ' (' + ${airport.airportCode} + ')' + ' - ' + ${airport.airportCountry}"
-                                   href="https://www.google.com">link</a>
-                            </td>
-                        </tr>
-                    </table>
-                </div>
-                <div class="control-group col-md-6">
-                    <table>
-                        <th></th>
-                        <tr th:each="airline: ${airlines}">
+                        <tr th:each="airline: ${airlineList}">
                             <td>
                                 <a id="airline_list_index"
                                    th:text="${airline.airlineName} + ' (' + ${airline.airlineCode} + ')' + ' - ' + ${airline.airlineCountry}"
@@ -87,7 +65,7 @@
                         <nav aria-label="Pagination">
                             <ul class="pagination justify-content-center">
                                 <li class="page-item" th:each="pageNumber : ${pageNumbers}">
-                                    <a class="page-link" th:href="@{|/airports/${pageNumber}|}"
+                                    <a class="page-link" th:href="@{|/airlines/${pageNumber}|}"
                                        th:text=${pageNumber}>1</a>
                                 </li>
                             </ul>

@@ -1,7 +1,12 @@
 package ro.cosmin.Airports.services;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.PageImpl;
+import org.springframework.data.domain.Pageable;
+import org.springframework.data.domain.SliceImpl;
 import org.springframework.stereotype.Service;
+import ro.cosmin.Airports.domain.Airport;
 import ro.cosmin.Airports.models.AirportDto;
 import ro.cosmin.Airports.repository.AirportRepository;
 
@@ -26,4 +31,20 @@ public class AirportServiceImpl implements AirportService {
                         a.getLongitude()))
                 .collect(Collectors.toList());
     }
+
+    public Page<Airport> findAll(Pageable pageable) {
+        List<AirportDto> list = airportRepository.findAll()
+                .stream()
+                .map(airport -> new AirportDto(airport.getAirportName(),
+                        airport.getAirportCity(),
+                        airport.getAirportCountry(),
+                        airport.getAirportCode(),
+                        airport.getLatitude(),
+                        airport.getLongitude()))
+                .collect(Collectors.toList());
+
+        Page<Airport> airportPage = airportRepository.findAll(pageable);
+        return airportPage;
+    }
+
 }
