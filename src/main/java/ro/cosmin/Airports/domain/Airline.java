@@ -1,6 +1,7 @@
 package ro.cosmin.Airports.domain;
 
 import javax.persistence.*;
+import java.util.Set;
 
 @Entity
 @Table(name = "airlines")
@@ -23,8 +24,12 @@ public class Airline {
     @Column(name = "airline_country", nullable = false)
     private String airlineCountry;
 
-    @OneToOne(mappedBy = "airline")
-    private Flight flight;
+    @OneToMany(mappedBy = "airline")
+    private Set<Flight> flightSet;
+
+    public Airline() {
+
+    }
 
     public Airline(Long id, String airlineName, String airlineCode, String airlineCallSign, String airlineCountry) {
         this.id = id;
@@ -72,5 +77,13 @@ public class Airline {
 
     public void setAirlineCountry(String airlineCountry) {
         this.airlineCountry = airlineCountry;
+    }
+
+    public Set<Flight> getFlightSet() {
+        return flightSet;
+    }
+
+    public void setFlightSet(Set<Flight> flightSet) {
+        this.flightSet = flightSet;
     }
 }

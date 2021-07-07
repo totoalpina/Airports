@@ -19,9 +19,9 @@
 <section>
     <div class="container">
         <div id="jumbo_index" class="jumbotron">
-            <h1 class="display-4">Hello, world!</h1>
-            <p class="lead">This is a simple hero unit, a simple jumbotron-style component for calling extra attention
-                to featured content or information.</p>
+            <h1 class="display-4">"START FLYING!"</h1>
+            <p class="lead">"Your wings already exist. All you have to do is fly."</p>
+            <p class="lead">Just select your favorite destination, and let us do the search for you.</p>
             <hr class="my-4">
         </div>
     </div>
@@ -71,10 +71,10 @@
                 <div class="control-group col-md-6">
                     <table>
                         <th></th>
-                        <tr th:each="airport: ${airports}">
+                        <tr th:each="airline: ${airlines}">
                             <td>
                                 <a id="airport_list_index"
-                                   th:text="${airport.airportName} + ' (' + ${airport.airportCode} + ')' + ' - ' + ${airport.airportCountry}"
+                                   th:text="${airline.airlineName} + ' (' + ${airline.airlineCode} + ')' + ' - ' + ${airline.airlineCountry}"
                                    href="https://www.google.com">link</a>
                             </td>
                         </tr>
