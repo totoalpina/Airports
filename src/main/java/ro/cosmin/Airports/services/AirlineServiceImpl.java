@@ -32,14 +32,6 @@ public class AirlineServiceImpl implements AirlineService{
 
     @Override
     public Page<Airline> findAll(Pageable pageable) {
-        List<AirlineDto> list = airlineRepository.findAll()
-                .stream()
-                .map(airline -> new AirlineDto(airline.getAirlineName(),
-                        airline.getAirlineCode(),
-                        airline.getAirlineCallSign(),
-                        airline.getAirlineCountry()))
-                .collect(Collectors.toList());
-
         Page<Airline> airlinePage = airlineRepository.findAll(pageable);
         return airlinePage;
     }

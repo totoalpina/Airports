@@ -25,11 +25,16 @@ body {
     
 } */
 
+#dashboard-table {
+    vertical-align: middle;
+}
+
 #airport_list_index,
 #airline_list_index,
-#jumbo_index        {
-                    color: white;
-                }
+#jumbo_index, #dashboard-table
+{
+    color: white;
+}
 
 a {
     text-decoration: none;

@@ -1,58 +1,29 @@
-package ro.cosmin.Airports.domain;
+package ro.cosmin.Airports.models;
 
-import javax.persistence.*;
-import java.sql.Date;
+import ro.cosmin.Airports.domain.Airline;
+import ro.cosmin.Airports.domain.Airport;
+
 import java.time.Instant;
 
-@Entity
-@Table(name = "flights")
-public class Flight {
+public class FlightDto {
 
-    @Id
-    @Column
-    @GeneratedValue
-    private Long id;
-
-    @Column(name = "flight_no")
     private String flightNumber;
-
-    @Column(name = "departure")
     private Instant departureDate;
-
-    @Column(name = "arrival")
     private Instant arrivalDate;
-
-    @ManyToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name = "airline_id", nullable = false)
     private Airline airline;
-
-    @ManyToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name = "departure_airport_id", nullable = false)
     private Airport departureAirport;
-
-    @ManyToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name = "arrival_airport_id", nullable = false)
     private Airport arrivalAirport;
 
-    public Flight() {
+    public FlightDto() {
     }
 
-    public Flight(Long id, String flightNumber, Instant departureDate, Instant arrivalDate, Airline airline, Airport departureAirport, Airport arrivalAirport) {
-        this.id = id;
+    public FlightDto(String flightNumber, Instant departureDate, Instant arrivalDate, Airline airline, Airport departureAirport, Airport arrivalAirport) {
         this.flightNumber = flightNumber;
         this.departureDate = departureDate;
         this.arrivalDate = arrivalDate;
         this.airline = airline;
         this.departureAirport = departureAirport;
         this.arrivalAirport = arrivalAirport;
-    }
-
-    public Long getId() {
-        return id;
-    }
-
-    public void setId(Long id) {
-        this.id = id;
     }
 
     public String getFlightNumber() {

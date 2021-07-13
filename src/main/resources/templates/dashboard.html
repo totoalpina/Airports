@@ -15,8 +15,101 @@
 <div th:replace="header :: navigation-bar">
     header
 </div>
-<div>DASHBOARD</div>
-
+<section>
+    <div class="container">
+        <div id="jumbo_index" class="jumbotron">
+            <h1 class="display-4">"Dashboard"</h1>
+            <p class="lead">Hello Cosmin! </p>
+            <p class="lead">This is the admin page. Feel free to "show off" your master skills. </p>
+            <a class="btn btn-outline-light my-2 my-sm-0" href="#"
+               type="button">Add flight</a>
+            <hr class="my-4">
+        </div>
+    </div>
+</section>
+<section>
+    <div class="container">
+        <div class="jumbotron">
+            <div class="controls-row row">
+                <div class="control-group col-md-6">
+                    <div class="input-group">
+                        <!--                        <form class="form-inline my-2 my-lg-0">-->
+                        <!--                        <input class="form-control mr-sm-2" type="search" placeholder="Search by airline"-->
+                        <!--                               aria-label="Search by airline">-->
+                        <!--                        <button class="btn btn-outline-light my-2 my-sm-0" type="submit">Search</button>-->
+                        <!--                        </form>-->
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+<section>
+    <div class="container">
+        <div class="jumbotron">
+            <div class="controls-row row">
+                <div class="control-group col-md-12">
+                    <div class="table-responsive-md ">
+                        <table class="table table-bordered border-light" id="dashboard-table">
+                            <tr>
+                                <th scope="col">Airline</th>
+                                <th scope="col">Flight No</th>
+                                <th scope="col">Departure Airport</th>
+                                <th scope="col">Departure Date</th>
+                                <th scope="col">Arrival Airport</th>
+                                <th scope="col">Arrival Date</th>
+                                <th scope="col">Action</th>
+                            </tr>
+                            <tr th:each="flight: ${flights}">
+                                <td th:text="${flight.airline.airlineName + ' (' + flight.airline.airlineCode + ')'}"> ***</td>
+                                <td th:text="${flight.flightNumber}"> ***</td>
+                                <td th:text="${flight.departureAirport.airportName}"> ***</td>
+                                <td th:text="${#dates.format(flight.departureDate, 'dd.MM.yyyy HH:mm')}"> ***</td>
+                                <td th:text="${flight.arrivalAirport.airportName}"> ***</td>
+                                <td th:text="${#dates.format(flight.arrivalDate, 'dd.MM.yyyy HH:mm')}"> ***</td>
+                                <td>
+                                    <div class="d-flex justify-content-left">
+                                        <a href="#"
+                                           class="btn btn-outline-primary btn-xs"
+                                           style="padding: 5px; margin: 2px" title="Edit">
+                                            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16" width="16"
+                                                 height="16">
+                                                <path fill-rule="evenodd"
+                                                      d="M11.013 1.427a1.75 1.75 0 012.474 0l1.086 1.086a1.75 1.75 0 010 2.474l-8.61 8.61c-.21.21-.47.364-.756.445l-3.251.93a.75.75 0 01-.927-.928l.929-3.25a1.75 1.75 0 01.445-.758l8.61-8.61zm1.414 1.06a.25.25 0 00-.354 0L10.811 3.75l1.439 1.44 1.263-1.263a.25.25 0 000-.354l-1.086-1.086zM11.189 6.25L9.75 4.81l-6.286 6.287a.25.25 0 00-.064.108l-.558 1.953 1.953-.558a.249.249 0 00.108-.064l6.286-6.286z"></path>
+                                            </svg>
+                                        </a>
+                                        <a href="#"
+                                           class="btn btn-outline-danger btn-xs"
+                                           style="padding: 5px; margin: 2px"
+                                           onclick="return confirm('Your just about to `drop down` a flight. Are you sure you wanna do that?')"
+                                           title="Delete">X</a>
+                                    </div>
+                                </td>
+                            </tr>
+                        </table>
+                    </div>
+                </div>
+                <!--                <div class="row" th:fragment="pagination">-->
+                <!--                    <div class="col-md-2"></div>-->
+                <!--                    <div class="col-md-8">-->
+                <!--                        <nav aria-label="Pagination">-->
+                <!--                            <ul class="pagination justify-content-center">-->
+                <!--                                <li class="page-item" th:each="pageNumber : ${pageNumbers}">-->
+                <!--                                    <a class="page-link" th:href="@{|/airlines/${pageNumber}|}"-->
+                <!--                                       th:text=${pageNumber}>1</a>-->
+                <!--                                </li>-->
+                <!--                            </ul>-->
+                <!--                        </nav>-->
+                <!--                    </div>-->
+                <div class="col-md-2"></div>
+            </div>
+        </div>
+    </div>
+    </div>
+    </div>
+    </div>
+</section>
+<footer th:replace="footer::footer-base"></footer>
 <script src="#" th:replace="base :: bootstrap-js"></script>
 </body>
 </html>

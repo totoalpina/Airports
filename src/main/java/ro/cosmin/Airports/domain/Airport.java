@@ -30,13 +30,13 @@ public class Airport {
     @Column(name = "longitude")
     private String longitude;
 
-    @OneToMany(mappedBy = "departure_airport", fetch = FetchType.LAZY
+    @OneToMany(mappedBy = "departureAirport", fetch = FetchType.LAZY
             , cascade = CascadeType.ALL)
-    private Set<Flight> departure_flights;
+    private Set<Flight> departureFlights;
 
-    @OneToMany(mappedBy = "arrival_airport", fetch = FetchType.LAZY
+    @OneToMany(mappedBy = "arrivalAirport", fetch = FetchType.LAZY
             , cascade = CascadeType.ALL)
-    private Set<Flight> arrival_flights;
+    private Set<Flight> arrivalFlights;
     public Airport() {
 
     }
@@ -107,19 +107,19 @@ public class Airport {
         this.longitude = longitude;
     }
 
-    public Set<Flight> getDeparture_flights() {
-        return departure_flights;
+    public Set<Flight> getDepartureFlights() {
+        return departureFlights;
     }
 
-    public void setDeparture_flights(Set<Flight> departure_flights) {
-        this.departure_flights = departure_flights;
+    public void setDepartureFlights(Set<Flight> departureFlights) {
+        this.departureFlights = departureFlights;
     }
 
-    public Set<Flight> getArrival_flights() {
-        return arrival_flights;
+    public Set<Flight> getArrivalFlights() {
+        return arrivalFlights;
     }
 
-    public void setArrival_flights(Set<Flight> arrival_flights) {
-        this.arrival_flights = arrival_flights;
+    public void setArrivalFlights(Set<Flight> arrivalFlights) {
+        this.arrivalFlights = arrivalFlights;
     }
 }
