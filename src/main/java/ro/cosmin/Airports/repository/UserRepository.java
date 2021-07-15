@@ -1,7 +1,7 @@
 package ro.cosmin.Airports.repository;
 
 import org.springframework.data.jpa.repository.JpaRepository;
-import ro.cosmin.Airports.domain.User;
+import ro.cosmin.Airports.entities.User;
 
 import java.util.Optional;
 

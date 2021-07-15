@@ -6,7 +6,7 @@ import org.springframework.data.domain.Sort;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
-import ro.cosmin.Airports.domain.Airport;
+import ro.cosmin.Airports.entities.Airport;
 
 import java.util.List;
 import java.util.stream.Collectors;

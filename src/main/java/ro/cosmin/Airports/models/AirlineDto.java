@@ -1,7 +1,5 @@
 package ro.cosmin.Airports.models;
 
-import ro.cosmin.Airports.domain.Flight;
-
 public class AirlineDto {
 
     private String airlineName;

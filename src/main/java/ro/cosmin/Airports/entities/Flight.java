@@ -1,7 +1,6 @@
-package ro.cosmin.Airports.domain;
+package ro.cosmin.Airports.entities;
 
 import javax.persistence.*;
-import java.sql.Date;
 import java.time.Instant;
 
 @Entity

@@ -1,4 +1,4 @@
-package ro.cosmin.Airports.domain;
+package ro.cosmin.Airports.entities;
 
 import org.springframework.lang.NonNull;
 import ro.cosmin.Airports.enums.UserRole;

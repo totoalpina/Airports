@@ -3,7 +3,7 @@ package ro.cosmin.Airports.services;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Service;
-import ro.cosmin.Airports.domain.User;
+import ro.cosmin.Airports.entities.User;
 import ro.cosmin.Airports.enums.UserRole;
 import ro.cosmin.Airports.models.UserDto;
 import ro.cosmin.Airports.repository.UserRepository;

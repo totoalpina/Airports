@@ -1,7 +1,7 @@
 package ro.cosmin.Airports.models;
 
-import ro.cosmin.Airports.domain.Airline;
-import ro.cosmin.Airports.domain.Airport;
+import ro.cosmin.Airports.entities.Airline;
+import ro.cosmin.Airports.entities.Airport;
 
 import java.time.Instant;
 

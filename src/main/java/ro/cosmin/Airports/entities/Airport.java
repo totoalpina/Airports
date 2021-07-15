@@ -1,4 +1,4 @@
-package ro.cosmin.Airports.domain;
+package ro.cosmin.Airports.entities;
 
 import javax.persistence.*;
 import java.util.Set;

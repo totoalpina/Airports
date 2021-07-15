@@ -1,7 +1,7 @@
 package ro.cosmin.Airports.services;
 
 
-import ro.cosmin.Airports.domain.User;
+import ro.cosmin.Airports.entities.User;
 import ro.cosmin.Airports.models.UserDto;
 
 import java.util.Optional;
