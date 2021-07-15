@@ -16,7 +16,7 @@ public interface FlightService {
 
     FlightDto updateFlight(Long id);
 
-    boolean deleteFlight(Long id);
+    void deleteFlight(Long id);
 
     FlightDto findById(Long id);
 }

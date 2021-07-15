@@ -9,10 +9,11 @@ import ro.cosmin.Airports.models.FlightDto;
 import ro.cosmin.Airports.repository.FlightRepository;
 
 import java.util.List;
+import java.util.Optional;
 import java.util.stream.Collectors;
 
 @Service
-public class FlightServiceImpl implements FlightService{
+public class FlightServiceImpl implements FlightService {
 
     @Autowired
     private FlightRepository flightRepository;
@@ -35,7 +36,8 @@ public class FlightServiceImpl implements FlightService{
     public List<FlightDto> retrieveAllFlights() {
         List<FlightDto> flightList = flightRepository.findAll()
                 .stream()
-                .map(e -> new FlightDto(e.getFlightNumber(),
+                .map(e -> new FlightDto(e.getId(),
+                        e.getFlightNumber(),
                         e.getDepartureDate(),
                         e.getArrivalDate(),
                         e.getAirline(),
@@ -58,9 +60,14 @@ public class FlightServiceImpl implements FlightService{
     }
 
     @Override
-    public boolean deleteFlight(Long id) {
-        // TODO implementation
-        return false;
+    public void deleteFlight(Long id) {
+        Optional<Flight> flight = flightRepository.findById(id);
+
+        if (flight.isPresent()) {
+            flightRepository.deleteById(id);
+        } else {
+            throw new RuntimeException("Flight not found");
+        }
     }
 
     @Override

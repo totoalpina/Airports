@@ -7,6 +7,7 @@ import java.time.Instant;
 
 public class FlightDto {
 
+    private Long id;
     private String flightNumber;
     private Instant departureDate;
     private Instant arrivalDate;
@@ -24,6 +25,24 @@ public class FlightDto {
         this.airline = airline;
         this.departureAirport = departureAirport;
         this.arrivalAirport = arrivalAirport;
+    }
+
+    public FlightDto(Long id, String flightNumber, Instant departureDate, Instant arrivalDate, Airline airline, Airport departureAirport, Airport arrivalAirport) {
+        this.id = id;
+        this.flightNumber = flightNumber;
+        this.departureDate = departureDate;
+        this.arrivalDate = arrivalDate;
+        this.airline = airline;
+        this.departureAirport = departureAirport;
+        this.arrivalAirport = arrivalAirport;
+    }
+
+    public Long getId() {
+        return id;
+    }
+
+    public void setId(Long id) {
+        this.id = id;
     }
 
     public String getFlightNumber() {

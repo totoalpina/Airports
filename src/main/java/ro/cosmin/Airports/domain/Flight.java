@@ -5,7 +5,9 @@ import java.sql.Date;
 import java.time.Instant;
 
 @Entity
-@Table(name = "flights")
+@Table(name = "flights", uniqueConstraints = {
+        @UniqueConstraint(name = "unique_flight_no", columnNames = {"flight_no"})
+})
 public class Flight {
 
     @Id

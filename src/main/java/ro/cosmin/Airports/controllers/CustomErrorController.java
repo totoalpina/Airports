@@ -27,6 +27,8 @@ public class CustomErrorController implements ErrorController {
                 return "400-error";
             } else if (statusCode == HttpStatus.FORBIDDEN.value()) {
                 return "403-error";
+            } else if (statusCode == HttpStatus.METHOD_NOT_ALLOWED.value()) {
+                return "405-error";
             }
         }
         return "error";
