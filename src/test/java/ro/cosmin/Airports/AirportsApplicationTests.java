@@ -10,6 +10,6 @@ class AirportsApplicationTests {
 	@Test
 	public void test() {
 		boolean condition = false;
-		return Assertions.assertFalse(condition);
+		Assertions.assertFalse(condition);
 	}
 }
