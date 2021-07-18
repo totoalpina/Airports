@@ -30,9 +30,4 @@ public class AirportServiceImpl implements AirportService {
                 .collect(Collectors.toList());
     }
 
-    public Page<Airport> findAll(Pageable pageable) {
-        Page<Airport> airportPage = airportRepository.findAll(pageable);
-        return airportPage;
-    }
-
 }

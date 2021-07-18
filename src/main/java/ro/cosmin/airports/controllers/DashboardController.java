@@ -6,13 +6,14 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
+import ro.cosmin.airports.services.FlightService;
 import ro.cosmin.airports.services.FlightServiceImpl;
 
 @Controller
 public class DashboardController {
 
     @Autowired
-    private FlightServiceImpl flightService;
+    private FlightService flightService;
 
     @GetMapping("/dashboard")
     @PreAuthorize("hasRole('ADMIN')")
@@ -26,6 +27,12 @@ public class DashboardController {
     public String deleteFlight(@PathVariable ("id") Long id) {
         flightService.deleteFlight(id);
         return "redirect:/dashboard?success";
+    }
+
+    @GetMapping("/edit/{id}")
+    public String editFlight(@PathVariable("id") Long id, Model model) {
+        model.addAttribute("flight", flightService.findById(id));
+        return "dashboard";
     }
 
 }

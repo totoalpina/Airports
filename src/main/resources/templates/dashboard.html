@@ -91,6 +91,7 @@
                                                 data-bs-dismiss="modal">Close
                                         </button>
                                     </div>
+                                </div>
                             </form>
                         </div>
                     </div>
@@ -150,8 +151,8 @@
                                     <div class="d-flex justify-content-left">
                                         <a href="#"
                                            class="btn btn-outline-light btn-xs"
-                                           style="padding: 5px; margin: 2px" data-bs-toggle="modal"
-                                           data-bs-target="#editModal" title="Edit">
+                                           style="padding: 5px; margin: 2px" data-bs-toggle="modal" data-bs-target="#editModal"
+                                           th:attrappend="data-bs-target=${flight.id}" title="Edit">
                                             <img src="https://img.icons8.com/pastel-glyph/16/ffffff/edit--v1.png"/>
                                         </a>
                                         <a th:href="@{/delete/{id}(id=${flight.id})}"
@@ -161,7 +162,7 @@
                                            title="Delete"><img
                                                 src="https://img.icons8.com/flat-round/16/000000/delete-sign.png"/></a>
                                     </div>
-                                    <div class="modal" id="editModal" role="dialog" tabindex="0"
+                                    <div class="modal" id="editModal" th:attrappend="id=${flight.id}" role="dialog" tabindex="0"
                                          data-bs-backdrop="static">
                                         <div class="modal-dialog">
                                             <div class="modal-content">
@@ -170,27 +171,27 @@
                                                         <p>Add flight information</p>
                                                     </div>
                                                     <hr>
-                                                    <form action="#" method="POST">
-                                                        <input type="hidden" name="id" value="">
+                                                    <form action="#" method="POST" th:object="${employee}">
+                                                        <input type="hidden" name="id" th:value="@{flight.id}">
                                                         <div class="form-group">
                                                             <div class=" form-group">
                                                                 <label>Airline :</label>
                                                                 <select name="airline" id="select-airline">
-                                                                    <option value="" selected></option>
+                                                                    <option th:text="@{flight.airline.airlineName}" selected></option>
                                                                     <option value="">hida hida</option>
                                                                 </select>
                                                             </div>
                                                             <div class=" form-group">
                                                                 <label>Departure Airport :</label>
                                                                 <select name="departure-airport" id="select-airport">
-                                                                    <option value="" selected></option>
+                                                                    <option th:value="flight.departureAirport.airportName" selected></option>
                                                                     <option value="">bla bla</option>
                                                                 </select>
                                                             </div>
                                                             <div class=" form-group">
                                                                 <label>Arrival Airport :</label>
                                                                 <select name="arrival-airport" id="select-airport">
-                                                                    <option value="" selected></option>
+                                                                    <option th:text="@{flight.arrivalAirport.airportName}" selected></option>
                                                                     <option value="">hida hida</option>
                                                                 </select>
                                                             </div>
@@ -199,8 +200,9 @@
                                                                 <div class="form-group form-control inline bg-transparent">
                                                                     <input id="date-form-width" type="date"
                                                                            name="departure-date"
-                                                                           value="">
+                                                                           th:text="@{#dates.format(flight.departureDate, 'dd.MM.yyyy')}}">
                                                                     <input id="date-form-width" type="time"
+                                                                           th:text="@{#dates.format(flight.departureDate, 'HH:mm')}}"
                                                                            name="departure-time">
                                                                 </div>
                                                             </div>
@@ -209,8 +211,9 @@
                                                                 <div class="form-group form-control inline bg-transparent">
                                                                     <input id="date-form-width" type="date"
                                                                            name="arrival-date"
-                                                                           value="">
+                                                                           th:text="@{#dates.format(flight.arrivalDate, 'dd.MM.yyyy')}}">
                                                                     <input id="date-form-width" type="time"
+                                                                           th:text="@{#dates.format(flight.arrivalDate, 'HH:mm')}}"
                                                                            name="arrival-time">
                                                                 </div>
                                                             </div>
@@ -218,7 +221,7 @@
                                                                 <label>Flight number</label>
                                                                 <input type="text" class="form-control"
                                                                        name="flight-number"
-                                                                       value="">
+                                                                       th:text="@{flight.flightNumber}">
                                                             </div>
                                                             <hr>
                                                             <div class="form-group">
@@ -255,7 +258,6 @@
             </div>
         </div>
     </div>
-
 
 </section>
 <footer th:replace="footer::footer-base"></footer>

@@ -47,11 +47,7 @@ public class FlightServiceImpl implements FlightService {
         return flightList;
     }
 
-    @Override
-    public Page<FlightDto> retrieveAllFlights(Pageable pageable) {
-        // TODO implementation
-        return null;
-    }
+
 
     @Override
     public FlightDto updateFlight(Long id) {

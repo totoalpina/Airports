@@ -28,9 +28,4 @@ public class AirlineServiceImpl implements AirlineService{
                 .collect(Collectors.toList());
     }
 
-    @Override
-    public Page<Airline> findAll(Pageable pageable) {
-        Page<Airline> airlinePage = airlineRepository.findAll(pageable);
-        return airlinePage;
-    }
 }
