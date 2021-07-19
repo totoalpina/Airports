@@ -9,6 +9,7 @@ import ro.cosmin.airports.models.FlightDto;
 import ro.cosmin.airports.repository.FlightRepository;
 
 import java.util.List;
+import java.util.Optional;
 import java.util.stream.Collectors;
 
 @Service
@@ -49,28 +50,38 @@ public class FlightServiceImpl implements FlightService {
         return flightList;
     }
 
+
     @Override
-    public Page<FlightDto> retrieveAllFlights(Pageable pageable) {
+    public Flight updateFlight(Long id) {
         // TODO implementation
         return null;
     }
 
     @Override
-    public FlightDto updateFlight(Long id) {
-        // TODO implementation
-        return null;
+    public boolean deleteFlight(Long id) {
+        Optional<Flight> flight = flightService.findById(id)
+                .map(e -> new Flight(e.getId(),
+                        e.getFlightNumber(),
+                        e.getDepartureDate(),
+                        e.getArrivalDate(),
+                        e.getAirline(),
+                        e.getDepartureAirport(),
+                        e.getArrivalAirport()));
+
+        flight.ifPresent(f -> flightRepository.deleteById(f.getId()));
+
+        return flight.get().getId() == null;
     }
 
     @Override
-    public void deleteFlight(Long id) {
-        flightRepository
-                .findById(id)
-                .ifPresentOrElse(flight1 -> flightService.deleteFlight(id), () -> new Flight());
-    }
-
-    @Override
-    public FlightDto findById(Long id) {
-        // TODO implementation
-        return null;
+    public Optional<FlightDto> findById(Long id) {
+        return flightRepository.findById(id)
+                .map(e -> new FlightDto(e.getId(),
+                        e.getFlightNumber(),
+                        e.getDepartureDate(),
+                        e.getArrivalDate(),
+                        e.getAirline(),
+                        e.getDepartureAirport(),
+                        e.getArrivalAirport()));
     }
 }
