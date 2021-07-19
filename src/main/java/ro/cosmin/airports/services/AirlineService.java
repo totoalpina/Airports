@@ -11,4 +11,5 @@ public interface AirlineService{
 
     List<AirlineDto> findAll();
 
+    Page<Airline> findAll(Pageable pageable);
 }
