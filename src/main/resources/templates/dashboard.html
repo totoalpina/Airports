@@ -51,6 +51,9 @@
                 <div class="control-group col-md-12">
                     <div class="table-responsive-md ">
                         <table class="table table-bordered-rounded border-light" id="dashboard-table">
+                            <div th:if="${param.success}">
+                                <div class="row alert alert-outline-success text-white">Flight was successfuly deleted</div>
+                            </div>
                             <tr>
                                 <th scope="col">Airline</th>
                                 <th scope="col">Flight No</th>
@@ -61,6 +64,7 @@
                                 <th scope="col">Action</th>
                             </tr>
                             <tr th:each="flight: ${flights}">
+                                <td hidden="1" th:text="${flight.id}"> ***</td>
                                 <td th:text="${flight.airline.airlineName + ' (' + flight.airline.airlineCode + ')'}"> ***</td>
                                 <td th:text="${flight.flightNumber}"> ***</td>
                                 <td th:text="${flight.departureAirport.airportName}"> ***</td>
@@ -74,7 +78,7 @@
                                            style="padding: 5px; margin: 2px" title="Edit">
                                             <img src="https://img.icons8.com/pastel-glyph/16/ffffff/edit--v1.png"/>
                                         </a>
-                                        <a href="#"
+                                        <a th:href="@{/delete/{id}(id=${flight.id})}"
                                            class="btn btn-outline-danger btn-xs"
                                            style="padding: 5px; margin: 2px"
                                            onclick="return confirm('You are about to `drop down` a flight. Are you sure you wanna do that?')"

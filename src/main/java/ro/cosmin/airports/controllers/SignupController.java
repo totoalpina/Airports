@@ -26,8 +26,10 @@ public class SignupController {
         return "signup";
     }
 
+
     @PostMapping("/register")
     public String saveUser(@Valid @ModelAttribute("userDto") final UserDto userDto, final Model model){
+
         model.addAttribute("userDto", userDto);
         userService.save(userDto);
         return "redirect:/signup?success";

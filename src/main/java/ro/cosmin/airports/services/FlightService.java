@@ -1,10 +1,10 @@
 package ro.cosmin.airports.services;
-
-import org.springframework.data.domain.Page;
-import org.springframework.data.domain.Pageable;
+import ro.cosmin.airports.entities.Flight;
 import ro.cosmin.airports.models.FlightDto;
 
 import java.util.List;
+import java.util.Optional;
+
 
 public interface FlightService {
 
@@ -12,11 +12,10 @@ public interface FlightService {
 
     List<FlightDto> retrieveAllFlights();
 
-    Page<FlightDto> retrieveAllFlights(Pageable pageable);
-
-    FlightDto updateFlight(Long id);
+    Flight updateFlight(Long id);
 
     boolean deleteFlight(Long id);
 
-    FlightDto findById(Long id);
+    Optional<FlightDto> findById(Long id);
+
 }
