@@ -19,7 +19,7 @@
 <section>
     <div class="container">
         <div id="jumbo_index" class="jumbotron">
-            <h1 class="display-4">"START FLYING!"</h1>
+            <h1 id="start_flying" class="display-4">"START FLYING"</h1>
             <p class="lead">"Your wings already exist. All you have to do is fly."</p>
             <p class="lead">Just select your favorite destination, and let us do the search for you.</p>
             <hr class="my-4">
@@ -46,6 +46,31 @@
                                aria-label="Search by airline">
                         <button class="btn btn-outline-light my-2 my-sm-0" type="submit">Search</button>
                         <!--                        </form>-->
+                    </div>
+                </div>
+            </div>
+            <hr>
+            <div class="row">
+                <div class="col-sm-6">
+                    <div class="card bg-transparent">
+                        <div class="card-body bg-transparent text-white">
+                            <h5 class="card-title">AIRPORTS</h5>
+                            <p class="card-text">Our partner airport are listed in the "Airport" section.
+                                Use the search field above to look for the desired airport.
+                                Check for the flight listed in the airports schedule, and fly away.</p>
+                            <a th:href="@{/airports}" class="btn btn-primary">Airports -></a>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-sm-6">
+                    <div class="card bg-transparent">
+                        <div class="card-body bg-transparent text-white">
+                            <h5 class="card-title">AIRLINES</h5>
+                            <p class="card-text">You can choose from our variety of airlines to plan your journey.
+                                See the flights provided and fit one for your convenience.
+                                We ensure you, you will not be desapointed. Spread your wings and fly.</p>
+                            <a th:href="@{/airlines}" class="btn btn-primary">Airlines -></a>
+                        </div>
                     </div>
                 </div>
             </div>
