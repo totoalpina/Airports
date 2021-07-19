@@ -16,9 +16,59 @@
     header
 </div>
 
-<h1>ura si la gara</h1>
+<div class="container">
+    <div id="jumbo_index" class="jumbotron">
+        <h1 id="start_flying" class="display-4">"START FLYING"</h1>
+        <p class="lead">"Your wings already exist. All you have to do is fly."</p>
+        <p class="lead">Create an account by completing the form bellow. All fields are required.</p>
+        <hr class="my-4">
+    </div>
+</div>
 
+<div class="container">
+    <div class="jumbotron">
+        <div class="controls-row row">
+            <div class="control-group col-sm-10 offset-sm-2">
+                <form th:action="@{/register}" th:object="${userDto}" method="post">
+                    <div class="row mb-3">
+                        <label id="signin_label" for="inputEmail" class="col-sm-2 col-form-label">Email</label>
+                        <div class="col-sm-7">
+                            <input type="email" class="form-control" th:field="*{email}" id="inputEmail" required>
+                        </div>
+                    </div>
+                    <div class="row mb-3">
+                        <label id="signin_label" for="password" class="col-sm-2 col-form-label">Password</label>
+                        <div class="col-sm-7">
+                            <input type="password" class="form-control" th:field="*{password}" id="password" required>
+                        </div>
+                    </div>
+                    <div class="row mb-3">
+                        <label id="signin_label" for="firstName" class="col-sm-2 col-form-label">First Name</label>
+                        <div class="col-sm-7">
+                            <input type="text" class="form-control" th:field="*{firstName}" id="firstName" required>
+                        </div>
+                    </div>
+                    <div class="row mb-3">
+                        <label id="signin_label" for="lastName" class="col-sm-2 col-form-label">Last Name</label>
+                        <div class="col-sm-7">
+                            <input type="text" class="form-control" th:field="*{lastName}" id="lastName" required>
+                        </div>
+                    </div>
+                    <div class="control-group col-sm-4">
+                        <button style="width: 70%" type="submit" class="btn btn-outline-primary text-white">Sign in
+                        </button>
+                    </div>
+                    <div class="row sm-10" th:if="${param.success}">
+                        <div class="row mb-7 alert success">Congratulations! You are ready to fly! <br> Registration complete!</div>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
 
+<footer th:replace="footer::footer-base"></footer>
 
+<script src="#" th:replace="base :: bootstrap-js"></script>
 </body>
 </html>

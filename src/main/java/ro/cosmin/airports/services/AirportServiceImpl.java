@@ -4,7 +4,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
-import ro.cosmin.airports.domain.Airport;
+import ro.cosmin.airports.entities.Airport;
 import ro.cosmin.airports.models.AirportDto;
 import ro.cosmin.airports.repository.AirportRepository;
 

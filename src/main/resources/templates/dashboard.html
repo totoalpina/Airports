@@ -18,7 +18,7 @@
 <section>
     <div class="container">
         <div id="jumbo_index" class="jumbotron">
-            <h1 class="display-4">"Dashboard"</h1>
+            <h1 id="start_flying" class="display-4">"Dashboard"</h1>
             <p class="lead">Hello Cosmin! </p>
             <p class="lead">This is the admin page. Feel free to "show off" your master skills. </p>
             <a class="btn btn-outline-light my-2 my-sm-0" href="#"
@@ -45,7 +45,10 @@
             <div class="controls-row row">
                 <div class="control-group col-md-12">
                     <div class="table-responsive-md ">
-                        <table class="table table-bordered border-light" id="dashboard-table">
+                        <table class="table table-bordered-rounded border-light" id="dashboard-table">
+                            <div th:if="${param.success}">
+                                <div class="row alert alert-outline-success text-white">Flight was successfuly deleted</div>
+                            </div>
                             <tr>
                                 <th scope="col">Airline</th>
                                 <th scope="col">Flight No</th>
@@ -56,6 +59,7 @@
                                 <th scope="col">Action</th>
                             </tr>
                             <tr th:each="flight: ${flights}">
+                                <td hidden="1" th:text="${flight.id}"> ***</td>
                                 <td th:text="${flight.airline.airlineName + ' (' + flight.airline.airlineCode + ')'}"> ***</td>
                                 <td th:text="${flight.flightNumber}"> ***</td>
                                 <td th:text="${flight.departureAirport.airportName}"> ***</td>
@@ -69,11 +73,12 @@
                                            style="padding: 5px; margin: 2px" title="Edit">
                                             <img th:src="@{/img/edit-icon.png}"/>
                                         </a>
-                                        <a href="#"
+                                        <a th:href="@{/delete/{id}(id=${flight.id})}"
                                            class="btn btn-outline-danger btn-xs"
                                            style="padding: 5px; margin: 2px"
                                            onclick="return confirm('You're about to `drop down` a flight. Are you sure you wanna do that?')"
                                            title="Delete"><img th:src="@{/img/delete-sign.png}"/></a>
+
                                     </div>
                                 </td>
                             </tr>

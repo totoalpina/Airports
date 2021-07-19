@@ -4,11 +4,12 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
-import ro.cosmin.airports.domain.Flight;
+import ro.cosmin.airports.entities.Flight;
+
 import ro.cosmin.airports.models.FlightDto;
 import ro.cosmin.airports.repository.FlightRepository;
-
 import java.util.List;
+import java.util.Optional;
 import java.util.stream.Collectors;
 
 @Service
@@ -16,6 +17,10 @@ public class FlightServiceImpl implements FlightService {
 
     @Autowired
     private FlightRepository flightRepository;
+
+
+    @Autowired
+    private FlightService flightService;
 
     @Override
     public boolean addFlight(FlightDto flightDto) {
@@ -33,38 +38,51 @@ public class FlightServiceImpl implements FlightService {
 
     @Override
     public List<FlightDto> retrieveAllFlights() {
-        return flightRepository.findAll()
+        List<FlightDto> flightList = flightRepository.findAll()
                 .stream()
-                .map(e -> new FlightDto(e.getFlightNumber(),
+                .map(e -> new FlightDto(e.getId(),
+                        e.getFlightNumber(),
                         e.getDepartureDate(),
                         e.getArrivalDate(),
                         e.getAirline(),
                         e.getDepartureAirport(),
                         e.getArrivalAirport()))
                 .collect(Collectors.toList());
+        return flightList;
     }
 
     @Override
-    public Page<FlightDto> retrieveAllFlights(Pageable pageable) {
-        // TODO implementation
-        return null;
-    }
+    public Flight updateFlight(Long id) {
 
-    @Override
-    public FlightDto updateFlight(Long id) {
         // TODO implementation
         return null;
     }
 
     @Override
     public boolean deleteFlight(Long id) {
-        // TODO implementation
-        return false;
+        Optional<Flight> flight = flightService.findById(id)
+                .map(e -> new Flight(e.getId(),
+                        e.getFlightNumber(),
+                        e.getDepartureDate(),
+                        e.getArrivalDate(),
+                        e.getAirline(),
+                        e.getDepartureAirport(),
+                        e.getArrivalAirport()));
+
+        flight.ifPresent(f -> flightRepository.deleteById(f.getId()));
+
+        return flight.get().getId() == null;
     }
 
     @Override
-    public FlightDto findById(Long id) {
-        // TODO implementation
-        return null;
+    public Optional<FlightDto> findById(Long id) {
+        return flightRepository.findById(id)
+                .map(e -> new FlightDto(e.getId(),
+                        e.getFlightNumber(),
+                        e.getDepartureDate(),
+                        e.getArrivalDate(),
+                        e.getAirline(),
+                        e.getDepartureAirport(),
+                        e.getArrivalAirport()));
     }
 }

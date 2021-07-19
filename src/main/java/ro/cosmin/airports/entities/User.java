@@ -1,4 +1,4 @@
-package ro.cosmin.airports.domain;
+package ro.cosmin.airports.entities;
 
 import org.springframework.lang.NonNull;
 import ro.cosmin.airports.enums.UserRole;
@@ -34,7 +34,6 @@ public class User {
     @Enumerated(EnumType.STRING)
     private UserRole userRole;
 
-
     public User() {
     }
 
@@ -54,7 +53,6 @@ public class User {
         this.lastName = lastName;
         this.userRole = userRole;
     }
-
 
     public Long getId() {
         return id;
