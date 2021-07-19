@@ -8,6 +8,7 @@ import java.time.Instant;
 
 public class FlightDto {
 
+    private Long id;
     @NotEmpty(message = "Flight number must not be empty")
     private String flightNumber;
     @NotEmpty

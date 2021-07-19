@@ -41,20 +41,24 @@
                             </a>
                         </li>
                         <li>
-                            <a th:href="@{/dashboard}" id="dashboard_header" class="nav-link text-white">
-                                Dashboard
-                            </a>
-                        </li>
-                        <li>
                             <a th:href="@{/about}" id="about_header" class="nav-link text-white">
                                 About us
                             </a>
                         </li>
                         <li>&nbsp;<->&nbsp;</li>
+                        <li th:if sec:authorize="hasRole('ADMIN')" id="dashboard_header">
+                            <p class="nav-link text-white">Hello Boss&nbsp;</p>
+                        <li sec:authorize="hasRole('ADMIN')">
+                            <a th:href="@{/dashboard}" class="btn btn-outline-danger me-2">
+                                Dashboard
+                            </a>
+                        </li>
                         <li sec:authorize="!isAuthenticated()">
                             <a th:href="@{/login}" class="btn btn-outline-info me-2">Login</a>
                         </li>
-                        <li sec:authorize="isAuthenticated()"><a th:href="@{/logout}" class="btn btn-outline-info me-2">Logout</a></li>
+                        <li sec:authorize="isAuthenticated()">
+                            <a th:href="@{/logout}" class="btn btn-outline-info me-2">Logout</a>
+                        </li>
                         <li sec:authorize="!isAuthenticated()">
                             <a th:href="@{/signup}" class="btn btn-outline-primary me-2">Sign in</a>
                         </li>
