@@ -8,10 +8,6 @@ import org.springframework.boot.test.context.SpringBootTest;
 class AirportsApplicationTests {
 
 	@Test
-	void contextLoads() {
-	}
-
-	@Test
 	public void test() {
 		boolean condition = false;
 		Assertions.assertFalse(condition);

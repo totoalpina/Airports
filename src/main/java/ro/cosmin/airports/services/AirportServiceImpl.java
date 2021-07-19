@@ -35,4 +35,5 @@ public class AirportServiceImpl implements AirportService {
     public Page<Airport> findAll(Pageable pageable) {
         return airportRepository.findAll(pageable);
     }
+
 }

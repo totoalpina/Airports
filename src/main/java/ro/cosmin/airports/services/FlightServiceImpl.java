@@ -7,7 +7,6 @@ import org.springframework.stereotype.Service;
 import ro.cosmin.airports.entities.Flight;
 import ro.cosmin.airports.models.FlightDto;
 import ro.cosmin.airports.repository.FlightRepository;
-
 import java.util.List;
 import java.util.Optional;
 import java.util.stream.Collectors;
@@ -17,6 +16,10 @@ public class FlightServiceImpl implements FlightService {
 
     @Autowired
     private FlightRepository flightRepository;
+
+    @Autowired
+    private FlightService flightService;
+
 
     @Override
     public boolean addFlight(FlightDto flightDto) {
@@ -47,28 +50,37 @@ public class FlightServiceImpl implements FlightService {
         return flightList;
     }
 
-
-
     @Override
-    public FlightDto updateFlight(Long id) {
+    public Flight updateFlight(Long id) {
         // TODO implementation
         return null;
     }
 
     @Override
-    public void deleteFlight(Long id) {
-        Optional<Flight> flight = flightRepository.findById(id);
+    public boolean deleteFlight(Long id) {
+        Optional<Flight> flight = flightService.findById(id)
+                .map(e -> new Flight(e.getId(),
+                        e.getFlightNumber(),
+                        e.getDepartureDate(),
+                        e.getArrivalDate(),
+                        e.getAirline(),
+                        e.getDepartureAirport(),
+                        e.getArrivalAirport()));
 
-        if (flight.isPresent()) {
-            flightRepository.deleteById(id);
-        } else {
-            throw new RuntimeException("Flight not found");
-        }
+        flight.ifPresent(f -> flightRepository.deleteById(f.getId()));
+
+        return flight.get().getId() == null;
     }
 
     @Override
-    public FlightDto findById(Long id) {
-        // TODO implementation
-        return null;
+    public Optional<FlightDto> findById(Long id) {
+        return flightRepository.findById(id)
+                .map(e -> new FlightDto(e.getId(),
+                        e.getFlightNumber(),
+                        e.getDepartureDate(),
+                        e.getArrivalDate(),
+                        e.getAirline(),
+                        e.getDepartureAirport(),
+                        e.getArrivalAirport()));
     }
 }

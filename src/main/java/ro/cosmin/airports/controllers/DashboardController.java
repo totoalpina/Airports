@@ -7,7 +7,7 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import ro.cosmin.airports.services.FlightService;
-import ro.cosmin.airports.services.FlightServiceImpl;
+
 
 @Controller
 public class DashboardController {
@@ -24,7 +24,8 @@ public class DashboardController {
 
     @GetMapping("/delete/{id}")
     @PreAuthorize("hasRole('ADMIN')")
-    public String deleteFlight(@PathVariable ("id") Long id) {
+    public String deleteFlight(@PathVariable ("id") Long id, Model model) {
+        model.addAttribute("flight", flightService.findById(id));
         flightService.deleteFlight(id);
         return "redirect:/dashboard?success";
     }

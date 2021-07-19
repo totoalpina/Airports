@@ -1,39 +1,42 @@
-package ro.cosmin.airports.models;
+package ro.cosmin.airports.domain;
 
-import javax.validation.constraints.NotEmpty;
-import ro.cosmin.airports.entities.Airline;
-import ro.cosmin.airports.entities.Airport;
-
+import javax.persistence.*;
 import java.time.Instant;
 
-public class FlightDto {
+@Entity
+@Table(name = "flights")
+public class Flight {
 
-    @NotEmpty(message = "Flight number must not be empty")
+    @Id
+    @Column
+    @GeneratedValue
+    private Long id;
+
+    @Column(name = "flight_no")
     private String flightNumber;
-    @NotEmpty
+
+    @Column(name = "departure")
     private Instant departureDate;
-    @NotEmpty
+
+    @Column(name = "arrival")
     private Instant arrivalDate;
-    @NotEmpty
+
+    @ManyToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name = "airline_id", nullable = false)
     private Airline airline;
-    @NotEmpty
+
+    @ManyToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name = "departure_airport_id", nullable = false)
     private Airport departureAirport;
-    @NotEmpty
+
+    @ManyToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name = "arrival_airport_id", nullable = false)
     private Airport arrivalAirport;
 
-    public FlightDto() {
+    public Flight() {
     }
 
-    public FlightDto(String flightNumber, Instant departureDate, Instant arrivalDate, Airline airline, Airport departureAirport, Airport arrivalAirport) {
-        this.flightNumber = flightNumber;
-        this.departureDate = departureDate;
-        this.arrivalDate = arrivalDate;
-        this.airline = airline;
-        this.departureAirport = departureAirport;
-        this.arrivalAirport = arrivalAirport;
-    }
-
-    public FlightDto(Long id, String flightNumber, Instant departureDate, Instant arrivalDate, Airline airline, Airport departureAirport, Airport arrivalAirport) {
+    public Flight(Long id, String flightNumber, Instant departureDate, Instant arrivalDate, Airline airline, Airport departureAirport, Airport arrivalAirport) {
         this.id = id;
         this.flightNumber = flightNumber;
         this.departureDate = departureDate;

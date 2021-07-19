@@ -29,37 +29,29 @@
     <div class="jumbotron">
         <div class="controls-row row">
             <div class="control-group col-sm-10 offset-sm-2">
-
-                <form th:action="@{/save}" th:object="${userDto}" method="post">
+                <form th:action="@{/register}" th:object="${userDto}" method="post">
                     <div class="row mb-3">
                         <label id="signin_label" for="inputEmail" class="col-sm-2 col-form-label">Email</label>
                         <div class="col-sm-7">
-                            <input type="email" class="form-control" th:field="*{email}" id="inputEmail">
+                            <input type="email" class="form-control" th:field="*{email}" id="inputEmail" required>
                         </div>
                     </div>
                     <div class="row mb-3">
                         <label id="signin_label" for="password" class="col-sm-2 col-form-label">Password</label>
                         <div class="col-sm-7">
-                            <input type="password" class="form-control" th:field="*{password}" id="password">
+                            <input type="password" class="form-control" th:field="*{password}" id="password" required>
                         </div>
                     </div>
-<!--                    <div class="row mb-3">-->
-<!--                        <label id="signin_label" for="confirmPassword" class="col-sm-2 col-form-label">Confirm-->
-<!--                            Password</label>-->
-<!--                        <div class="col-sm-7">-->
-<!--                            <input type="password" class="form-control" id="confirmPassword">-->
-<!--                        </div>-->
-<!--                    </div>-->
                     <div class="row mb-3">
                         <label id="signin_label" for="firstName" class="col-sm-2 col-form-label">First Name</label>
                         <div class="col-sm-7">
-                            <input type="text" class="form-control" th:field="*{firstName}" id="firstName">
+                            <input type="text" class="form-control" th:field="*{firstName}" id="firstName" required>
                         </div>
                     </div>
                     <div class="row mb-3">
                         <label id="signin_label" for="lastName" class="col-sm-2 col-form-label">Last Name</label>
                         <div class="col-sm-7">
-                            <input type="text" class="form-control" th:field="*{lastName}" id="lastName">
+                            <input type="text" class="form-control" th:field="*{lastName}" id="lastName" required>
                         </div>
                     </div>
                     <div class="control-group col-sm-4">

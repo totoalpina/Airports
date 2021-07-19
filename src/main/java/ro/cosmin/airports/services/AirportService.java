@@ -12,4 +12,5 @@ public interface AirportService {
     List<AirportDto> findAll();
 
     Page<Airport> findAll(Pageable pageable);
+
 }
