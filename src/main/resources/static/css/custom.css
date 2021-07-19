@@ -6,6 +6,7 @@ body {
     background: fixed;
     background-size: 100% 100% !important;
 }
+
 #start_flying{
     font-size: 2.5rem;
     font-family: 'Akaya Kanadaka', cursive;
@@ -36,6 +37,34 @@ body {
 #dashboard-table {
     vertical-align: middle;
     border-radius: 6%;
+}
+#mymodal,
+#addFlight {
+    color: white;
+}
+/*#mymodal-footer,
+#mymodal-header,*/
+#mymodal-body,
+#addFlight-body {
+    background-color: #ade8f4;
+    background-image: url("../img/sky_and_clouds.jpg") !important;
+    height: 100%;
+    width: 100%;
+}
+
+
+#addFlight,
+#editModal {
+   background-color: rgb(156, 182, 190) 0.3 !important;
+}
+
+#select-airport,
+#select-airline {
+    width: 100%;
+}
+
+#date-form-width {
+    width: 65%;
 }
 
 #airport_list_index,
@@ -100,6 +129,3 @@ p.copyright {
 #footer-a5 {
     color: rgb(66, 80, 102);
 }
-
-
-

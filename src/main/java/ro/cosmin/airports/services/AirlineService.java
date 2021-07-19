@@ -10,5 +10,6 @@ import java.util.List;
 public interface AirlineService{
 
     List<AirlineDto> findAll();
+
     Page<Airline> findAll(Pageable pageable);
 }

@@ -8,7 +8,6 @@ import java.time.Instant;
 
 public class FlightDto {
 
-
     @NotEmpty(message = "Flight number must not be empty")
     private String flightNumber;
     @NotEmpty
@@ -20,7 +19,6 @@ public class FlightDto {
     @NotEmpty
     private Airport departureAirport;
     @NotEmpty
-
     private Airport arrivalAirport;
 
     public FlightDto() {

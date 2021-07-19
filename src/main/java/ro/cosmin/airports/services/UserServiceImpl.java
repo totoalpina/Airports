@@ -7,7 +7,6 @@ import ro.cosmin.airports.entities.User;
 import ro.cosmin.airports.enums.UserRole;
 import ro.cosmin.airports.models.UserDto;
 import ro.cosmin.airports.repository.UserRepository;
-
 import java.util.Optional;
 
 @Service
