@@ -7,7 +7,6 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import ro.cosmin.airports.services.FlightService;
 
-
 @Controller
 public class DashboardController {
 
@@ -20,6 +19,7 @@ public class DashboardController {
         model.addAttribute("flights", flightService.retrieveAllFlights());
         return "dashboard";
     }
+
 
     @GetMapping("/delete/{id}")
     @PreAuthorize("hasRole('ADMIN')")

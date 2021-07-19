@@ -34,6 +34,7 @@ public class User {
     @Enumerated(EnumType.STRING)
     private UserRole userRole;
 
+
     public User() {
     }
 
@@ -53,6 +54,7 @@ public class User {
         this.lastName = lastName;
         this.userRole = userRole;
     }
+
 
     public Long getId() {
         return id;

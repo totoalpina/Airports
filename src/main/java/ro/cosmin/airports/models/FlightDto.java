@@ -1,9 +1,9 @@
 package ro.cosmin.airports.models;
 
 import javax.validation.constraints.NotEmpty;
-
 import ro.cosmin.airports.entities.Airline;
 import ro.cosmin.airports.entities.Airport;
+
 import java.time.Instant;
 
 public class FlightDto {
@@ -20,6 +20,7 @@ public class FlightDto {
     @NotEmpty
     private Airport departureAirport;
     @NotEmpty
+
     private Airport arrivalAirport;
 
     public FlightDto() {

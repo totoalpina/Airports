@@ -5,9 +5,9 @@ import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 import ro.cosmin.airports.entities.Flight;
+
 import ro.cosmin.airports.models.FlightDto;
 import ro.cosmin.airports.repository.FlightRepository;
-
 import java.util.List;
 import java.util.Optional;
 import java.util.stream.Collectors;
@@ -17,6 +17,7 @@ public class FlightServiceImpl implements FlightService {
 
     @Autowired
     private FlightRepository flightRepository;
+
 
     @Autowired
     private FlightService flightService;
@@ -52,6 +53,7 @@ public class FlightServiceImpl implements FlightService {
 
     @Override
     public Flight updateFlight(Long id) {
+
         // TODO implementation
         return null;
     }

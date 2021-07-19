@@ -12,6 +12,7 @@ import ro.cosmin.airports.services.UserService;
 
 import javax.validation.Valid;
 
+
 @Controller
 public class SignupController {
 
@@ -34,4 +35,5 @@ public class SignupController {
         userService.save(userDto);
         return "redirect:/signup?success";
     }
+
 }
