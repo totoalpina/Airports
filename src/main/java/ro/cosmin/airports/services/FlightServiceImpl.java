@@ -50,7 +50,6 @@ public class FlightServiceImpl implements FlightService {
         return flightList;
     }
 
-
     @Override
     public Flight updateFlight(Long id) {
         // TODO implementation

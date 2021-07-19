@@ -5,15 +5,15 @@ import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
-import ro.cosmin.airports.services.FlightServiceImpl;
+import ro.cosmin.airports.services.FlightService;
+
 
 @Controller
 public class DashboardController {
 
     @Autowired
-    private FlightServiceImpl flightService;
-
+    private FlightService flightService;
+    
     @GetMapping("/dashboard")
     @PreAuthorize("hasRole('ADMIN')")
     public String dashboardPage(Model model) {

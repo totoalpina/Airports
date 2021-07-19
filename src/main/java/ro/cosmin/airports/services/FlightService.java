@@ -1,5 +1,4 @@
 package ro.cosmin.airports.services;
-
 import ro.cosmin.airports.entities.Flight;
 import ro.cosmin.airports.models.FlightDto;
 
@@ -18,4 +17,5 @@ public interface FlightService {
     boolean deleteFlight(Long id);
 
     Optional<FlightDto> findById(Long id);
+
 }
