@@ -8,6 +8,7 @@ import ro.cosmin.Airports.entities.Flight;
 import ro.cosmin.Airports.models.FlightDto;
 import ro.cosmin.Airports.repository.FlightRepository;
 
+import java.net.http.HttpResponse;
 import java.util.List;
 import java.util.Optional;
 import java.util.stream.Collectors;
@@ -17,6 +18,9 @@ public class FlightServiceImpl implements FlightService {
 
     @Autowired
     private FlightRepository flightRepository;
+
+    @Autowired
+    private FlightService flightService;
 
     @Override
     public boolean addFlight(FlightDto flightDto) {
@@ -61,13 +65,9 @@ public class FlightServiceImpl implements FlightService {
 
     @Override
     public void deleteFlight(Long id) {
-        Optional<Flight> flight = flightRepository.findById(id);
-
-        if (flight.isPresent()) {
-            flightRepository.deleteById(id);
-        } else {
-            throw new RuntimeException("Flight not found");
-        }
+        flightRepository
+                .findById(id)
+                .ifPresentOrElse(flight1 -> flightService.deleteFlight(id), () -> new Flight());
     }
 
     @Override

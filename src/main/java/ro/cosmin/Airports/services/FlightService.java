@@ -6,6 +6,7 @@ import ro.cosmin.Airports.models.FlightDto;
 
 import java.util.List;
 
+
 public interface FlightService {
 
     boolean addFlight(FlightDto flightDto);
