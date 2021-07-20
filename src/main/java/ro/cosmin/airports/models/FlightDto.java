@@ -1,6 +1,5 @@
 package ro.cosmin.airports.models;
 
-import javax.validation.constraints.NotEmpty;
 import ro.cosmin.airports.entities.Airline;
 import ro.cosmin.airports.entities.Airport;
 
@@ -9,17 +8,17 @@ import java.time.Instant;
 public class FlightDto {
 
     private Long id;
-    @NotEmpty(message = "Flight number must not be empty")
+
     private String flightNumber;
-    @NotEmpty
+
     private Instant departureDate;
-    @NotEmpty
+
     private Instant arrivalDate;
-    @NotEmpty
+
     private Airline airline;
-    @NotEmpty
+
     private Airport departureAirport;
-    @NotEmpty
+
     private Airport arrivalAirport;
 
     public FlightDto() {
