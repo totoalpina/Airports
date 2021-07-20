@@ -6,6 +6,8 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestBody;
 import ro.cosmin.airports.services.FlightService;
 
 
@@ -30,10 +32,12 @@ public class DashboardController {
         return "redirect:/dashboard?success";
     }
 
-    @GetMapping("/edit/{id}")
-    public String editFlight(@PathVariable("id") Long id, Model model) {
+    @PostMapping("/edit/{id}")
+    @PreAuthorize("hasRole('ADMIN')")
+    public String editFlight(@PathVariable("flight.id") Long id, Model model) {
         model.addAttribute("flight", flightService.findById(id));
-        return "dashboard";
+        flightService.updateFlight(id);
+        return "redirect:/dashboard?success";
     }
 
 }

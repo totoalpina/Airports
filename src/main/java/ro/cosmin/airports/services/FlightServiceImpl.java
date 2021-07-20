@@ -7,6 +7,7 @@ import org.springframework.stereotype.Service;
 import ro.cosmin.airports.entities.Flight;
 import ro.cosmin.airports.models.FlightDto;
 import ro.cosmin.airports.repository.FlightRepository;
+
 import java.util.List;
 import java.util.Optional;
 import java.util.stream.Collectors;
@@ -51,9 +52,18 @@ public class FlightServiceImpl implements FlightService {
     }
 
     @Override
-    public Flight updateFlight(Long id) {
-        // TODO implementation
-        return null;
+    public boolean updateFlight(Long id) {
+        Optional<Flight> flight = flightRepository.findById(id)
+                .map(f -> new Flight(f.getId(),
+                        f.getFlightNumber(),
+                        f.getDepartureDate(),
+                        f.getArrivalDate(),
+                        f.getAirline(),
+                        f.getDepartureAirport(),
+                        f.getArrivalAirport()));
+        flight.ifPresent(f -> flightRepository.save(f));
+
+        return flight.get().getFlightNumber() != null;
     }
 
     @Override
