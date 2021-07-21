@@ -8,6 +8,7 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
+import ro.cosmin.airports.services.AirlineService;
 import ro.cosmin.airports.services.FlightService;
 
 
@@ -17,10 +18,14 @@ public class DashboardController {
     @Autowired
     private FlightService flightService;
 
+    @Autowired
+    private AirlineService airlineService;
+
     @GetMapping("/dashboard")
     @PreAuthorize("hasRole('ADMIN')")
     public String dashboardPage(Model model) {
         model.addAttribute("flights", flightService.retrieveAllFlights());
+        model.addAttribute("editAirlines", airlineService.findAll());
         return "dashboard";
     }
 
