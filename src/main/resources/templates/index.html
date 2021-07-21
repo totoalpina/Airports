@@ -32,20 +32,72 @@
             <div class="controls-row row">
                 <div class="control-group col-md-6">
                     <div class="input-group">
-                        <!--                        <form class="form-inline my-2 my-lg-0">-->
-                        <input class="form-control mr-sm-2" type="search" placeholder="Search by airport"
-                               aria-label="Search by airport">
-                        <button class="btn btn-outline-light my-2 my-sm-0" type="submit">Search</button>
-                        <!--                        </form>-->
+                        <form class="form-inline">
+                            <div class="row">
+                                <div class="col-6">
+                                    <input class="form-control form-inline" type="search"
+                                           placeholder="Search by airport"
+                                           aria-label="Search by airport">
+                                </div>
+                                <div class="col-6">
+                                    <select id="select_airport" class="form-control form-inline">
+                                        <option value="-1" selected>Select type of flight</option>
+                                        <option value="arrival">Arrival flights</option>
+                                        <option value="departure">Departure flights</option>
+                                    </select>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-6">
+                                    <label id="search_label" class="form-inline" for="start">Start date</label>
+                                    <input class="form-control" type="date" id="start" placeholder="Select start date">
+                                </div>
+                                <div class="col-6">
+                                    <label id="search_label" class="form-inline" for="end">End date</label>
+                                    <input class="form-control" type="date" id="end" placeholder="Select end date">
+                                </div>
+                                <hr>
+                                <div class="col-12">
+                                    <button class="btn btn-outline-light" type="submit">Search</button>
+                                </div>
+                            </div>
+                        </form>
                     </div>
                 </div>
                 <div class="control-group col-md-6">
                     <div class="input-group">
-                        <!--                        <form class="form-inline my-2 my-lg-0">-->
-                        <input class="form-control mr-sm-2" type="search" placeholder="Search by airline"
-                               aria-label="Search by airline">
-                        <button class="btn btn-outline-light my-2 my-sm-0" type="submit">Search</button>
-                        <!--                        </form>-->
+                        <form class="form-inline">
+                            <div class="row">
+                                <div class="col-6">
+                                    <input class="form-control form-inline" type="search"
+                                           placeholder="Search by airline"
+                                           aria-label="Search by airline">
+                                </div>
+                                <div class="col-6">
+                                    <select id="select_airline" class="form-control form-inline">
+                                        <option value="-1" selected>Select type of flight</option>
+                                        <option value="arrival">Arrival flights</option>
+                                        <option value="departure">Departure flights</option>
+                                    </select>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-6">
+                                    <label id="search_label" class="form-inline" for="start_airline">Start date</label>
+                                    <input class="form-control" type="date" id="start_airline"
+                                           placeholder="Select start date">
+                                </div>
+                                <div class="col-6">
+                                    <label id="search_label" class="form-inline" for="end_airline">End date</label>
+                                    <input class="form-control" type="date" id="end_airline"
+                                           placeholder="Select end date">
+                                </div>
+                                <hr>
+                                <div class="col-12">
+                                    <button class="btn btn-outline-light" type="submit">Search</button>
+                                </div>
+                            </div>
+                        </form>
                     </div>
                 </div>
             </div>
