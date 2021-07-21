@@ -51,10 +51,9 @@
                                     <div class=" form-group">
                                         <label>Departure Airport :</label>
                                         <select name="departure-airport" id="select-airport">
-                                            <option value="-1" selected></option>
-                                            <option th:each="departureAirport : ${departureAirports}"
-                                                    th:value="${departureAirport.id}"
-                                                    th:text="${departureAirport.airportName} + ' (' + ${departureAirport.airportCode} + ')' + ' - ' + ${departureAirport.airportCountry}">
+                                            <option th:each="arrivalAirport : ${arrivalAirports}"
+                                                    th:value="${arrivalAirport.id}"
+                                                    th:text="${arrivalAirport.airportName} + ' (' + ${arrivalAirport.airportCode} + ')' + ' - ' + ${arrivalAirport.airportCountry}">
                                                 Option
                                             </option>
                                         </select>
