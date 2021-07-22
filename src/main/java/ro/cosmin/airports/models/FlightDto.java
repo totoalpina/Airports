@@ -1,19 +1,21 @@
 package ro.cosmin.airports.models;
 
+import org.springframework.format.annotation.DateTimeFormat;
 import ro.cosmin.airports.entities.Airline;
 import ro.cosmin.airports.entities.Airport;
 
-import java.time.Instant;
+import javax.validation.constraints.NotEmpty;
+import java.sql.Date;
 
 public class FlightDto {
 
     private Long id;
-
+    @NotEmpty
     private String flightNumber;
-
-    private Instant departureDate;
-
-    private Instant arrivalDate;
+    @DateTimeFormat(pattern = "yyyy-MM-dd HH:mm")
+    private Date departureDate;
+    @DateTimeFormat(pattern = "yyyy-MM-dd HH:mm")
+    private Date arrivalDate;
 
     private Airline airline;
 
@@ -24,7 +26,7 @@ public class FlightDto {
     public FlightDto() {
     }
 
-    public FlightDto(String flightNumber, Instant departureDate, Instant arrivalDate, Airline airline, Airport departureAirport, Airport arrivalAirport) {
+    public FlightDto(String flightNumber, Date departureDate, Date arrivalDate, Airline airline, Airport departureAirport, Airport arrivalAirport) {
         this.flightNumber = flightNumber;
         this.departureDate = departureDate;
         this.arrivalDate = arrivalDate;
@@ -33,7 +35,7 @@ public class FlightDto {
         this.arrivalAirport = arrivalAirport;
     }
 
-    public FlightDto(Long id, String flightNumber, Instant departureDate, Instant arrivalDate, Airline airline, Airport departureAirport, Airport arrivalAirport) {
+    public FlightDto(Long id, String flightNumber, Date departureDate, Date arrivalDate, Airline airline, Airport departureAirport, Airport arrivalAirport) {
         this.id = id;
         this.flightNumber = flightNumber;
         this.departureDate = departureDate;
@@ -59,19 +61,19 @@ public class FlightDto {
         this.flightNumber = flightNumber;
     }
 
-    public Instant getDepartureDate() {
+    public Date getDepartureDate() {
         return departureDate;
     }
 
-    public void setDepartureDate(Instant departureDate) {
+    public void setDepartureDate(Date departureDate) {
         this.departureDate = departureDate;
     }
 
-    public Instant getArrivalDate() {
+    public Date getArrivalDate() {
         return arrivalDate;
     }
 
-    public void setArrivalDate(Instant arrivalDate) {
+    public void setArrivalDate(Date arrivalDate) {
         this.arrivalDate = arrivalDate;
     }
 

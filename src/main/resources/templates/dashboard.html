@@ -39,7 +39,7 @@
                                 <div class="form-group">
                                     <div class=" form-group">
                                         <label>Airline :</label>
-                                        <select name="airline" id="select-airline">
+                                        <select name="airline" id="select-airline" th:field="*{airline}">
                                             <option value="-1" selected></option>
                                             <option th:each="airline : ${airlines}"
                                                     th:value="${airline.id}"
@@ -50,17 +50,18 @@
                                     </div>
                                     <div class=" form-group">
                                         <label>Departure Airport :</label>
-                                        <select name="departure-airport" id="select-airport">
-                                            <option th:each="arrivalAirport : ${arrivalAirports}"
-                                                    th:value="${arrivalAirport.id}"
-                                                    th:text="${arrivalAirport.airportName} + ' (' + ${arrivalAirport.airportCode} + ')' + ' - ' + ${arrivalAirport.airportCountry}">
+                                        <select name="departureAirport" id="select-airport" th:field="*{departureAirport}">
+                                            <option value="-1" selected></option>
+                                            <option th:each="departureAirport : ${departureAirports}"
+                                                    th:value="${departureAirport.id}"
+                                                    th:text="${departureAirport.airportName} + ' (' + ${departureAirport.airportCode} + ')' + ' - ' + ${departureAirport.airportCountry}">
                                                 Option
                                             </option>
                                         </select>
                                     </div>
                                     <div class=" form-group">
                                         <label>Arrival Airport :</label>
-                                        <select name="arrival-airport" id="select-airport">
+                                        <select name="arrivalAirport" id="select-airport" th:field="*{arrivalAirport}">
                                             <option value="-1" selected></option>
                                             <option th:each="arrivalAirport : ${arrivalAirports}"
                                                     th:value="${arrivalAirport.id}"
@@ -72,25 +73,25 @@
                                     <div class="form-group">
                                         <label>Departure - date/time</label>
                                         <div class="form-group form-control inline bg-transparent">
-                                            <input id="date-form-width" type="text"
-                                                   th:text="${departureDate}"
+                                            <input id="date-form-width" type="datetime-local"
                                                    th:value="*{departureDate}"
-                                                   name="arrival-date">
+                                                   th:field="*{departureDate}"
+                                                   name="departureDate">
                                         </div>
                                     </div>
                                     <div class="form-group">
                                         <label>Arrival - date/time</label>
                                         <div class="form-group form-control inline bg-transparent">
-                                            <input id="date-form-width" type="text" th:text="${arrivalDate}"
+                                            <input id="date-form-width" type="datetime-local"
                                                    th:value="*{arrivalDate}"
-                                                   name="arrival-date">
+                                                   th:field="*{arrivalDate}"
+                                                   name="arrivalDate">
                                         </div>
                                     </div>
                                     <div class="form-group">
                                         <label>Flight number</label>
-                                        <input type="text" class="form-control" name="flight-number"
-                                               th:text="*{flightNumber}"
-                                               th:value="*{flightNumber}"required>
+                                        <input type="text" class="form-control" name="flightNumber"
+                                               th:field="*{flightNumber}"required>
                                     </div>
                                     <hr>
                                     <div class="form-group">
@@ -163,7 +164,7 @@
                                            class="btn btn-outline-danger btn-xs"
                                            style="padding: 5px; margin: 2px"
 
-                                           onclick="return confirm('You're about to `drop down` a flight. Are you sure you wanna do that?')"
+                                           onclick="return confirm('You are about to `drop down` a flight. Are you sure you wanna do that?')"
                                            title="Delete"><img th:src="@{/img/delete-sign.png}"/></a>
                                     </div>
                                     <div class="modal" id="editModal" th:attrappend="id=${flight.id}" role="dialog"

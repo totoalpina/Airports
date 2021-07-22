@@ -1,6 +1,9 @@
 package ro.cosmin.airports.entities;
 
+import org.springframework.format.annotation.DateTimeFormat;
+
 import javax.persistence.*;
+import java.sql.Date;
 import java.time.Instant;
 
 @Entity
@@ -18,10 +21,12 @@ public class Flight {
     private String flightNumber;
 
     @Column(name = "departure")
-    private Instant departureDate;
+    @DateTimeFormat(pattern = "yyyy-MM-dd HH:mm")
+    private Date departureDate;
 
     @Column(name = "arrival")
-    private Instant arrivalDate;
+    @DateTimeFormat(pattern = "yyyy-MM-dd HH:mm")
+    private Date arrivalDate;
 
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "airline_id", nullable = false)
@@ -38,7 +43,7 @@ public class Flight {
     public Flight() {
     }
 
-    public Flight(Long id, String flightNumber, Instant departureDate, Instant arrivalDate, Airline airline, Airport departureAirport, Airport arrivalAirport) {
+    public Flight(Long id, String flightNumber, Date departureDate, Date arrivalDate, Airline airline, Airport departureAirport, Airport arrivalAirport) {
         this.id = id;
         this.flightNumber = flightNumber;
         this.departureDate = departureDate;
@@ -64,19 +69,19 @@ public class Flight {
         this.flightNumber = flightNumber;
     }
 
-    public Instant getDepartureDate() {
+    public Date getDepartureDate() {
         return departureDate;
     }
 
-    public void setDepartureDate(Instant departureDate) {
+    public void setDepartureDate(Date departureDate) {
         this.departureDate = departureDate;
     }
 
-    public Instant getArrivalDate() {
+    public Date getArrivalDate() {
         return arrivalDate;
     }
 
-    public void setArrivalDate(Instant arrivalDate) {
+    public void setArrivalDate(Date arrivalDate) {
         this.arrivalDate = arrivalDate;
     }
 
