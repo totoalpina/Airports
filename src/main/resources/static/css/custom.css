@@ -38,10 +38,7 @@ body {
     vertical-align: middle;
     border-radius: 6%;
 }
-#mymodal,
-#addFlight {
-    color: white;
-}
+
 /*#mymodal-footer,
 #mymodal-header,*/
 #mymodal-body,
@@ -74,7 +71,8 @@ body {
 #airline_list_index,
 #jumbo_index, #dashboard-table,
 #go_to_home_login,
-#signin_label
+#signin_label,
+#add-flight-text
 {
     color: white;
 }

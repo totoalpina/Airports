@@ -53,7 +53,7 @@ public class DashboardController {
 
     @GetMapping("/addFlight")
     @PreAuthorize("hasRole('ADMIN')")
-    public String addFlight(@DateTimeFormat(pattern = "yyyy-MM-dd HH:mm") @ModelAttribute("flightDto") FlightDto flightDto, Model model){
+    public String addFlight(@DateTimeFormat(pattern = "yyyy-MM-dd HH:mm") @ModelAttribute("flightDto") FlightDto flightDto, Model model) {
         model.addAttribute("flights", flightService.retrieveAllFlights());
         model.addAttribute("airlines", airlineService.findAll());
         model.addAttribute("arrivalAirports", airportService.findAll());
@@ -64,7 +64,7 @@ public class DashboardController {
 
     @PostMapping("/createFlight")
     @PreAuthorize("hasRole('ADMIN')")
-    public String createFlight(@Valid @DateTimeFormat(pattern = "yyyy-MM-dd HH:mm") @ModelAttribute("flightDto") FlightDto flightDto){
+    public String createFlight(@Valid @DateTimeFormat(pattern = "yyyy-MM-dd HH:mm") @ModelAttribute("flightDto") FlightDto flightDto) {
         flightService.addFlight(flightDto);
         return "redirect:/dashboard?success";
     }

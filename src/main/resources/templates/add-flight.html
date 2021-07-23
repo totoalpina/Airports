@@ -31,18 +31,20 @@
         <div class="controls-row row">
             <div class="control-group col-sm-10 offset-sm-2">
                 <div>
-                    <p>Add flight information</p>
+                    <p id="add-flight-text">Add flight information</p>
                 </div>
-                <hr>
                 <div class="container">
                     <div class="jumbotron">
                         <div class="controls-row row">
                             <div class="control-group col-sm-10">
                                 <form th:action="@{/createFlight}" th:object="${flightDto}" method="POST">
+                                    <hr>
                                     <div class="row mb-3">
-                                        <label id="signin_label" for="select-airline" class="col-sm-3 col-form-label">Airline :</label>
+                                        <label id="signin_label" for="select-airline" class="col-sm-3 col-form-label">Airline
+                                            :</label>
                                         <div class="col-sm-7">
-                                            <select name="airline" class="form-control" id="select-airline" th:field="*{airline}">
+                                            <select name="airline" class="form-control" id="select-airline"
+                                                    th:field="*{airline}">
                                                 <option value="-1" selected></option>
                                                 <option th:each="airline : ${airlines}"
                                                         th:value="${airline.id}"
@@ -53,9 +55,11 @@
                                         </div>
                                     </div>
                                     <div class="row mb-3">
-                                        <label id="signin_label" for="select-departureAirport" class="col-sm-3 col-form-label">Departure Airport :</label>
+                                        <label id="signin_label" for="select-departureAirport"
+                                               class="col-sm-3 col-form-label">Departure Airport :</label>
                                         <div class="col-sm-7">
-                                            <select class="form-control" name="departureAirport" id="select-departureAirport"
+                                            <select class="form-control" name="departureAirport"
+                                                    id="select-departureAirport"
                                                     th:field="*{departureAirport}">
                                                 <option value="-1" selected></option>
                                                 <option th:each="departureAirport : ${departureAirports}"
@@ -67,9 +71,11 @@
                                         </div>
                                     </div>
                                     <div class="row mb-3">
-                                        <label id="signin_label" for="select-arrivalAirport" class="col-sm-3 col-form-label">Arrival Airport :</label>
+                                        <label id="signin_label" for="select-arrivalAirport"
+                                               class="col-sm-3 col-form-label">Arrival Airport :</label>
                                         <div class="col-sm-7">
-                                            <select class="form-control" name="arrivalAirport" id="select-arrivalAirport"
+                                            <select class="form-control" name="arrivalAirport"
+                                                    id="select-arrivalAirport"
                                                     th:field="*{arrivalAirport}">
                                                 <option value="-1" selected></option>
                                                 <option th:each="arrivalAirport : ${arrivalAirports}"
@@ -81,7 +87,8 @@
                                         </div>
                                     </div>
                                     <div class="row mb-3">
-                                        <label id="signin_label" for="date-form-width" class="col-sm-3 col-form-label">Departure - date/time</label>
+                                        <label id="signin_label" for="date-form-width" class="col-sm-3 col-form-label">Departure
+                                            - date/time</label>
                                         <div class="col-sm-7">
                                             <div class="form-group form-control inline bg-transparent">
                                                 <input class="form-control" id="date-form-width" type="datetime-local"
@@ -91,7 +98,8 @@
                                         </div>
                                     </div>
                                     <div class="row mb-3">
-                                        <label id="signin_label" for="date-arrival-width" class="col-sm-3 col-form-label">Arrival - date/time</label>
+                                        <label id="signin_label" for="date-arrival-width"
+                                               class="col-sm-3 col-form-label">Arrival - date/time</label>
                                         <div class="col-sm-7">
                                             <div class="form-group form-control inline bg-transparent">
                                                 <input class="form-control" id="date-arrival-width" type="datetime"
@@ -101,9 +109,11 @@
                                         </div>
                                     </div>
                                     <div class="row mb-3">
-                                        <label id="signin_label" for="flightNumber" class="col-sm-3 col-form-label">Flight number</label>
+                                        <label id="signin_label" for="flightNumber" class="col-sm-3 col-form-label">Flight
+                                            number</label>
                                         <div class="col-sm-7">
-                                            <input type="text" class="form-control" name="flightNumber" id="flightNumber"
+                                            <input type="text" class="form-control" name="flightNumber"
+                                                   id="flightNumber"
                                                    th:field="*{flightNumber}" required>
                                         </div>
                                     </div>
