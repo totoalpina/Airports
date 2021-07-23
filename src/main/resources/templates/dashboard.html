@@ -21,92 +21,9 @@
             <h1 id="start_flying" class="display-4">"Dashboard"</h1>
             <p class="lead">Hello Cosmin! </p>
             <p class="lead">This is the admin page. Feel free to "show off" your master skills. </p>
-            <a class="btn btn-outline-light my-2 my-sm-0" href="#"
-               type="button" data-bs-toggle="modal"
-               data-bs-target="#addFlight">Add flight</a>
+            <a class="btn btn-outline-light my-2 my-sm-0" href="#" th:href="@{/addFlight}"
+               type="button">Add flight</a>
             <hr class="my-4">
-            <div class="modal" id="addFlight" role="dialog" tabindex="0"
-                 data-bs-backdrop="static">
-                <div class="modal-dialog">
-                    <div class="modal-content">
-                        <div id="addFlight-body" class="modal-body">
-                            <div>
-                                <p>Add flight information</p>
-                            </div>
-                            <hr>
-                            <form th:action="@{/createFlight}" th:object="${flightDto}" method="POST">
-
-                                <div class="form-group">
-                                    <div class=" form-group">
-                                        <label>Airline :</label>
-                                        <select name="airline" id="select-airline" th:field="*{airline}">
-                                            <option value="-1" selected></option>
-                                            <option th:each="airline : ${airlines}"
-                                                    th:value="${airline.id}"
-                                                    th:text="${airline.airlineName} + ' (' + ${airline.airlineCode} + ')' + ' - ' + ${airline.airlineCountry}">
-                                                Option
-                                            </option>
-                                        </select>
-                                    </div>
-                                    <div class=" form-group">
-                                        <label>Departure Airport :</label>
-                                        <select name="departureAirport" id="select-airport" th:field="*{departureAirport}">
-                                            <option value="-1" selected></option>
-                                            <option th:each="departureAirport : ${departureAirports}"
-                                                    th:value="${departureAirport.id}"
-                                                    th:text="${departureAirport.airportName} + ' (' + ${departureAirport.airportCode} + ')' + ' - ' + ${departureAirport.airportCountry}">
-                                                Option
-                                            </option>
-                                        </select>
-                                    </div>
-                                    <div class=" form-group">
-                                        <label>Arrival Airport :</label>
-                                        <select name="arrivalAirport" id="select-airport" th:field="*{arrivalAirport}">
-                                            <option value="-1" selected></option>
-                                            <option th:each="arrivalAirport : ${arrivalAirports}"
-                                                    th:value="${arrivalAirport.id}"
-                                                    th:text="${arrivalAirport.airportName} + ' (' + ${arrivalAirport.airportCode} + ')' + ' - ' + ${arrivalAirport.airportCountry}">
-                                                Option
-                                            </option>
-                                        </select>
-                                    </div>
-                                    <div class="form-group">
-                                        <label>Departure - date/time</label>
-                                        <div class="form-group form-control inline bg-transparent">
-                                            <input id="date-form-width" type="datetime-local"
-                                                   th:value="*{departureDate}"
-                                                   th:field="*{departureDate}"
-                                                   name="departureDate">
-                                        </div>
-                                    </div>
-                                    <div class="form-group">
-                                        <label>Arrival - date/time</label>
-                                        <div class="form-group form-control inline bg-transparent">
-                                            <input id="date-form-width" type="datetime-local"
-                                                   th:value="*{arrivalDate}"
-                                                   th:field="*{arrivalDate}"
-                                                   name="arrivalDate">
-                                        </div>
-                                    </div>
-                                    <div class="form-group">
-                                        <label>Flight number</label>
-                                        <input type="text" class="form-control" name="flightNumber"
-                                               th:field="*{flightNumber}"required>
-                                    </div>
-                                    <hr>
-                                    <div class="form-group">
-                                        <button class="btn btn-outline-light" type="sbumit">Save flight
-                                        </button>
-                                        <button type="button" class="btn btn-outline-danger"
-                                                data-bs-dismiss="modal">Close
-                                        </button>
-                                    </div>
-                                </div>
-                            </form>
-                        </div>
-                    </div>
-                </div>
-            </div>
         </div>
     </div>
 </section>
