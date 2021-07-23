@@ -1,12 +1,11 @@
 package ro.cosmin.airports.services;
 
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.data.domain.Page;
-import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 import ro.cosmin.airports.entities.Flight;
 import ro.cosmin.airports.models.FlightDto;
 import ro.cosmin.airports.repository.FlightRepository;
+
 import java.util.List;
 import java.util.Optional;
 import java.util.stream.Collectors;
@@ -19,7 +18,6 @@ public class FlightServiceImpl implements FlightService {
 
     @Autowired
     private FlightService flightService;
-
 
     @Override
     public boolean addFlight(FlightDto flightDto) {
@@ -82,5 +80,19 @@ public class FlightServiceImpl implements FlightService {
                         e.getAirline(),
                         e.getDepartureAirport(),
                         e.getArrivalAirport()));
+    }
+
+    @Override
+    public List<FlightDto> retrieveFlightsByAirportAndByDate(String airport, String startDate, String endDate) {
+        return flightRepository.retrieveFlightsByAirportAndByDate(airport, startDate, endDate)
+                .stream()
+                .map(e-> new FlightDto(e.getId(),
+                        e.getFlightNumber(),
+                        e.getDepartureDate(),
+                        e.getArrivalDate(),
+                        e.getAirline(),
+                        e.getDepartureAirport(),
+                        e.getArrivalAirport()))
+                .collect(Collectors.toList());
     }
 }

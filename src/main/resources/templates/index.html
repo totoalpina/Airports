@@ -35,30 +35,30 @@
                         <form class="form-inline">
                             <div class="row">
                                 <div class="col-6">
-                                    <input class="form-control form-inline" type="search"
+                                    <input class="form-control form-inline" type="text"
                                            placeholder="Search by airport"
-                                           aria-label="Search by airport">
-                                </div>
-                                <div class="col-6">
-                                    <select id="select_airport" class="form-control form-inline">
-                                        <option value="-1" selected>Select type of flight</option>
-                                        <option value="arrival">Arrival flights</option>
-                                        <option value="departure">Departure flights</option>
-                                    </select>
+                                           th:name="airport">
                                 </div>
                             </div>
-                            <div class="row">
+                            <div class=" row">
                                 <div class="col-6">
                                     <label id="search_label" class="form-inline" for="start">Start date</label>
-                                    <input class="form-control" type="date" id="start" placeholder="Select start date">
+                                    <input class="form-control" type="date" id="start" th:name="startDate">
                                 </div>
-                                <div class="col-6">
+                                <div class=" col-6">
                                     <label id="search_label" class="form-inline" for="end">End date</label>
-                                    <input class="form-control" type="date" id="end" placeholder="Select end date">
+                                    <input class="form-control" type="date" id="end" th:name="endDate">
                                 </div>
                                 <hr>
-                                <div class="col-12">
-                                    <button class="btn btn-outline-light" type="submit">Search</button>
+                                <div class=" col-6">
+                                    <a href="#" th:href="@{/searchFlight}" style="width: 100%" class="btn btn-outline-light form-control"
+                                       type="submit">Search arrival
+                                        flights</a>
+                                </div>
+                                <div class="col-6">
+                                    <a href="#" style="width: 100%" class="btn btn-outline-light form-control"
+                                       type="submit">Search departure
+                                        flights</a>
                                 </div>
                             </div>
                         </form>
@@ -69,32 +69,34 @@
                         <form class="form-inline">
                             <div class="row">
                                 <div class="col-6">
-                                    <input class="form-control form-inline" type="search"
+                                    <input class="form-control form-inline" type="text"
                                            placeholder="Search by airline"
-                                           aria-label="Search by airline">
-                                </div>
-                                <div class="col-6">
-                                    <select id="select_airline" class="form-control form-inline">
-                                        <option value="-1" selected>Select type of flight</option>
-                                        <option value="arrival">Arrival flights</option>
-                                        <option value="departure">Departure flights</option>
-                                    </select>
+                                           th:name="airline">
                                 </div>
                             </div>
-                            <div class="row">
+                            <div class=" row">
                                 <div class="col-6">
-                                    <label id="search_label" class="form-inline" for="start_airline">Start date</label>
+                                    <label id="search_label" class="form-inline" for="start_airline">Start
+                                        date</label>
                                     <input class="form-control" type="date" id="start_airline"
-                                           placeholder="Select start date">
+                                           th:name="startDate">
                                 </div>
-                                <div class="col-6">
+                                <div class=" col-6">
                                     <label id="search_label" class="form-inline" for="end_airline">End date</label>
                                     <input class="form-control" type="date" id="end_airline"
-                                           placeholder="Select end date">
+                                           th:name="endDate">
                                 </div>
                                 <hr>
-                                <div class="col-12">
-                                    <button class="btn btn-outline-light" type="submit">Search</button>
+
+                                <div class=" col-6">
+                                    <a href="#" style="width: 100%" class="btn btn-outline-light form-control"
+                                       type="submit">Search arrival
+                                        flights</a>
+                                </div>
+                                <div class="col-6">
+                                    <a href="#" style="width: 100%" class="btn btn-outline-light form-control"
+                                       type="submit">Search departure
+                                        flights</a>
                                 </div>
                             </div>
                         </form>
