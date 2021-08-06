@@ -5,17 +5,17 @@ import ro.cosmin.airports.entities.Airline;
 import ro.cosmin.airports.entities.Airport;
 
 import javax.validation.constraints.NotEmpty;
-import java.sql.Date;
+import java.time.LocalDateTime;
 
 public class FlightDto {
 
     private Long id;
     @NotEmpty
     private String flightNumber;
-    @DateTimeFormat(pattern = "yyyy-MM-dd HH:mm")
-    private Date departureDate;
-    @DateTimeFormat(pattern = "yyyy-MM-dd HH:mm")
-    private Date arrivalDate;
+
+    private String departureDate;
+
+    private String arrivalDate;
 
     private Airline airline;
 
@@ -26,7 +26,7 @@ public class FlightDto {
     public FlightDto() {
     }
 
-    public FlightDto(String flightNumber, Date departureDate, Date arrivalDate, Airline airline, Airport departureAirport, Airport arrivalAirport) {
+    public FlightDto(String flightNumber, String departureDate, String arrivalDate, Airline airline, Airport departureAirport, Airport arrivalAirport) {
         this.flightNumber = flightNumber;
         this.departureDate = departureDate;
         this.arrivalDate = arrivalDate;
@@ -35,7 +35,7 @@ public class FlightDto {
         this.arrivalAirport = arrivalAirport;
     }
 
-    public FlightDto(Long id, String flightNumber, Date departureDate, Date arrivalDate, Airline airline, Airport departureAirport, Airport arrivalAirport) {
+    public FlightDto(Long id, String flightNumber, String departureDate, String arrivalDate, Airline airline, Airport departureAirport, Airport arrivalAirport) {
         this.id = id;
         this.flightNumber = flightNumber;
         this.departureDate = departureDate;
@@ -61,19 +61,19 @@ public class FlightDto {
         this.flightNumber = flightNumber;
     }
 
-    public Date getDepartureDate() {
+    public String getDepartureDate() {
         return departureDate;
     }
 
-    public void setDepartureDate(Date departureDate) {
+    public void setDepartureDate(String departureDate) {
         this.departureDate = departureDate;
     }
 
-    public Date getArrivalDate() {
+    public String getArrivalDate() {
         return arrivalDate;
     }
 
-    public void setArrivalDate(Date arrivalDate) {
+    public void setArrivalDate(String arrivalDate) {
         this.arrivalDate = arrivalDate;
     }
 

@@ -7,6 +7,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 import ro.cosmin.airports.models.FlightDto;
+import ro.cosmin.airports.repository.FlightRepository;
 import ro.cosmin.airports.services.AirlineService;
 import ro.cosmin.airports.services.AirportService;
 import ro.cosmin.airports.services.FlightService;
@@ -16,6 +17,9 @@ import javax.validation.Valid;
 @Controller
 public class DashboardController {
 
+
+    @Autowired
+    private FlightRepository flightRepository;
 
     @Autowired
     private FlightService flightService;
@@ -29,7 +33,7 @@ public class DashboardController {
     @GetMapping("/dashboard")
     @PreAuthorize("hasRole('ADMIN')")
     public String dashboardPage(@DateTimeFormat(pattern = "yyyy-MM-dd HH:mm") Model model) {
-        model.addAttribute("flights", flightService.retrieveAllFlights());
+        model.addAttribute("flights", flightRepository.findAll());
         model.addAttribute("airlines", airlineService.findAll());
         model.addAttribute("arrivalAirports", airportService.findAll());
         model.addAttribute("departureAirports", airportService.findAll());
@@ -53,7 +57,7 @@ public class DashboardController {
 
     @GetMapping("/addFlight")
     @PreAuthorize("hasRole('ADMIN')")
-    public String addFlight(@DateTimeFormat(pattern = "yyyy-MM-dd HH:mm") @ModelAttribute("flightDto") FlightDto flightDto, Model model) {
+    public String addFlight(@ModelAttribute("flightDto") FlightDto flightDto, Model model) {
         model.addAttribute("flights", flightService.retrieveAllFlights());
         model.addAttribute("airlines", airlineService.findAll());
         model.addAttribute("arrivalAirports", airportService.findAll());
@@ -64,8 +68,8 @@ public class DashboardController {
 
     @PostMapping("/createFlight")
     @PreAuthorize("hasRole('ADMIN')")
-    public String createFlight(@Valid @DateTimeFormat(pattern = "yyyy-MM-dd HH:mm") @ModelAttribute("flightDto") FlightDto flightDto) {
+    public String createFlight(@Valid  @ModelAttribute("flightDto") FlightDto flightDto) {
         flightService.addFlight(flightDto);
-        return "redirect:/dashboard?success";
+        return "redirect:/dashboard?added";
     }
 }

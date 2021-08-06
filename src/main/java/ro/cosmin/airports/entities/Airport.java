@@ -37,6 +37,7 @@ public class Airport {
     @OneToMany(mappedBy = "arrivalAirport", fetch = FetchType.LAZY
             , cascade = CascadeType.ALL)
     private Set<Flight> arrivalFlights;
+
     public Airport() {
 
     }

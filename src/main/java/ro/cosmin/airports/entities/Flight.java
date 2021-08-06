@@ -1,10 +1,7 @@
 package ro.cosmin.airports.entities;
 
-import org.springframework.format.annotation.DateTimeFormat;
-
 import javax.persistence.*;
-import java.sql.Date;
-import java.time.Instant;
+import java.time.LocalDateTime;
 
 @Entity
 @Table(name = "flights", uniqueConstraints = {
@@ -21,12 +18,12 @@ public class Flight {
     private String flightNumber;
 
     @Column(name = "departure")
-    @DateTimeFormat(pattern = "yyyy-MM-dd HH:mm")
-    private Date departureDate;
+
+    private LocalDateTime departureDate;
 
     @Column(name = "arrival")
-    @DateTimeFormat(pattern = "yyyy-MM-dd HH:mm")
-    private Date arrivalDate;
+
+    private LocalDateTime arrivalDate;
 
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "airline_id", nullable = false)
@@ -43,7 +40,7 @@ public class Flight {
     public Flight() {
     }
 
-    public Flight(Long id, String flightNumber, Date departureDate, Date arrivalDate, Airline airline, Airport departureAirport, Airport arrivalAirport) {
+    public Flight(Long id, String flightNumber, LocalDateTime departureDate, LocalDateTime arrivalDate, Airline airline, Airport departureAirport, Airport arrivalAirport) {
         this.id = id;
         this.flightNumber = flightNumber;
         this.departureDate = departureDate;
@@ -69,19 +66,19 @@ public class Flight {
         this.flightNumber = flightNumber;
     }
 
-    public Date getDepartureDate() {
+    public LocalDateTime getDepartureDate() {
         return departureDate;
     }
 
-    public void setDepartureDate(Date departureDate) {
+    public void setDepartureDate(LocalDateTime departureDate) {
         this.departureDate = departureDate;
     }
 
-    public Date getArrivalDate() {
+    public LocalDateTime getArrivalDate() {
         return arrivalDate;
     }
 
-    public void setArrivalDate(Date arrivalDate) {
+    public void setArrivalDate(LocalDateTime arrivalDate) {
         this.arrivalDate = arrivalDate;
     }
 

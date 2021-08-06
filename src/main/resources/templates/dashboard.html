@@ -50,6 +50,10 @@
                                 <div class="row alert alert-outline-success text-white">Flight was successfuly deleted
                                 </div>
                             </div>
+                            <div th:if="${param.added}">
+                                <div class="row alert alert-outline-success text-white">Flight was successfuly added
+                                </div>
+                            </div>
                             <tr>
                                 <th scope="col">Airline</th>
                                 <th scope="col">Flight No</th>
@@ -66,9 +70,9 @@
                                 </td>
                                 <td th:text="${flight.flightNumber}"> ***</td>
                                 <td th:text="${flight.departureAirport.airportName}"> ***</td>
-                                <td th:text="${#dates.format(flight.departureDate, 'dd.MM.yyyy HH:mm')}"> ***</td>
+                                <td th:text="${#temporals.format(flight.departureDate, 'dd.MM.yyyy HH:mm')}"> ***</td>
                                 <td th:text="${flight.arrivalAirport.airportName}"> ***</td>
-                                <td th:text="${#dates.format(flight.arrivalDate, 'dd.MM.yyyy HH:mm')}"> ***</td>
+                                <td th:text="${#temporals.format(flight.arrivalDate, 'dd.MM.yyyy HH:mm')}"> ***</td>
                                 <td>
                                     <div class="d-flex justify-content-left">
                                         <a th:href="@{/edit/{id}(id=${flight.id})}"
