@@ -29,67 +29,62 @@
 <div class="container">
     <div class="jumbotron">
         <div class="controls-row row">
-            <div class="control-group col-sm-10 offset-sm-2">
-                <form th:action="@{/edit}" method="post"
+            <div class="control-group col-sm-6 offset-sm-2">
+                <form th:action="@{/edit/{id}(id=${flight.id})}" method="post"
                       th:object="${flight}">
                     <input type="hidden" name="id" th:value="*{id}">
                     <div class="form-group">
                         <div class=" form-group">
-                            <label>Airline :</label><br>
-                            <label></label>
-                            <select name="airline" id="select-airline" th:field="*{airline}">
-                                <option th:text="*{airline.airlineName}" value="">Select new airline</option>
+                            <label id="editAirline">Airline :</label><br>
+                            <select name="airline" id="select-airline" th:field="*{airline.airlineName}">
                                 <option th:each="editAirline : ${editAirlines}"
-                                        th:value="${id}"
+                                        th:value="${editAirline.id}"
                                         th:text="${editAirline.airlineName} + ' (' + ${editAirline.airlineCode} + ')' + ' - ' + ${editAirline.airlineCountry}">
                                     Option
                                 </option>
                             </select>
                         </div>
                         <div class=" form-group">
-                            <label>Departure Airport :</label>
-                            <select name="departure-airport" id="select-airport" th:field="*{departureAirport}">
-                                <option th:text="*{departureAirport.airportName}" value=""></option>
+                            <label id="departureEdit">Departure Airport :</label>
+                            <select name="departure-airport" id="select-airport" th:field="*{departureAirport.airportName}">
                                 <option th:each="departureAirport : ${departureAirports}"
-                                        th:value="${id}"
+                                        th:value="${departureAirport.id}"
                                         th:text="${departureAirport.airportName} + ' (' + ${departureAirport.airportCode} + ')' + ' - ' + ${departureAirport.airportCountry}">
                                     Option
                                 </option>
                             </select>
                         </div>
                         <div class=" form-group">
-                            <label>Arrival Airport :</label>
-                            <select name="arrival-airport" id="select-airport" th:field="*{arrivalAirport}">
-                                <option th:text="*{arrivalAirport.airportName}" value=""
-                                ></option>
+                            <label id="arrivalEdit">Arrival Airport :</label>
+                            <select name="arrival-airport" id="select-airport" th:field="*{arrivalAirport.airportName}">
                                 <option th:each="arrivalAirport : ${arrivalAirports}"
-                                        th:value="${id}"
+                                        th:value="${arrivalAirport.id}"
                                         th:text="${arrivalAirport.airportName} + ' (' + ${arrivalAirport.airportCode} + ')' + ' - ' + ${arrivalAirport.airportCountry}">
                                     Option
                                 </option>
                             </select>
                         </div>
                         <div class="form-group">
-                            <label>Departure - date/time</label>
+                            <label id="departureEdit">Departure - date/time</label>
                             <div class="form-group form-control inline bg-transparent">
                                 <input id="date-form-width" type="datetime-local"
-                                       name="departure-date"
-                                       th:value="*{departureDate}">
+                                       name="departureDate"
+                                       th:field="*{departureDate}">
                             </div>
                         </div>
                         <div class="form-group">
-                            <label>Arrival - date/time</label>
+                            <label id="arrivalEdit">Arrival - date/time</label>
                             <div class="form-group form-control inline bg-transparent">
                                 <input id="date-form-width" type="datetime-local"
-                                       name="arrival-date"
-                                       th:value="*{arrivalDate}">
+                                       name="arrivalDate"
+                                       th:field="*{arrivalDate}">
                             </div>
                         </div>
                         <div class="form-group">
-                            <label>Flight number</label>
+                            <label id="flightEdit">Flight number</label>
                             <input type="text" class="form-control"
-                                   name="flight-number"
-                                   th:value="*{flightNumber}">
+                                   name="flightNumber"
+                                   th:field="*{flightNumber}">
                         </div>
                         <hr>
                         <div class="form-group">

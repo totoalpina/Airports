@@ -1,29 +1,22 @@
-
 body {
-
     background-image: url("../img/sky_and_clouds.jpg") !important;
     background: fixed;
     background-size: 100% 100% !important;
 }
 
-#start_flying{
+#start_flying {
     font-size: 2.5rem;
     font-family: 'Akaya Kanadaka', cursive;
     font-weight: bold;
 }
-#logo_header
- {
+
+#logo_header {
     font-size: 1.5rem;
     font-family: 'Akaya Kanadaka', cursive;
     font-weight: bold;
 }
 
-#flights_header,
-#airport_header, #home_header, 
-#airline_header, #dashboard_header,
-#about_header,
-#go_to_home_login
- {
+#flights_header, #airport_header, #home_header, #airline_header, #dashboard_header, #about_header, #go_to_home_login {
     font-size: 1.2rem;
     font-family: 'Akaya Kanadaka', cursive;
     font-weight: normal;
@@ -37,28 +30,26 @@ body {
     vertical-align: middle;
     border-radius: 6%;
 }
-#mymodal,
-#addFlight {
+
+#mymodal, #addFlight {
     color: white;
 }
+
 /*#mymodal-footer,
 #mymodal-header,*/
-#mymodal-body,
-#addFlight-body {
+
+#mymodal-body, #addFlight-body {
     background-color: #ade8f4;
     background-image: url("../img/sky_and_clouds.jpg") !important;
     height: 100%;
     width: 100%;
 }
 
-
-#addFlight,
-#editModal {
-   background-color: rgb(156, 182, 190) 0.3 !important;
+#addFlight, #editModal {
+    background-color: rgb(156, 182, 190) 0.3 !important;
 }
 
-#select-airport,
-#select-airline {
+#select-airport, #select-airline {
     width: 100%;
 }
 
@@ -66,12 +57,7 @@ body {
     width: 65%;
 }
 
-#airport_list_index,
-#airline_list_index,
-#jumbo_index, #dashboard-table,
-#go_to_home_login,
-#signin_label
-{
+#airport_list_index, #airline_list_index, #jumbo_index, #dashboard-table, #go_to_home_login, #signin_label, #editAirline, #departureEdit, #arrivalEdit, #flightEdit {
     color: white;
 }
 
@@ -87,7 +73,6 @@ h3 {
     line-height: 1.4;
     text-align: center;
     color: white;
-    
 }
 
 .list-inline {
@@ -97,7 +82,8 @@ h3 {
     position: initial;
     color: white;
 }
-.list-inline > li {
+
+.list-inline>li {
     display: inline-block;
     padding-right: 5px;
     padding-left: 5px;
@@ -109,7 +95,6 @@ footer li a {
 }
 
 p.copyright {
-    
     font-size: 14px;
     color: white;
 }
@@ -123,8 +108,6 @@ p.copyright {
     color: rgb(66, 80, 102);
 }
 
-#footer-a1, #footer-a2, 
-#footer-a3, #footer-a4, 
-#footer-a5 {
+#footer-a1, #footer-a2, #footer-a3, #footer-a4, #footer-a5 {
     color: rgb(66, 80, 102);
 }

@@ -1,10 +1,12 @@
 package ro.cosmin.airports.controllers;
 
+import org.dom4j.rule.Mode;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
+import ro.cosmin.airports.entities.Flight;
 import ro.cosmin.airports.models.FlightDto;
 import ro.cosmin.airports.services.AirlineService;
 import ro.cosmin.airports.services.AirportService;
@@ -42,18 +44,21 @@ public class DashboardController {
     @GetMapping("/editFlight/{id}")
     @PreAuthorize("hasRole('ADMIN')")
     public String showEditPage(@PathVariable("id") Long id, Model model) {
-        FlightDto flight = flightService.findById(id).get();
-        model.addAttribute("flight", flight);
+        model.addAttribute("flight", flightService.findById(id).orElseGet(FlightDto::new));
         model.addAttribute("editAirlines", airlineService.findAll());
         model.addAttribute("arrivalAirports", airportService.findAll());
         model.addAttribute("departureAirports", airportService.findAll());
         return "edit";
     }
 
-    @PostMapping("/edit")
+    @PostMapping("/edit/{id}")
     @PreAuthorize("hasRole('ADMIN')")
-    public String editFlight(@ModelAttribute FlightDto flight) {
-        flightService.updateFlight(flight.getId());
+    public String editFlight(@PathVariable("id") Long id, @ModelAttribute FlightDto flight, final Model model) {
+        model.addAttribute("flight", flight);
+        model.addAttribute("editAirlines", airlineService.findAll());
+        model.addAttribute("arrivalAirports", airportService.findAll());
+        model.addAttribute("departureAirports", airportService.findAll());
+        flightService.updateFlight(id, flight);
         return "redirect:/dashboard";
     }
 
