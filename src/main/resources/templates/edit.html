@@ -49,7 +49,8 @@
                         <div class=" form-group">
                             <label id="departureEdit">Departure Airport :</label>
                             <select name="departure-airport" id="select-airport" th:field="*{departureAirport.id}">
-                                <option th:text="${flight.departureAirport.airportName}" th:value="${flight.departureAirport.id}"
+                                <option th:text="${flight.departureAirport.airportName}"
+                                        th:value="${flight.departureAirport.id}"
                                         selected></option>
                                 <option th:each="departureAirport : ${departureAirports}"
                                         th:value="${departureAirport.id}"
@@ -61,7 +62,8 @@
                         <div class=" form-group">
                             <label id="arrivalEdit">Arrival Airport :</label>
                             <select name="arrival-airport" id="select-airport" th:field="*{arrivalAirport.id}">
-                                <option th:text="${flight.arrivalAirport.airportName}" th:value="${flight.arrivalAirport.id}"
+                                <option th:text="${flight.arrivalAirport.airportName}"
+                                        th:value="${flight.arrivalAirport.id}"
                                         selected></option>
                                 <option th:each="arrivalAirport : ${arrivalAirports}"
                                         th:value="${arrivalAirport.id}"

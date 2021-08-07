@@ -12,7 +12,7 @@ import java.util.List;
 import java.util.stream.Collectors;
 
 @Service
-public class AirlineServiceImpl implements AirlineService{
+public class AirlineServiceImpl implements AirlineService {
 
     @Autowired
     private AirlineRepository airlineRepository;

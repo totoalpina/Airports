@@ -1,12 +1,13 @@
 package ro.cosmin.airports.controllers;
 
-import org.dom4j.rule.Mode;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.*;
-import ro.cosmin.airports.entities.Flight;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.ModelAttribute;
+import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.PostMapping;
 import ro.cosmin.airports.models.FlightDto;
 import ro.cosmin.airports.services.AirlineService;
 import ro.cosmin.airports.services.AirportService;
@@ -35,7 +36,7 @@ public class DashboardController {
 
     @GetMapping("/delete/{id}")
     @PreAuthorize("hasRole('ADMIN')")
-    public String deleteFlight(@PathVariable ("id") Long id, Model model) {
+    public String deleteFlight(@PathVariable("id") Long id, Model model) {
         model.addAttribute("flight", flightService.findById(id));
         flightService.deleteFlight(id);
         return "redirect:/dashboard?success";
