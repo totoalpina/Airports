@@ -1,12 +1,13 @@
 package ro.cosmin.airports.services;
 
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.data.domain.Page;
-import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 import ro.cosmin.airports.entities.Flight;
 import ro.cosmin.airports.models.FlightDto;
 import ro.cosmin.airports.repository.FlightRepository;
+
+import java.time.LocalDateTime;
+import java.time.format.DateTimeFormatter;
 import java.util.List;
 import java.util.Optional;
 import java.util.stream.Collectors;
@@ -14,6 +15,7 @@ import java.util.stream.Collectors;
 @Service
 public class FlightServiceImpl implements FlightService {
 
+    private DateTimeFormatter dtf = DateTimeFormatter.ISO_LOCAL_DATE_TIME;
     @Autowired
     private FlightRepository flightRepository;
 
@@ -22,11 +24,11 @@ public class FlightServiceImpl implements FlightService {
 
 
     @Override
-    public boolean addFlight(FlightDto flightDto) {
+    public boolean addFlight(final FlightDto flightDto) {
         Flight flight = new Flight();
         flight.setFlightNumber(flightDto.getFlightNumber());
-        flight.setDepartureDate(flightDto.getDepartureDate());
-        flight.setArrivalDate(flightDto.getArrivalDate());
+        flight.setDepartureDate(LocalDateTime.parse(flightDto.getDepartureDate(), dtf));
+        flight.setArrivalDate(LocalDateTime.parse(flightDto.getArrivalDate(), dtf));
         flight.setAirline(flightDto.getAirline());
         flight.setDepartureAirport(flightDto.getDepartureAirport());
         flight.setArrivalAirport(flightDto.getArrivalAirport());
@@ -37,12 +39,13 @@ public class FlightServiceImpl implements FlightService {
 
     @Override
     public List<FlightDto> retrieveAllFlights() {
+
         List<FlightDto> flightList = flightRepository.findAll()
                 .stream()
                 .map(e -> new FlightDto(e.getId(),
                         e.getFlightNumber(),
-                        e.getDepartureDate(),
-                        e.getArrivalDate(),
+                        e.getDepartureDate().format(dtf),
+                        e.getArrivalDate().format(dtf),
                         e.getAirline(),
                         e.getDepartureAirport(),
                         e.getArrivalAirport()))
@@ -51,18 +54,18 @@ public class FlightServiceImpl implements FlightService {
     }
 
     @Override
-    public Flight updateFlight(Long id) {
+    public Flight updateFlight(final Long id) {
         // TODO implementation
         return null;
     }
 
     @Override
-    public boolean deleteFlight(Long id) {
+    public boolean deleteFlight(final Long id) {
         Optional<Flight> flight = flightService.findById(id)
                 .map(e -> new Flight(e.getId(),
                         e.getFlightNumber(),
-                        e.getDepartureDate(),
-                        e.getArrivalDate(),
+                        LocalDateTime.parse(e.getDepartureDate(), dtf),
+                        LocalDateTime.parse(e.getArrivalDate(), dtf),
                         e.getAirline(),
                         e.getDepartureAirport(),
                         e.getArrivalAirport()));
@@ -73,12 +76,12 @@ public class FlightServiceImpl implements FlightService {
     }
 
     @Override
-    public Optional<FlightDto> findById(Long id) {
+    public Optional<FlightDto> findById(final Long id) {
         return flightRepository.findById(id)
                 .map(e -> new FlightDto(e.getId(),
                         e.getFlightNumber(),
-                        e.getDepartureDate(),
-                        e.getArrivalDate(),
+                        e.getDepartureDate().format(dtf),
+                        e.getArrivalDate().format(dtf),
                         e.getAirline(),
                         e.getDepartureAirport(),
                         e.getArrivalAirport()));

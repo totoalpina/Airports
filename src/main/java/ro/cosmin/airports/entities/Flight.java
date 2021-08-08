@@ -1,7 +1,7 @@
 package ro.cosmin.airports.entities;
 
 import javax.persistence.*;
-import java.time.Instant;
+import java.time.LocalDateTime;
 
 @Entity
 @Table(name = "flights", uniqueConstraints = {
@@ -18,10 +18,12 @@ public class Flight {
     private String flightNumber;
 
     @Column(name = "departure")
-    private Instant departureDate;
+
+    private LocalDateTime departureDate;
 
     @Column(name = "arrival")
-    private Instant arrivalDate;
+
+    private LocalDateTime arrivalDate;
 
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "airline_id", nullable = false)
@@ -38,7 +40,7 @@ public class Flight {
     public Flight() {
     }
 
-    public Flight(Long id, String flightNumber, Instant departureDate, Instant arrivalDate, Airline airline, Airport departureAirport, Airport arrivalAirport) {
+    public Flight(Long id, String flightNumber, LocalDateTime departureDate, LocalDateTime arrivalDate, Airline airline, Airport departureAirport, Airport arrivalAirport) {
         this.id = id;
         this.flightNumber = flightNumber;
         this.departureDate = departureDate;
@@ -64,19 +66,19 @@ public class Flight {
         this.flightNumber = flightNumber;
     }
 
-    public Instant getDepartureDate() {
+    public LocalDateTime getDepartureDate() {
         return departureDate;
     }
 
-    public void setDepartureDate(Instant departureDate) {
+    public void setDepartureDate(LocalDateTime departureDate) {
         this.departureDate = departureDate;
     }
 
-    public Instant getArrivalDate() {
+    public LocalDateTime getArrivalDate() {
         return arrivalDate;
     }
 
-    public void setArrivalDate(Instant arrivalDate) {
+    public void setArrivalDate(LocalDateTime arrivalDate) {
         this.arrivalDate = arrivalDate;
     }
 

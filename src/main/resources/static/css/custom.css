@@ -2,7 +2,7 @@
 body {
     100%;
     background-color: #f1faee;
-    background-image: url("../img/sky_and_clouds.jpg") !important;
+    background-image: url("../img/drops.jpg") !important;
     background: fixed;
     background-size: 100% 100% !important;
 }
@@ -38,16 +38,13 @@ body {
     vertical-align: middle;
     border-radius: 6%;
 }
-#mymodal,
-#addFlight {
-    color: white;
-}
+
 /*#mymodal-footer,
 #mymodal-header,*/
 #mymodal-body,
 #addFlight-body {
     background-color: #ade8f4;
-    background-image: url("../img/sky_and_clouds.jpg") !important;
+    background-image: url("../img/drops.jpg") !important;
     height: 100%;
     width: 100%;
 }
@@ -59,11 +56,14 @@ body {
 }
 
 #select-airport,
+#select-arrivalAirport,
+#select-departureAirport,
 #select-airline {
     width: 100%;
 }
 
-#date-form-width {
+#date-form-width,
+#date-arrival-width{
     width: 65%;
 }
 
@@ -71,7 +71,8 @@ body {
 #airline_list_index,
 #jumbo_index, #dashboard-table,
 #go_to_home_login,
-#signin_label
+#signin_label,
+#add-flight-text
 {
     color: white;
 }
