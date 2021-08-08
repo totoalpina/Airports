@@ -5,7 +5,6 @@ import org.springframework.stereotype.Service;
 import ro.cosmin.airports.entities.Flight;
 import ro.cosmin.airports.models.FlightDto;
 import ro.cosmin.airports.repository.FlightRepository;
-
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
 import java.util.List;
@@ -21,7 +20,6 @@ public class FlightServiceImpl implements FlightService {
 
     @Autowired
     private FlightService flightService;
-
 
     @Override
     public boolean addFlight(final FlightDto flightDto) {
@@ -94,5 +92,15 @@ public class FlightServiceImpl implements FlightService {
                         e.getAirline(),
                         e.getDepartureAirport(),
                         e.getArrivalAirport()));
+    }
+
+    @Override
+    public List<FlightDto> findDepartureFlightByAirport(final Long id) {
+        return flightRepository.findDepartureFlightsByAirportFromCurrentDate(id);
+    }
+
+    @Override
+    public List<FlightDto> findArrivalFlightByAirport(Long id) {
+        return flightRepository.findArrivalFlightsByAirportFromCurrentDate(id);
     }
 }
