@@ -47,7 +47,7 @@
                     <div class="table-responsive-md ">
                         <table class="table table-bordered border-light" id="dashboard-table">
                             <div th:if="${param.success}">
-                                <div class="row alert alert-outline-success text-white">Flight was successfuly deleted
+                                <div class="row alert alert-success text-black">Flight was successfuly deleted
                                 </div>
                             </div>
                             <div th:if="${param.added}">
@@ -70,99 +70,26 @@
                                 </td>
                                 <td th:text="${flight.flightNumber}"> ***</td>
                                 <td th:text="${flight.departureAirport.airportName}"> ***</td>
-                                <td th:text="${#temporals.format(flight.departureDate, 'dd.MM.yyyy HH:mm')}"> ***</td>
+
+                                <td th:text="${flight.departureDate}"> ***</td>
                                 <td th:text="${flight.arrivalAirport.airportName}"> ***</td>
-                                <td th:text="${#temporals.format(flight.arrivalDate, 'dd.MM.yyyy HH:mm')}"> ***</td>
+                                <td th:text="${flight.arrivalDate}"> ***</td>
                                 <td>
                                     <div class="d-flex justify-content-left">
-                                        <a th:href="@{/edit/{id}(id=${flight.id})}"
+                                        <a th:href="@{/editFlight/{id}(id=${flight.id})}"
                                            class="btn btn-outline-light btn-xs"
-                                           style="padding: 5px; margin: 2px" title="Edit" data-bs-toggle="modal"
-                                           data-bs-target="#editModal" th:attrappend="data-bs-target=${flight.id}">
+                                           style="padding: 5px; margin: 2px" title="Edit">
                                             <img th:src="@{/img/edit-icon.png}"/>
                                         </a>
                                         <a th:href="@{/delete/{id}(id=${flight.id})}"
                                            class="btn btn-outline-danger btn-xs"
                                            style="padding: 5px; margin: 2px"
-
-                                           onclick="return confirm('You are about to `drop down` a flight. Are you sure you wanna do that?')"
-                                           title="Delete"><img th:src="@{/img/delete-sign.png}"/></a>
+                                           title="Delete"
+                                           onclick="return confirm('You are about to `drop down` a flight. Are you sure you wanna do that?')">
+                                            <img th:src="@{/img/delete-sign.png}"/>
+                                        </a>
                                     </div>
-                                    <div class="modal" id="editModal" th:attrappend="id=${flight.id}" role="dialog"
-                                         tabindex="0"
-                                         data-bs-backdrop="static">
-                                        <div class="modal-dialog">
-                                            <div class="modal-content">
-                                                <div id="mymodal-body" class="modal-body">
-                                                    <div>
-                                                        <p>Edit flight information</p>
-                                                    </div>
-                                                    <hr>
-                                                    <form action="#" method="POST" th:object="${flight}">
-                                                        <input type="hidden" name="id" th:value="@{flight.id}">
-                                                        <div class="form-group">
-                                                            <div class=" form-group">
-                                                                <label>Airline :</label>
-                                                                <select name="airline" id="select-airline">
-                                                                    <option th:text="${flight.airline.airlineName}"
-                                                                            selected></option>
-                                                                    <option value="">hida hida</option>
-                                                                </select>
-                                                            </div>
-                                                            <div class=" form-group">
-                                                                <label>Departure Airport :</label>
-                                                                <select name="departure-airport" id="select-airport">
-                                                                    <option th:text="${flight.departureAirport.airportName}"
-                                                                            selected></option>
-                                                                    <option value="">bla bla</option>
-                                                                </select>
-                                                            </div>
-                                                            <div class=" form-group">
-                                                                <label>Arrival Airport :</label>
-                                                                <select name="arrival-airport" id="select-airport">
-                                                                    <option th:text="${flight.arrivalAirport.airportName}"
-                                                                            selected></option>
-                                                                    <option value="">hida hida</option>
-                                                                </select>
-                                                            </div>
-                                                            <div class="form-group">
-                                                                <label>Departure - date/time</label>
-                                                                <div class="form-group form-control inline bg-transparent">
-                                                                    <input id="date-form-width" type="text"
-                                                                           name="departure-date"
-                                                                           th:value="${flight.departureDate}">
-                                                                </div>
-                                                            </div>
-                                                            <div class="form-group">
-                                                                <label>Arrival - date/time</label>
-                                                                <div class="form-group form-control inline bg-transparent">
-                                                                    <input id="date-form-width" type="text"
-                                                                           name="arrival-date"
-                                                                           th:value="${flight.arrivalDate}">
-                                                                </div>
-                                                            </div>
-                                                            <div class="form-group">
-                                                                <label>Flight number</label>
-                                                                <input type="text" class="form-control"
-                                                                       name="flight-number"
-                                                                       th:value="${flight.flightNumber}">
-                                                            </div>
-                                                            <hr>
-                                                            <div class="form-group">
-                                                                <button class="btn btn-outline-light" type="sbumit">Save
-                                                                    flight
-                                                                </button>
-                                                                <button type="button" class="btn btn-outline-danger"
-                                                                        data-bs-dismiss="modal">Close
-                                                                </button>
-                                                            </div>
-                                                        </div>
-                                                    </form>
 
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
                                 </td>
                             </tr>
                         </table>

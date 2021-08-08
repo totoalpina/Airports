@@ -1,6 +1,7 @@
 package ro.cosmin.airports.models;
 
 public class AirportDto {
+
     private Long id;
     private String airportName;
     private String airportCity;
@@ -23,6 +24,16 @@ public class AirportDto {
     }
 
     public AirportDto(String airportName, String airportCity, String airportCountry, String airportCode, String latitude, String longitude) {
+        this.airportName = airportName;
+        this.airportCity = airportCity;
+        this.airportCountry = airportCountry;
+        this.airportCode = airportCode;
+        this.latitude = latitude;
+        this.longitude = longitude;
+    }
+
+    public AirportDto(Long id, String airportName, String airportCity, String airportCountry, String airportCode, String latitude, String longitude) {
+        this.id = id;
         this.airportName = airportName;
         this.airportCity = airportCity;
         this.airportCountry = airportCountry;

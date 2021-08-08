@@ -8,9 +8,6 @@ public class AirlineDto {
     private String airlineCallSign;
     private String airlineCountry;
 
-    public AirlineDto() {
-    }
-
     public AirlineDto(Long id, String airlineName, String airlineCode, String airlineCallSign, String airlineCountry) {
         this.id = id;
         this.airlineName = airlineName;

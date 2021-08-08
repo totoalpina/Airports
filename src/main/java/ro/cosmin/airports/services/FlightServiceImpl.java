@@ -54,9 +54,18 @@ public class FlightServiceImpl implements FlightService {
     }
 
     @Override
-    public Flight updateFlight(final Long id) {
-        // TODO implementation
-        return null;
+    public boolean updateFlight(final Long id, final FlightDto flightDto) {
+        Optional<Flight> flight = flightService.findById(id)
+                .map(f -> new Flight(flightDto.getId(),
+                        flightDto.getFlightNumber(),
+                        LocalDateTime.parse(flightDto.getDepartureDate(), dtf),
+                        LocalDateTime.parse(flightDto.getArrivalDate(), dtf),
+                        flightDto.getAirline(),
+                        flightDto.getDepartureAirport(),
+                        flightDto.getArrivalAirport()));
+        flight.ifPresent(f -> flightRepository.save(f));
+
+        return flight.get().getFlightNumber() != null;
     }
 
     @Override

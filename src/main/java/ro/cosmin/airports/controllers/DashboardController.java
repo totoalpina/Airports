@@ -5,9 +5,11 @@ import org.springframework.format.annotation.DateTimeFormat;
 import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.*;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.ModelAttribute;
+import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.PostMapping;
 import ro.cosmin.airports.models.FlightDto;
-import ro.cosmin.airports.repository.FlightRepository;
 import ro.cosmin.airports.services.AirlineService;
 import ro.cosmin.airports.services.AirportService;
 import ro.cosmin.airports.services.FlightService;
@@ -32,12 +34,9 @@ public class DashboardController {
 
     @GetMapping("/dashboard")
     @PreAuthorize("hasRole('ADMIN')")
-    public String dashboardPage(@DateTimeFormat(pattern = "yyyy-MM-dd HH:mm") Model model) {
-        model.addAttribute("flights", flightRepository.findAll());
-        model.addAttribute("airlines", airlineService.findAll());
-        model.addAttribute("arrivalAirports", airportService.findAll());
-        model.addAttribute("departureAirports", airportService.findAll());
-        model.addAttribute("flightDto", new FlightDto());
+    public String dashboardPage(Model model) {
+        model.addAttribute("flights", flightService.retrieveAllFlights());
+        model.addAttribute("editAirlines", airlineService.findAll());
         return "dashboard";
     }
 
@@ -49,10 +48,25 @@ public class DashboardController {
         return "redirect:/dashboard?success";
     }
 
-    @GetMapping("/edit/{id}")
+    @GetMapping("/editFlight/{id}")
     @PreAuthorize("hasRole('ADMIN')")
-    public String editFlight(@PathVariable("id") Long id) {
-        return "dashboard";
+    public String showEditPage(@PathVariable("id") Long id, Model model) {
+        model.addAttribute("flight", flightService.findById(id).orElseGet(FlightDto::new));
+        model.addAttribute("editAirlines", airlineService.findAll());
+        model.addAttribute("arrivalAirports", airportService.findAll());
+        model.addAttribute("departureAirports", airportService.findAll());
+        return "edit";
+    }
+
+    @PostMapping("/edit/{id}")
+    @PreAuthorize("hasRole('ADMIN')")
+    public String editFlight(@PathVariable("id") Long id, @ModelAttribute FlightDto flight, final Model model) {
+        model.addAttribute("flight", flight);
+        model.addAttribute("editAirlines", airlineService.findAll());
+        model.addAttribute("arrivalAirports", airportService.findAll());
+        model.addAttribute("departureAirports", airportService.findAll());
+        flightService.updateFlight(id, flight);
+        return "redirect:/dashboard";
     }
 
     @GetMapping("/addFlight")

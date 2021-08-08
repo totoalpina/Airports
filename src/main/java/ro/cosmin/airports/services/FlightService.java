@@ -1,6 +1,5 @@
 package ro.cosmin.airports.services;
 
-import ro.cosmin.airports.entities.Flight;
 import ro.cosmin.airports.models.FlightDto;
 
 import java.util.List;
@@ -13,7 +12,7 @@ public interface FlightService {
 
     List<FlightDto> retrieveAllFlights();
 
-    Flight updateFlight(Long id);
+    boolean updateFlight(Long id, FlightDto flightDto);
 
     boolean deleteFlight(Long id);
 

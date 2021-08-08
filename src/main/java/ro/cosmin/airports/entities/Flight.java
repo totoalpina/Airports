@@ -18,11 +18,9 @@ public class Flight {
     private String flightNumber;
 
     @Column(name = "departure")
-
     private LocalDateTime departureDate;
 
     @Column(name = "arrival")
-
     private LocalDateTime arrivalDate;
 
     @ManyToOne(fetch = FetchType.LAZY)
