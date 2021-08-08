@@ -55,7 +55,8 @@
                             <td>
                                 <a id="airport_list_index"
                                    th:text="${airport.airportName} + ' (' + ${airport.airportCode} + ')' + ' - ' + ${airport.airportCountry}"
-                                   href="https://www.google.com">link</a>
+                                   th:value="${airport.id}"
+                                   th:href="@{/searchFlight/{id}(id=${airport.id})}">link</a>
                             </td>
                         </tr>
                     </table>

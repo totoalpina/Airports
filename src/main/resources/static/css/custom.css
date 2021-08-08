@@ -59,7 +59,18 @@ body {
     width: 65%;
 }
 
-#airport_list_index, #airline_list_index, #jumbo_index, #dashboard-table, #go_to_home_login, #signin_label, #editAirline, #departureEdit, #arrivalEdit, #flightEdit {
+#airport_list_index,
+#airline_list_index,
+#jumbo_index, #dashboard-table,
+#go_to_home_login,
+#signin_label,
+#search_label,
+#airport_description,
+#flight_departure,
+#table_title,
+#table_arrival_title,
+#flight_arrival
+{
     color: white;
 }
 

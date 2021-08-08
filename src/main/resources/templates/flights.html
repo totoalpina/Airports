@@ -1,0 +1,96 @@
+<!doctype html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link href="#" th:replace="base :: bootstrap-css"/>
+    <link href="#" th:replace="base :: custom-css"/>
+    <div th:replace="base :: fonts-akaya"></div>
+    <title>Airports</title>
+</head>
+<body>
+<section>
+    <div th:replace="header :: navigation-bar">
+        header
+    </div>
+</section>
+<section>
+    <div class="container">
+        <div id="jumbo_index" class="jumbotron">
+            <h1 id="start_flying" class="display-4">"START FLYING"</h1>
+            <p class="lead">"Your wings already exist. All you have to do is fly."</p>
+            <p class="lead">Just select your favorite destination, and let us do the search for you.</p>
+            <hr class="my-4">
+        </div>
+    </div>
+</section>
+<section>
+    <div class="container">
+        <div class="jumbotron">
+            <div class="controls-row row">
+                <div class="control-group col-md-9">
+                    <div class="input-group">
+                        <div class="row">
+                            <ul id="airport_description">
+                                <li th:text="'Airport name: ' + ${#strings.toUpperCase(airportDto.airportName)} + ' (' + ${airportDto.airportCode} + ')'"></li>
+                                <li th:text="'City: ' +  ${#strings.toUpperCase(airportDto.airportCity)}"></li>
+                                <li th:text="'Country: ' + ${#strings.toUpperCase(airportDto.airportCountry)}"></li>
+                                <li th:text="'GPS coordinates - Latitude: ' + ${airportDto.latitude}"></li>
+                                <li th:text="'GPS coordinates - Longitude: ' + ${airportDto.longitude}"></li>
+                                </li>
+                            </ul>
+                        </div>
+                        <br>
+                        <hr>
+                        <div class="row">
+                            <h4 id="table_title">Next departure flights</h4>
+                            <table id="flight_departure" class="table table-bordered border-light">
+                                <th scope="col">Airline</th>
+                                <th scope="col">Flight No</th>
+                                <th scope="col">Departure Date</th>
+                                <th scope="col">Arrival Airport</th>
+                                <th scope="col">Arrival Date</th>
+                                <tr th:each="flight : ${listOfSearchedFlights}">
+                                    <td th:text="${flight.airline.airlineName + ' (' + flight.airline.airlineCode + ')'}">
+                                        ***
+                                    </td>
+                                    <td th:text="${flight.flightNumber}"> ***</td>
+                                    <td th:text="${#dates.format(flight.departureDate, 'dd.MM.yyyy HH:mm')}"> ***</td>
+                                    <td th:text="${flight.arrivalAirport.airportName}"> ***</td>
+                                    <td th:text="${#dates.format(flight.arrivalDate, 'dd.MM.yyyy HH:mm')}"> ***</td>
+                                </tr>
+                            </table>
+                        </div>
+                        <div class="row">
+                            <h4 id="table_arrival_title">Next arrival flights</h4>
+                            <table id="flight_arrival" class="table table-bordered border-light">
+                                <th scope="col">Airline</th>
+                                <th scope="col">Flight No</th>
+                                <th scope="col">Departure Airport</th>
+                                <th scope="col">Departure Date</th>
+                                <th scope="col">Arrival Date</th>
+                                <tr th:each="flight : ${listArrivalFlights}">
+                                    <td th:text="${flight.airline.airlineName + ' (' + flight.airline.airlineCode + ')'}">
+                                        ***
+                                    </td>
+                                    <td th:text="${flight.flightNumber}"> ***</td>
+                                    <td th:text="${flight.departureAirport.airportName}"> ***</td>
+                                    <td th:text="${#dates.format(flight.departureDate, 'dd.MM.yyyy HH:mm')}"> ***</td>
+                                    <td th:text="${#dates.format(flight.arrivalDate, 'dd.MM.yyyy HH:mm')}"> ***</td>
+                                </tr>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<footer th:replace="footer::footer-base"></footer>
+
+<script src="#" th:replace="base :: bootstrap-js"></script>
+</body>
+</html>
