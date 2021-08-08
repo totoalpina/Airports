@@ -72,7 +72,12 @@ body {
 #jumbo_index, #dashboard-table,
 #go_to_home_login,
 #signin_label,
-#search_label
+#search_label,
+#airport_description,
+#flight_departure,
+#table_title,
+#table_arrival_title,
+#flight_arrival
 {
     color: white;
 }

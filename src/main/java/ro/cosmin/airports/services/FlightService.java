@@ -19,6 +19,8 @@ public interface FlightService {
 
     Optional<FlightDto> findById(Long id);
 
-    List<FlightDto> retrieveFlightsByAirportAndByDate(final Long id);
+    List<FlightDto> findDepartureFlightByAirport(final Long id);
+
+    List<FlightDto> findArrivalFlightByAirport(final Long id);
 
 }

@@ -23,10 +23,4 @@ public class HomeController {
         return "index";
     }
 
-    @GetMapping("/searchFlight/{id}")
-    public String searchArrivalFlights(@PathVariable(value = "id") Long id, final Model model) {
-        model.addAttribute("airportDto", airportService.findById(id).orElseGet(AirportDto::new));
-        model.addAttribute("listOfSearchedFlights", flightService.retrieveFlightsByAirportAndByDate(id));
-        return "flights";
-    }
 }

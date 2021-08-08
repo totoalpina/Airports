@@ -82,10 +82,13 @@ public class FlightServiceImpl implements FlightService {
                         e.getArrivalAirport()));
     }
 
+    @Override
+    public List<FlightDto> findDepartureFlightByAirport(final Long id) {
+        return flightRepository.findDepartureFlightsByAirportFromCurrentDate(id);
+    }
 
     @Override
-    public List<FlightDto> retrieveFlightsByAirportAndByDate(final Long id) {
-        return flightRepository.findDepartureFlightsByAirportFromCurrentDate(id);
-
+    public List<FlightDto> findArrivalFlightByAirport(Long id) {
+        return flightRepository.findArrivalFlightsByAirportFromCurrentDate(id);
     }
 }
