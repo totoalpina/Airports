@@ -23,6 +23,10 @@ public class AirlineDto {
         this.airlineCountry = airlineCountry;
     }
 
+    public AirlineDto() {
+
+    }
+
     public Long getId() {
         return id;
     }
