@@ -7,7 +7,7 @@ import ro.cosmin.airports.models.AirlineDto;
 
 import java.util.List;
 
-public interface AirlineService{
+public interface AirlineService {
 
     List<AirlineDto> findAll();
 

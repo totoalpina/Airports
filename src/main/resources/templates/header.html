@@ -36,18 +36,14 @@
                             </a>
                         </li>
                         <li>
-                            <a href="#" id="flights_header" class="nav-link text-white">
-                                Flights
-                            </a>
-                        </li>
-                        <li>
                             <a th:href="@{/about}" id="about_header" class="nav-link text-white">
                                 About us
                             </a>
                         </li>
                         <li>&nbsp;<->&nbsp;</li>
                         <li sec:authorize="hasRole('ADMIN')" id="dashboard_header">
-                            <p class="nav-link text-white">Hello Boss&nbsp;</p>
+
+                            <p class="nav-link text-white">Hello Cosmin&nbsp;</p>
                         <li sec:authorize="hasRole('ADMIN')">
                             <a th:href="@{/dashboard}" class="btn btn-outline-danger me-2">
                                 Dashboard

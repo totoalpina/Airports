@@ -3,17 +3,11 @@ package ro.cosmin.airports.models;
 public class AirportDto {
 
     private Long id;
-
     private String airportName;
-
     private String airportCity;
-
     private String airportCountry;
-
     private String airportCode;
-
     private String latitude;
-
     private String longitude;
 
     public AirportDto() {

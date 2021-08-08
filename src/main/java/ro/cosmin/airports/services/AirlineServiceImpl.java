@@ -12,7 +12,7 @@ import java.util.List;
 import java.util.stream.Collectors;
 
 @Service
-public class AirlineServiceImpl implements AirlineService{
+public class AirlineServiceImpl implements AirlineService {
 
     @Autowired
     private AirlineRepository airlineRepository;
@@ -21,7 +21,8 @@ public class AirlineServiceImpl implements AirlineService{
     public List<AirlineDto> findAll() {
         return airlineRepository.findAll()
                 .stream()
-                .map(airline -> new AirlineDto(airline.getAirlineName(),
+                .map(airline -> new AirlineDto(airline.getId(),
+                        airline.getAirlineName(),
                         airline.getAirlineCode(),
                         airline.getAirlineCallSign(),
                         airline.getAirlineCountry()))

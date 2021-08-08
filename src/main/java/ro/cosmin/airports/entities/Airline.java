@@ -24,7 +24,8 @@ public class Airline {
     @Column(name = "airline_country", nullable = false)
     private String airlineCountry;
 
-    @OneToMany(mappedBy = "airline")
+    @OneToMany(mappedBy = "airline", fetch = FetchType.LAZY
+            , cascade = CascadeType.ALL)
     private Set<Flight> flightSet;
 
     public Airline() {

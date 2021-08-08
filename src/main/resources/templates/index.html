@@ -28,82 +28,7 @@
 </section>
 <section>
     <div class="container">
-        <div class="jumbotron">
-            <div class="controls-row row">
-                <div class="control-group col-md-6">
-                    <div class="input-group">
-                        <form class="form-inline">
-                            <div class="row">
-                                <div class="col-6">
-                                    <input class="form-control form-inline" type="text"
-                                           placeholder="Search by airport"
-                                           th:name="airport">
-                                </div>
-                            </div>
-                            <div class=" row">
-                                <div class="col-6">
-                                    <label id="search_label" class="form-inline" for="start">Start date</label>
-                                    <input class="form-control" type="date" id="start" th:name="startDate">
-                                </div>
-                                <div class=" col-6">
-                                    <label id="search_label" class="form-inline" for="end">End date</label>
-                                    <input class="form-control" type="date" id="end" th:name="endDate">
-                                </div>
-                                <hr>
-                                <div class=" col-6">
-                                    <a href="#" th:href="@{/searchFlight}" style="width: 100%" class="btn btn-outline-light form-control"
-                                       type="submit">Search arrival
-                                        flights</a>
-                                </div>
-                                <div class="col-6">
-                                    <a href="#" style="width: 100%" class="btn btn-outline-light form-control"
-                                       type="submit">Search departure
-                                        flights</a>
-                                </div>
-                            </div>
-                        </form>
-                    </div>
-                </div>
-                <div class="control-group col-md-6">
-                    <div class="input-group">
-                        <form class="form-inline">
-                            <div class="row">
-                                <div class="col-6">
-                                    <input class="form-control form-inline" type="text"
-                                           placeholder="Search by airline"
-                                           th:name="airline">
-                                </div>
-                            </div>
-                            <div class=" row">
-                                <div class="col-6">
-                                    <label id="search_label" class="form-inline" for="start_airline">Start
-                                        date</label>
-                                    <input class="form-control" type="date" id="start_airline"
-                                           th:name="startDate">
-                                </div>
-                                <div class=" col-6">
-                                    <label id="search_label" class="form-inline" for="end_airline">End date</label>
-                                    <input class="form-control" type="date" id="end_airline"
-                                           th:name="endDate">
-                                </div>
-                                <hr>
-
-                                <div class=" col-6">
-                                    <a href="#" style="width: 100%" class="btn btn-outline-light form-control"
-                                       type="submit">Search arrival
-                                        flights</a>
-                                </div>
-                                <div class="col-6">
-                                    <a href="#" style="width: 100%" class="btn btn-outline-light form-control"
-                                       type="submit">Search departure
-                                        flights</a>
-                                </div>
-                            </div>
-                        </form>
-                    </div>
-                </div>
-            </div>
-            <hr>
+        <div
             <div class="row">
                 <div class="col-sm-6">
                     <div class="card bg-transparent">
@@ -112,7 +37,7 @@
                             <p class="card-text">Our partner airport are listed in the "Airport" section.
                                 Use the search field above to look for the desired airport.
                                 Check for the flight listed in the airports schedule, and fly away.</p>
-                            <a th:href="@{/airports}" class="btn btn-primary">Airports -></a>
+                            <a th:href="@{/airports/{page}(page=1)}" class="btn btn-primary">Airports -></a>
                         </div>
                     </div>
                 </div>
@@ -123,7 +48,7 @@
                             <p class="card-text">You can choose from our variety of airlines to plan your journey.
                                 See the flights provided and fit one for your convenience.
                                 We ensure you, you will not be desapointed. Spread your wings and fly.</p>
-                            <a th:href="@{/airlines}" class="btn btn-primary">Airlines -></a>
+                            <a th:href="@{/airlines/{page}(page=1)}" class="btn btn-primary">Airlines -></a>
                         </div>
                     </div>
                 </div>
