@@ -104,4 +104,9 @@ public class FlightServiceImpl implements FlightService {
     public List<FlightSearchDto> findArrivalFlightByAirport(Long id) {
         return flightRepository.findArrivalFlightsByAirportFromCurrentDate(id);
     }
+
+    @Override
+    public List<FlightSearchDto> findFlightByAirline(Long id) {
+        return flightRepository.findFlightsByAirlineFromCurrentDate(id);
+    }
 }

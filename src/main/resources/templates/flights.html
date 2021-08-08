@@ -53,11 +53,16 @@
                                 <th scope="col">Departure Date</th>
                                 <th scope="col">Arrival Date</th>
                                 <tr th:each="flight : ${listOfSearchedFlights}">
-                                    <td th:text="${flight.airline.airlineName + ' (' + flight.airline.airlineCode + ')'}">
-                                        ***
+                                    <td>
+                                        <a id="airline_list_index"
+                                           th:text="${flight.airline.airlineName + ' (' + flight.airline.airlineCode + ')'}"
+                                           th:href="@{/searchFlightsByAirline/{id}(id=${flight.airline.id})}"></a>
                                     </td>
                                     <td th:text="${flight.flightNumber}"> ***</td>
-                                    <td th:text="${flight.arrivalAirport.airportName}"> ***</td>
+                                    <td>
+                                        <a id="airline_list_index" th:text="${flight.arrivalAirport.airportName}"
+                                           th:href="@{/searchFlight/{id}(id=${flight.arrivalAirport.id})}"></a>
+                                    </td>
                                     <td th:text="${#strings.replace(flight.departureDate,'T',' - ')}"> ***</td>
                                     <td th:text="${#strings.replace(flight.arrivalDate,'T',' - ')}"> ***</td>
                                 </tr>
@@ -72,11 +77,16 @@
                                 <th scope="col">Departure Date</th>
                                 <th scope="col">Arrival Date</th>
                                 <tr th:each="flight : ${listArrivalFlights}">
-                                    <td th:text="${flight.airline.airlineName + ' (' + flight.airline.airlineCode + ')'}">
-                                        ***
+                                    <td>
+                                        <a id="airline_list_index"
+                                           th:text="${flight.airline.airlineName + ' (' + flight.airline.airlineCode + ')'}"
+                                           th:href="@{/searchFlightsByAirline/{id}(id=${flight.airline.id})}"></a>
                                     </td>
                                     <td th:text="${flight.flightNumber}"> ***</td>
-                                    <td th:text="${flight.departureAirport.airportName}"> ***</td>
+                                    <td>
+                                        <a id="airline_list_index" th:text="${flight.departureAirport.airportName}"
+                                           th:href="@{/searchFlight/{id}(id=${flight.departureAirport.id})}"></a>
+                                    </td>
                                     <td th:text="${#strings.replace(flight.departureDate,'T',' - ')}"> ***</td>
                                     <td th:text="${#strings.replace(flight.arrivalDate,'T',' - ')}"> ***</td>
                                 </tr>

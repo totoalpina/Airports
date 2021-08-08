@@ -9,6 +9,7 @@ import ro.cosmin.airports.models.AirlineDto;
 import ro.cosmin.airports.repository.AirlineRepository;
 
 import java.util.List;
+import java.util.Optional;
 import java.util.stream.Collectors;
 
 @Service
@@ -33,5 +34,15 @@ public class AirlineServiceImpl implements AirlineService {
     public Page<Airline> findAll(Pageable pageable) {
         Page<Airline> airlinePage = airlineRepository.findAll(pageable);
         return airlinePage;
+    }
+
+    @Override
+    public Optional<AirlineDto> findById(Long id) {
+        return airlineRepository.findById(id)
+                .map(airline -> new AirlineDto(airline.getId(),
+                        airline.getAirlineName(),
+                        airline.getAirlineCode(),
+                        airline.getAirlineCallSign(),
+                        airline.getAirlineCountry()));
     }
 }

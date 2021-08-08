@@ -54,7 +54,7 @@
                             <td>
                                 <a id="airline_list_index"
                                    th:text="${airline.airlineName} + ' (' + ${airline.airlineCode} + ')' + ' - ' + ${airline.airlineCountry}"
-                                   href="https://www.google.com">link</a>
+                                   th:href="@{/searchFlightsByAirline/{id}(id=${airline.id})}">link</a>
                             </td>
                         </tr>
                     </table>

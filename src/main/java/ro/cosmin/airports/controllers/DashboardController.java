@@ -65,7 +65,7 @@ public class DashboardController {
         model.addAttribute("arrivalAirports", airportService.findAll());
         model.addAttribute("departureAirports", airportService.findAll());
         flightService.updateFlight(id, flight);
-        return "redirect:/dashboard";
+        return "redirect:/dashboard?edited";
     }
 
     @GetMapping("/addFlight")

@@ -18,4 +18,9 @@ public interface FlightRepository extends JpaRepository<Flight, Long> {
             "from Flight f inner join f.departureAirport inner join f.airline inner join f.arrivalAirport " +
             " where f.arrivalAirport.id = :id and f.arrivalDate >= current_date")
     List<FlightSearchDto> findArrivalFlightsByAirportFromCurrentDate(Long id);
+
+    @Query("select new ro.cosmin.airports.models.FlightSearchDto(f.id, f.flightNumber, f.departureDate, f.arrivalDate, f.airline, f.departureAirport, f.arrivalAirport) " +
+            "from Flight f inner join f.departureAirport inner join f.airline inner join f.arrivalAirport " +
+            " where f.airline.id = :id and f.arrivalDate >= current_date and f.departureDate >= current_date")
+    List<FlightSearchDto> findFlightsByAirlineFromCurrentDate(Long id);
 }
