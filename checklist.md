@@ -3,10 +3,10 @@
 - [x] header
 - [x] footer
 - [x] home page
-- [ ] search by airport
+- [x] search by airport
 - [ ] search by airline
-- [ ] dashboard
-    - [ ] add functionality
-    - [ ] edit functionality
+- [x] dashboard
+    - [x] add functionality
+    - [x] edit functionality
     - [x] delete functionality
 - [x] custom error pages

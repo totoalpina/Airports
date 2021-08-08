@@ -1,6 +1,7 @@
 package ro.cosmin.airports.models;
 
 import ro.cosmin.airports.enums.UserRole;
+
 import javax.validation.constraints.Email;
 import javax.validation.constraints.NotEmpty;
 import javax.validation.constraints.Size;

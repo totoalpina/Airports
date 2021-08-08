@@ -36,6 +36,7 @@ body {
 #mymodal, #addFlight {
     color: white;
 }
+
 /*#mymodal-footer,
 #mymodal-header,*/
 
@@ -50,15 +51,11 @@ body {
     background-color: rgb(156, 182, 190) 0.3 !important;
 }
 
-#select-airport,
-#select-arrivalAirport,
-#select-departureAirport,
-#select-airline {
+#select-airport, #select-arrivalAirport, #select-departureAirport, #select-airline {
     width: 100%;
 }
 
-#date-form-width,
-#date-arrival-width{
+#date-form-width, #date-arrival-width {
     width: 65%;
 }
 
