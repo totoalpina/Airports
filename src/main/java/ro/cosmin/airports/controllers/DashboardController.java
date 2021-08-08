@@ -1,6 +1,7 @@
 package ro.cosmin.airports.controllers;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.format.annotation.DateTimeFormat;
 import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -13,9 +14,14 @@ import ro.cosmin.airports.services.AirlineService;
 import ro.cosmin.airports.services.AirportService;
 import ro.cosmin.airports.services.FlightService;
 
+import javax.validation.Valid;
 
 @Controller
 public class DashboardController {
+
+
+    @Autowired
+    private FlightRepository flightRepository;
 
     @Autowired
     private FlightService flightService;
@@ -63,4 +69,21 @@ public class DashboardController {
         return "redirect:/dashboard";
     }
 
+    @GetMapping("/addFlight")
+    @PreAuthorize("hasRole('ADMIN')")
+    public String addFlight(@ModelAttribute("flightDto") FlightDto flightDto, Model model) {
+        model.addAttribute("flights", flightService.retrieveAllFlights());
+        model.addAttribute("airlines", airlineService.findAll());
+        model.addAttribute("arrivalAirports", airportService.findAll());
+        model.addAttribute("departureAirports", airportService.findAll());
+        model.addAttribute("flightDto", new FlightDto());
+        return "add-flight";
+    }
+
+    @PostMapping("/createFlight")
+    @PreAuthorize("hasRole('ADMIN')")
+    public String createFlight(@Valid  @ModelAttribute("flightDto") FlightDto flightDto) {
+        flightService.addFlight(flightDto);
+        return "redirect:/dashboard?added";
+    }
 }

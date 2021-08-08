@@ -1,5 +1,7 @@
 body {
-    background-image: url("../img/sky_and_clouds.jpg") !important;
+    100%;
+    background-color: #f1faee;
+    background-image: url("../img/drops.jpg") !important;
     background: fixed;
     background-size: 100% 100% !important;
 }
@@ -34,13 +36,12 @@ body {
 #mymodal, #addFlight {
     color: white;
 }
-
 /*#mymodal-footer,
 #mymodal-header,*/
 
 #mymodal-body, #addFlight-body {
     background-color: #ade8f4;
-    background-image: url("../img/sky_and_clouds.jpg") !important;
+    background-image: url("../img/drops.jpg") !important;
     height: 100%;
     width: 100%;
 }
@@ -49,11 +50,15 @@ body {
     background-color: rgb(156, 182, 190) 0.3 !important;
 }
 
-#select-airport, #select-airline {
+#select-airport,
+#select-arrivalAirport,
+#select-departureAirport,
+#select-airline {
     width: 100%;
 }
 
-#date-form-width {
+#date-form-width,
+#date-arrival-width{
     width: 65%;
 }
 

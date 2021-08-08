@@ -24,7 +24,7 @@ public class FlightServiceImpl implements FlightService {
 
 
     @Override
-    public boolean addFlight(FlightDto flightDto) {
+    public boolean addFlight(final FlightDto flightDto) {
         Flight flight = new Flight();
         flight.setFlightNumber(flightDto.getFlightNumber());
         flight.setDepartureDate(LocalDateTime.parse(flightDto.getDepartureDate(), dtf));
@@ -39,6 +39,7 @@ public class FlightServiceImpl implements FlightService {
 
     @Override
     public List<FlightDto> retrieveAllFlights() {
+
         List<FlightDto> flightList = flightRepository.findAll()
                 .stream()
                 .map(e -> new FlightDto(e.getId(),
@@ -68,7 +69,7 @@ public class FlightServiceImpl implements FlightService {
     }
 
     @Override
-    public boolean deleteFlight(Long id) {
+    public boolean deleteFlight(final Long id) {
         Optional<Flight> flight = flightService.findById(id)
                 .map(e -> new Flight(e.getId(),
                         e.getFlightNumber(),
@@ -84,7 +85,7 @@ public class FlightServiceImpl implements FlightService {
     }
 
     @Override
-    public Optional<FlightDto> findById(Long id) {
+    public Optional<FlightDto> findById(final Long id) {
         return flightRepository.findById(id)
                 .map(e -> new FlightDto(e.getId(),
                         e.getFlightNumber(),

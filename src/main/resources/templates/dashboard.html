@@ -21,82 +21,9 @@
             <h1 id="start_flying" class="display-4">"Dashboard"</h1>
             <p class="lead">Hello Cosmin! </p>
             <p class="lead">This is the admin page. Feel free to "show off" your master skills. </p>
-            <a class="btn btn-outline-light my-2 my-sm-0" href="#"
-               type="button" data-bs-toggle="modal"
-               data-bs-target="#addFlight">Add flight</a>
+            <a class="btn btn-outline-light my-2 my-sm-0" href="#" th:href="@{/addFlight}"
+               type="button">Add flight</a>
             <hr class="my-4">
-            <div class="modal" id="addFlight" role="dialog" tabindex="0"
-                 data-bs-backdrop="static">
-                <div class="modal-dialog">
-                    <div class="modal-content">
-                        <div id="addFlight-body" class="modal-body">
-                            <div>
-                                <p>Add flight information</p>
-                            </div>
-                            <hr>
-                            <form action="#" method="POST">
-                                <input type="hidden" name="id" value="">
-                                <div class="form-group">
-                                    <div class=" form-group">
-                                        <label>Airline :</label>
-                                        <select name="airline" id="select-airline">
-                                            <option value="" selected></option>
-                                            <option value="">hida hida</option>
-                                        </select>
-                                    </div>
-                                    <div class=" form-group">
-                                        <label>Departure Airport :</label>
-                                        <select name="departure-airport" id="select-airport">
-                                            <option value="" selected></option>
-                                            <option value="">bla bla</option>
-                                        </select>
-                                    </div>
-                                    <div class=" form-group">
-                                        <label>Arrival Airport :</label>
-                                        <select name="arrival-airport" id="select-airport">
-                                            <option value="" selected></option>
-                                            <option value="">hida hida</option>
-                                        </select>
-                                    </div>
-                                    <div class="form-group">
-                                        <label>Departure - date/time</label>
-                                        <div class="form-group form-control inline bg-transparent">
-                                            <input id="date-form-width" type="date"
-                                                   name="departure-date"
-                                                   value="">
-                                            <input id="date-form-width" type="time"
-                                                   name="departure-time">
-                                        </div>
-                                    </div>
-                                    <div class="form-group">
-                                        <label>Arrival - date/time</label>
-                                        <div class="form-group form-control inline bg-transparent">
-                                            <input id="date-form-width" type="date"
-                                                   name="arrival-date"
-                                                   value="">
-                                            <input id="date-form-width" type="time"
-                                                   name="arrival-time">
-                                        </div>
-                                    </div>
-                                    <div class="form-group">
-                                        <label>Flight number</label>
-                                        <input type="text" class="form-control" name="flight-number"
-                                               value="">
-                                    </div>
-                                    <hr>
-                                    <div class="form-group">
-                                        <button class="btn btn-outline-light" type="sbumit">Save flight
-                                        </button>
-                                        <button type="button" class="btn btn-outline-danger"
-                                                data-bs-dismiss="modal">Close
-                                        </button>
-                                    </div>
-                                </div>
-                            </form>
-                        </div>
-                    </div>
-                </div>
-            </div>
         </div>
     </div>
 </section>
@@ -123,6 +50,10 @@
                                 <div class="row alert alert-success text-black">Flight was successfuly deleted
                                 </div>
                             </div>
+                            <div th:if="${param.added}">
+                                <div class="row alert alert-outline-success text-white">Flight was successfuly added
+                                </div>
+                            </div>
                             <tr>
                                 <th scope="col">Airline</th>
                                 <th scope="col">Flight No</th>
@@ -139,6 +70,7 @@
                                 </td>
                                 <td th:text="${flight.flightNumber}"> ***</td>
                                 <td th:text="${flight.departureAirport.airportName}"> ***</td>
+
                                 <td th:text="${flight.departureDate}"> ***</td>
                                 <td th:text="${flight.arrivalAirport.airportName}"> ***</td>
                                 <td th:text="${flight.arrivalDate}"> ***</td>

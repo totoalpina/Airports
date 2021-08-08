@@ -3,13 +3,9 @@ package ro.cosmin.airports.models;
 public class AirlineDto {
 
     private Long id;
-
     private String airlineName;
-
     private String airlineCode;
-
     private String airlineCallSign;
-
     private String airlineCountry;
 
     public AirlineDto(Long id, String airlineName, String airlineCode, String airlineCallSign, String airlineCountry) {

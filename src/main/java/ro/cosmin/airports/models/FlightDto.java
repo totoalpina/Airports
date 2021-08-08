@@ -10,6 +10,7 @@ import java.time.LocalDateTime;
 public class FlightDto {
 
     private Long id;
+
     @NotEmpty(message = "Flight number must not be empty")
     private String flightNumber;
     @NotEmpty
@@ -18,11 +19,18 @@ public class FlightDto {
     @NotEmpty
 
     private String arrivalDate;
+
     @NotEmpty
+    private String flightNumber;
+
+    private String departureDate;
+
+    private String arrivalDate;
+
     private Airline airline;
-    @NotEmpty
+
     private Airport departureAirport;
-    @NotEmpty
+
     private Airport arrivalAirport;
 
     public FlightDto() {
