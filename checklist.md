@@ -4,7 +4,7 @@
 - [x] footer
 - [x] home page
 - [x] search by airport
-- [ ] search by airline
+- [x] search by airline
 - [x] dashboard
     - [x] add functionality
     - [x] edit functionality
