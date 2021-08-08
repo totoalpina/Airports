@@ -18,7 +18,6 @@
                        class="d-flex align-items-center my-2 my-lg-0 me-lg-auto text-white text-decoration-none">
                         AIR-PORTAL
                     </a>
-
                     <ul class="nav col-12 col-lg-auto my-2 justify-content-center my-md-0 text-small">
                         <li>
                             <a th:href="@{/}" id="home_header" class="nav-link text-white">
@@ -42,7 +41,6 @@
                         </li>
                         <li>&nbsp;<->&nbsp;</li>
                         <li sec:authorize="hasRole('ADMIN')" id="dashboard_header">
-
                             <p class="nav-link text-white">Hello Cosmin&nbsp;</p>
                         <li sec:authorize="hasRole('ADMIN')">
                             <a th:href="@{/dashboard}" class="btn btn-outline-danger me-2">

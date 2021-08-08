@@ -19,7 +19,6 @@ import javax.validation.Valid;
 @Controller
 public class DashboardController {
 
-
     @Autowired
     private FlightRepository flightRepository;
 

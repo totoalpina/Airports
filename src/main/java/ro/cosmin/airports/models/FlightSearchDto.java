@@ -4,16 +4,18 @@ import ro.cosmin.airports.entities.Airline;
 import ro.cosmin.airports.entities.Airport;
 
 import javax.validation.constraints.NotEmpty;
+import java.time.LocalDateTime;
 
-public class FlightDto {
+
+public class FlightSearchDto {
 
     private Long id;
     @NotEmpty(message = "Flight number must not be empty")
     private String flightNumber;
     @NotEmpty
-    private String departureDate;
+    private LocalDateTime departureDate;
     @NotEmpty
-    private String arrivalDate;
+    private LocalDateTime arrivalDate;
 
     private Airline airline;
 
@@ -21,10 +23,10 @@ public class FlightDto {
 
     private Airport arrivalAirport;
 
-    public FlightDto() {
+    public FlightSearchDto() {
     }
 
-    public FlightDto(String flightNumber, String departureDate, String arrivalDate, Airline airline, Airport departureAirport, Airport arrivalAirport) {
+    public FlightSearchDto(String flightNumber, LocalDateTime departureDate, LocalDateTime arrivalDate, Airline airline, Airport departureAirport, Airport arrivalAirport) {
         this.flightNumber = flightNumber;
         this.departureDate = departureDate;
         this.arrivalDate = arrivalDate;
@@ -33,7 +35,7 @@ public class FlightDto {
         this.arrivalAirport = arrivalAirport;
     }
 
-    public FlightDto(Long id, String flightNumber, String departureDate, String arrivalDate, Airline airline, Airport departureAirport, Airport arrivalAirport) {
+    public FlightSearchDto(Long id, String flightNumber, LocalDateTime departureDate, LocalDateTime arrivalDate, Airline airline, Airport departureAirport, Airport arrivalAirport) {
         this.id = id;
         this.flightNumber = flightNumber;
         this.departureDate = departureDate;
@@ -59,19 +61,19 @@ public class FlightDto {
         this.flightNumber = flightNumber;
     }
 
-    public String getDepartureDate() {
+    public LocalDateTime getDepartureDate() {
         return departureDate;
     }
 
-    public void setDepartureDate(String departureDate) {
+    public void setDepartureDate(LocalDateTime departureDate) {
         this.departureDate = departureDate;
     }
 
-    public String getArrivalDate() {
+    public LocalDateTime getArrivalDate() {
         return arrivalDate;
     }
 
-    public void setArrivalDate(String arrivalDate) {
+    public void setArrivalDate(LocalDateTime arrivalDate) {
         this.arrivalDate = arrivalDate;
     }
 

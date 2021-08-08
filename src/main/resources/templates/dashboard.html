@@ -70,7 +70,6 @@
                                 </td>
                                 <td th:text="${flight.flightNumber}"> ***</td>
                                 <td th:text="${flight.departureAirport.airportName}"> ***</td>
-
                                 <td th:text="${#strings.replace(flight.departureDate,'T',' - ')}"> ***</td>
                                 <td th:text="${flight.arrivalAirport.airportName}"> ***</td>
                                 <td th:text="${#strings.replace(flight.arrivalDate,'T',' - ')}"> ***</td>
@@ -89,7 +88,6 @@
                                             <img th:src="@{/img/delete-sign.png}"/>
                                         </a>
                                     </div>
-
                                 </td>
                             </tr>
                         </table>

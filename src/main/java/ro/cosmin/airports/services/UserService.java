@@ -12,5 +12,4 @@ public interface UserService {
     Optional<UserDto> findByEmail(String email);
 
     User save(UserDto userDto);
-
 }

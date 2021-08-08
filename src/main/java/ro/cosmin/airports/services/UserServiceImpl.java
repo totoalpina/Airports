@@ -37,7 +37,6 @@ public class UserServiceImpl implements UserService {
                 userDto.getFirstName(),
                 userDto.getLastName(),
                 UserRole.USER);
-
         return userRepository.save(user);
     }
 }

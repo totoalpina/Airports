@@ -42,7 +42,6 @@ public class AirportListController {
         }
         model.addAttribute("activeAirportList", true);
         model.addAttribute("airportList", airportPage.getContent());
-
         return "airports";
     }
 
@@ -53,6 +52,4 @@ public class AirportListController {
         model.addAttribute("listArrivalFlights", flightService.findArrivalFlightByAirport(id));
         return "flights";
     }
-
-
 }

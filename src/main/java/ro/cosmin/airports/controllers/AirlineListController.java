@@ -1,18 +1,19 @@
 package ro.cosmin.airports.controllers;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageRequest;
 import org.springframework.data.domain.Sort;
+import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import ro.cosmin.airports.entities.Airline;
+import ro.cosmin.airports.services.AirlineService;
+
 import java.util.List;
 import java.util.stream.Collectors;
 import java.util.stream.IntStream;
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.stereotype.Controller;
-import ro.cosmin.airports.services.AirlineService;
 
 @Controller
 public class AirlineListController {
@@ -31,7 +32,6 @@ public class AirlineListController {
         }
         model.addAttribute("activeAirlineList", true);
         model.addAttribute("airlineList", airlinePage.getContent());
-
         return "airlines";
     }
 }
