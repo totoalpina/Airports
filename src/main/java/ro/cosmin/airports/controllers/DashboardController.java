@@ -24,7 +24,7 @@ public class DashboardController {
 
     @GetMapping("/delete/{id}")
     @PreAuthorize("hasRole('ADMIN')")
-    public String deleteFlight(@PathVariable ("id") Long id, Model model) {
+    public String deleteFlight(@PathVariable("id") Long id, Model model) {
         model.addAttribute("flight", flightService.findById(id));
         flightService.deleteFlight(id);
         return "redirect:/dashboard?success";
@@ -35,5 +35,4 @@ public class DashboardController {
         model.addAttribute("flight", flightService.findById(id));
         return "dashboard";
     }
-
 }

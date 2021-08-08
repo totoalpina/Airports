@@ -19,6 +19,6 @@ public interface FlightService {
 
     Optional<FlightDto> findById(Long id);
 
-    List<FlightDto> retrieveFlightsByAirportAndByDate(final String airport, final String startDate, final String endDate);
+    List<FlightDto> retrieveFlightsByAirportAndByDate(final Long id);
 
 }

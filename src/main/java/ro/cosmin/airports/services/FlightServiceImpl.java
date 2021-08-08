@@ -82,17 +82,10 @@ public class FlightServiceImpl implements FlightService {
                         e.getArrivalAirport()));
     }
 
+
     @Override
-    public List<FlightDto> retrieveFlightsByAirportAndByDate(String airport, String startDate, String endDate) {
-        return flightRepository.retrieveFlightsByAirportAndByDate(airport, startDate, endDate)
-                .stream()
-                .map(e-> new FlightDto(e.getId(),
-                        e.getFlightNumber(),
-                        e.getDepartureDate(),
-                        e.getArrivalDate(),
-                        e.getAirline(),
-                        e.getDepartureAirport(),
-                        e.getArrivalAirport()))
-                .collect(Collectors.toList());
+    public List<FlightDto> retrieveFlightsByAirportAndByDate(final Long id) {
+        return flightRepository.findDepartureFlightsByAirportFromCurrentDate(id);
+
     }
 }
