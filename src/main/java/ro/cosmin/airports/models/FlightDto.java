@@ -20,13 +20,6 @@ public class FlightDto {
 
     private String arrivalDate;
 
-    @NotEmpty
-    private String flightNumber;
-
-    private String departureDate;
-
-    private String arrivalDate;
-
     private Airline airline;
 
     private Airport departureAirport;

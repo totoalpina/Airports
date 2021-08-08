@@ -106,13 +106,13 @@ p.copyright {
 
 #footer {
     color: white;
-    background-color: rgba(93, 179, 250, 0.5);
+    background-color: #636363 transparent;
 }
 
 #name-footer {
-    color: rgb(66, 80, 102);
+    color: rgb(182, 204, 240);
 }
 
 #footer-a1, #footer-a2, #footer-a3, #footer-a4, #footer-a5 {
-    color: rgb(66, 80, 102);
+    color: rgb(182, 204, 240);
 }

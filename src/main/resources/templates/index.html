@@ -29,27 +29,27 @@
 <section>
     <div class="container">
         <div class="jumbotron">
-            <div class="controls-row row">
-                <div class="control-group col-md-6">
-                    <div class="input-group">
-                        <!--                        <form class="form-inline my-2 my-lg-0">-->
-                        <input class="form-control mr-sm-2" type="search" placeholder="Search by airport"
-                               aria-label="Search by airport">
-                        <button class="btn btn-outline-light my-2 my-sm-0" type="submit">Search</button>
-                        <!--                        </form>-->
-                    </div>
-                </div>
-                <div class="control-group col-md-6">
-                    <div class="input-group">
-                        <!--                        <form class="form-inline my-2 my-lg-0">-->
-                        <input class="form-control mr-sm-2" type="search" placeholder="Search by airline"
-                               aria-label="Search by airline">
-                        <button class="btn btn-outline-light my-2 my-sm-0" type="submit">Search</button>
-                        <!--                        </form>-->
-                    </div>
-                </div>
-            </div>
-            <hr>
+<!--            <div class="controls-row row">-->
+<!--                <div class="control-group col-md-6">-->
+<!--                    <div class="input-group">-->
+<!--                        &lt;!&ndash;                        <form class="form-inline my-2 my-lg-0">&ndash;&gt;-->
+<!--                        <input class="form-control mr-sm-2" type="search" placeholder="Search by airport"-->
+<!--                               aria-label="Search by airport">-->
+<!--                        <button class="btn btn-outline-light my-2 my-sm-0" type="submit">Search</button>-->
+<!--                        &lt;!&ndash;                        </form>&ndash;&gt;-->
+<!--                    </div>-->
+<!--                </div>-->
+<!--                <div class="control-group col-md-6">-->
+<!--                    <div class="input-group">-->
+<!--                        &lt;!&ndash;                        <form class="form-inline my-2 my-lg-0">&ndash;&gt;-->
+<!--                        <input class="form-control mr-sm-2" type="search" placeholder="Search by airline"-->
+<!--                               aria-label="Search by airline">-->
+<!--                        <button class="btn btn-outline-light my-2 my-sm-0" type="submit">Search</button>-->
+<!--                        &lt;!&ndash;                        </form>&ndash;&gt;-->
+<!--                    </div>-->
+<!--                </div>-->
+<!--            </div>-->
+<!--            <hr>-->
             <div class="row">
                 <div class="col-sm-6">
                     <div class="card bg-transparent">
@@ -58,7 +58,7 @@
                             <p class="card-text">Our partner airport are listed in the "Airport" section.
                                 Use the search field above to look for the desired airport.
                                 Check for the flight listed in the airports schedule, and fly away.</p>
-                            <a th:href="@{/airports}" class="btn btn-primary">Airports -></a>
+                            <a th:href="@{/airports/{page}(page=1)}" class="btn btn-primary">Airports -></a>
                         </div>
                     </div>
                 </div>
@@ -69,7 +69,7 @@
                             <p class="card-text">You can choose from our variety of airlines to plan your journey.
                                 See the flights provided and fit one for your convenience.
                                 We ensure you, you will not be desapointed. Spread your wings and fly.</p>
-                            <a th:href="@{/airlines}" class="btn btn-primary">Airlines -></a>
+                            <a th:href="@{/airlines/{page}(page=1)}" class="btn btn-primary">Airlines -></a>
                         </div>
                     </div>
                 </div>

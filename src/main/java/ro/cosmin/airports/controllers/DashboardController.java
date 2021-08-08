@@ -1,7 +1,6 @@
 package ro.cosmin.airports.controllers;
 
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.format.annotation.DateTimeFormat;
 import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -10,6 +9,7 @@ import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import ro.cosmin.airports.models.FlightDto;
+import ro.cosmin.airports.repository.FlightRepository;
 import ro.cosmin.airports.services.AirlineService;
 import ro.cosmin.airports.services.AirportService;
 import ro.cosmin.airports.services.FlightService;
@@ -82,7 +82,7 @@ public class DashboardController {
 
     @PostMapping("/createFlight")
     @PreAuthorize("hasRole('ADMIN')")
-    public String createFlight(@Valid  @ModelAttribute("flightDto") FlightDto flightDto) {
+    public String createFlight(@Valid @ModelAttribute("flightDto") FlightDto flightDto) {
         flightService.addFlight(flightDto);
         return "redirect:/dashboard?added";
     }
