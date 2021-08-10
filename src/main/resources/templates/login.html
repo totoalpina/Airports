@@ -23,17 +23,22 @@
     <div class="col-md-6 offset-md-3">
         <form method="post" th:action="@{/login}">
             <div class="mb-6">
-                <div th:if="${param.logout}" class="success text-success">
+                <div th:if="${param.logout}" class="alert-success text-black">
                     You have been successfully logged out.
                 </div>
             </div>
             <div class="mb-6">
+                <div th:if="${param.fail}" class="alert-success text-black">
+                    Incorrect username or password. Please try again.
+                </div>
+            </div>
+            <div class="mb-6">
                 <label for="username" class="form-label text-white">Username</label>
-                <input class="form-control" type="text" id="username" name="username"/>
+                <input class="form-control" type="email" id="username" name="username" required/>
             </div>
             <div class="mb-6">
                 <label for="username" class="form-label text-white">Password</label>
-                <input class="form-control" type="password" id="password" name="password"/>
+                <input class="form-control" type="password" id="password" name="password" required/>
             </div>
             <br>
             <br>

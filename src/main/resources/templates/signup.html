@@ -28,11 +28,18 @@
         <div class="controls-row row">
             <div class="control-group col-sm-10 offset-sm-2">
                 <form th:action="@{/register}" th:object="${userDto}" method="post">
+                    <div class="row mb-3" th:if="${param.success}">
+                        <div class=" alert alert-success text-black">Congratulations! You are ready to fly! <br> Registration
+                            complete!<br>
+                            <a th:href="@{/login}" style="color:blue">Go to Login</a>
+                        </div>
+                    </div>
                     <div class="row mb-3">
                         <label id="signin_label" for="inputEmail" class="col-sm-2 col-form-label">Email</label>
                         <div class="col-sm-7">
                             <input type="email" class="form-control" th:field="*{email}" id="inputEmail" required
                                    placeholder="email@email.ro">
+                            <span class="form-control alert alert-danger text-white" th:if="${#fields.hasErrors('email')}" th:errors="*{email}"></span>
                         </div>
                     </div>
                     <div class="row mb-3">
@@ -40,29 +47,28 @@
                         <div class="col-sm-7">
                             <input type="password" class="form-control" th:field="*{password}" id="password" required
                                    placeholder="min 6 characters">
+                            <span class="form-control alert alert-danger text-white" th:if="${#fields.hasErrors('password')}" th:errors="*{password}"></span>
                         </div>
                     </div>
                     <div class="row mb-3">
                         <label id="signin_label" for="firstName" class="col-sm-2 col-form-label">First Name</label>
                         <div class="col-sm-7">
                             <input type="text" class="form-control" th:field="*{firstName}" id="firstName" required>
+                            <span class="form-control alert alert-danger text-white" th:if="${#fields.hasErrors('firstName')}" th:errors="*{firstName}"></span>
                         </div>
                     </div>
                     <div class="row mb-3">
                         <label id="signin_label" for="lastName" class="col-sm-2 col-form-label">Last Name</label>
                         <div class="col-sm-7">
                             <input type="text" class="form-control" th:field="*{lastName}" id="lastName" required>
+                            <span class="form-control alert alert-danger text-white" th:if="${#fields.hasErrors('lastName')}" th:errors="*{lastName}"></span>
                         </div>
                     </div>
                     <div class="control-group col-sm-4">
                         <button style="width: 70%" type="submit" class="btn btn-outline-primary text-white">Sign in
                         </button>
                     </div>
-                    <div class="row sm-10" th:if="${param.success}">
-                        <div class="row mb-7 alert success">Congratulations! You are ready to fly! <br> Registration
-                            complete!
-                        </div>
-                    </div>
+
                 </form>
             </div>
         </div>

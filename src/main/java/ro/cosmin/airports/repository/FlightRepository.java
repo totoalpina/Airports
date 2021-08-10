@@ -10,8 +10,8 @@ import java.util.List;
 public interface FlightRepository extends JpaRepository<Flight, Long> {
 
     @Query("select new ro.cosmin.airports.models.FlightSearchDto(f.id, f.flightNumber, f.departureDate, f.arrivalDate, f.airline, f.departureAirport, f.arrivalAirport) " +
-            "from Flight f inner join f.departureAirport inner join f.airline inner join f.arrivalAirport" +
-            " where f.departureAirport.id = :id and f.departureDate >= current_date")
+            "from Flight f inner join f.departureAirport depAirport " +
+            " where depAirport.id = :id and f.departureDate >= current_date")
     List<FlightSearchDto> findDepartureFlightsByAirportFromCurrentDate(Long id);
 
     @Query("select new ro.cosmin.airports.models.FlightSearchDto(f.id, f.flightNumber, f.departureDate, f.arrivalDate, f.airline, f.departureAirport, f.arrivalAirport) " +

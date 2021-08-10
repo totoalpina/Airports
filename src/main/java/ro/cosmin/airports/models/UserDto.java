@@ -1,23 +1,26 @@
 package ro.cosmin.airports.models;
 
 import ro.cosmin.airports.enums.UserRole;
+import ro.cosmin.airports.validators.UniqueEmail;
 
 import javax.validation.constraints.Email;
+import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.NotEmpty;
 import javax.validation.constraints.Size;
 
 public class UserDto {
-    @NotEmpty
+    @NotBlank
     @Email
+    @UniqueEmail
     @Size(min = 6, max = 100)
     private String email;
-    @NotEmpty
+    @NotBlank
     @Size(min = 6, max = 40)
     private String password;
-    @NotEmpty
+    @NotBlank
     @Size(min = 1, max = 60)
     private String firstName;
-    @NotEmpty
+    @NotBlank
     @Size(min = 1, max = 60)
     private String lastName;
     private UserRole userRole;

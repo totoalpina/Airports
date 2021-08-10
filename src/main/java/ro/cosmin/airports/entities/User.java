@@ -17,10 +17,8 @@ public class User {
     private Long id;
 
     @Column(length = 100)
-    @NonNull
     private String email;
 
-    @NonNull
     @Column(length = 100)
     private String password;
 
