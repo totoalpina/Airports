@@ -30,7 +30,7 @@ public class SignupController {
     }
 
     @PostMapping("/register")
-    public String saveUser(@Valid final UserDto userDto,final BindingResult bindingResult, final Model model) {
+    public String saveUser(@Valid final UserDto userDto, final BindingResult bindingResult, final Model model) {
 
         if (bindingResult.hasErrors()) {
             LOGGER.debug("Errors in the form : {}", bindingResult);

@@ -1,9 +1,12 @@
 package ro.cosmin.airports.controllers;
 
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -18,6 +21,8 @@ import javax.validation.Valid;
 
 @Controller
 public class DashboardController {
+
+    private static final Logger LOGGER = LoggerFactory.getLogger(DashboardController.class);
 
     @Autowired
     private FlightRepository flightRepository;
@@ -81,8 +86,14 @@ public class DashboardController {
 
     @PostMapping("/createFlight")
     @PreAuthorize("hasRole('ADMIN')")
-    public String createFlight(@Valid @ModelAttribute("flightDto") FlightDto flightDto) {
-        flightService.addFlight(flightDto);
-        return "redirect:/dashboard?added";
+    public String createFlight(@Valid @ModelAttribute("flightDto") FlightDto flightDto, final BindingResult bindingResult, final Model model) {
+        if (bindingResult.hasErrors()) {
+            LOGGER.debug("Errors in the form : {}", bindingResult);
+            model.addAttribute("flightDto", flightDto);
+            return "add-flight";
+        } else {
+            flightService.addFlight(flightDto);
+            return "redirect:/dashboard?added";
+        }
     }
 }

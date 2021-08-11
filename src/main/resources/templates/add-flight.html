@@ -43,7 +43,7 @@
                                         <label id="signin_label" for="select-airline" class="col-sm-3 col-form-label">Airline
                                             :</label>
                                         <div class="col-sm-7">
-                                            <select name="airline" class="form-control" id="select-airline"
+                                            <select name="airline" class="form-control bg-transparent text-white" id="select-airline"
                                                     th:field="*{airline}">
                                                 <option value="-1" selected></option>
                                                 <option th:each="airline : ${airlines}"
@@ -58,7 +58,7 @@
                                         <label id="signin_label" for="select-departureAirport"
                                                class="col-sm-3 col-form-label">Departure Airport :</label>
                                         <div class="col-sm-7">
-                                            <select class="form-control" name="departureAirport"
+                                            <select class="form-control bg-transparent text-white" name="departureAirport"
                                                     id="select-departureAirport"
                                                     th:field="*{departureAirport}">
                                                 <option value="-1" selected></option>
@@ -74,7 +74,7 @@
                                         <label id="signin_label" for="select-arrivalAirport"
                                                class="col-sm-3 col-form-label">Arrival Airport :</label>
                                         <div class="col-sm-7">
-                                            <select class="form-control" name="arrivalAirport"
+                                            <select class="form-control bg-transparent text-white" name="arrivalAirport"
                                                     id="select-arrivalAirport"
                                                     th:field="*{arrivalAirport}">
                                                 <option value="-1" selected></option>
@@ -91,7 +91,7 @@
                                             - date/time</label>
                                         <div class="col-sm-7">
                                             <div class="form-group form-control inline bg-transparent">
-                                                <input class="form-control" id="date-form-width" type="datetime-local"
+                                                <input class="form-control bg-transparent text-white" id="date-form-width" type="datetime-local"
                                                        th:field="*{{departureDate}}"
                                                        name="departureDate">
                                             </div>
@@ -102,7 +102,7 @@
                                                class="col-sm-3 col-form-label">Arrival - date/time</label>
                                         <div class="col-sm-7">
                                             <div class="form-group form-control inline bg-transparent">
-                                                <input class="form-control" id="date-arrival-width"
+                                                <input class="form-control bg-transparent text-white" id="date-arrival-width"
                                                        type="datetime-local"
                                                        th:field="*{{arrivalDate}}"
                                                        name="arrivalDate">
@@ -113,7 +113,7 @@
                                         <label id="signin_label" for="flightNumber" class="col-sm-3 col-form-label">Flight
                                             number</label>
                                         <div class="col-sm-7">
-                                            <input type="text" class="form-control" name="flightNumber"
+                                            <input type="text" class="form-control bg-transparent text-white" name="flightNumber"
                                                    id="flightNumber"
                                                    th:field="*{flightNumber}" required>
                                         </div>

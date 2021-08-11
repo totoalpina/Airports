@@ -35,8 +35,8 @@
                     <input type="hidden" name="id" th:value="*{id}">
                     <div class="form-group">
                         <div class=" form-group">
-                            <label id="editAirline">Airline :</label><br>
-                            <select name="airline" id="select-airline" th:field="*{airline.id}">
+                            <label id="editAirline" class="bg-transparent text-white">Airline :</label><br>
+                            <select name="airline" id="select-airline" th:field="*{airline.id}" class="bg-transparent text-white">
                                 <option th:text="${flight.airline.airlineName}" th:value="${flight.airline.id}"
                                         selected></option>
                                 <option th:each="editAirline : ${editAirlines}"
@@ -47,8 +47,8 @@
                             </select>
                         </div>
                         <div class=" form-group">
-                            <label id="departureEdit">Departure Airport :</label>
-                            <select name="departure-airport" id="select-airport" th:field="*{departureAirport.id}">
+                            <label id="departureEdit" class="bg-transparent text-white">Departure Airport :</label>
+                            <select name="departure-airport" id="select-airport" th:field="*{departureAirport.id}" class="bg-transparent text-white">
                                 <option th:text="${flight.departureAirport.airportName}"
                                         th:value="${flight.departureAirport.id}"
                                         selected></option>
@@ -60,8 +60,8 @@
                             </select>
                         </div>
                         <div class=" form-group">
-                            <label id="arrivalEdit">Arrival Airport :</label>
-                            <select name="arrival-airport" id="select-airport" th:field="*{arrivalAirport.id}">
+                            <label id="arrivalEdit" class="bg-transparent text-white">Arrival Airport :</label>
+                            <select name="arrival-airport" id="select-airport" th:field="*{arrivalAirport.id}" class="bg-transparent text-white">
                                 <option th:text="${flight.arrivalAirport.airportName}"
                                         th:value="${flight.arrivalAirport.id}"
                                         selected></option>
@@ -73,24 +73,24 @@
                             </select>
                         </div>
                         <div class="form-group">
-                            <label id="departureEdit">Departure - date/time</label>
+                            <label id="departureEdit" class="bg-transparent text-white">Departure - date/time</label>
                             <div class="form-group form-control inline bg-transparent">
-                                <input id="date-form-width" type="datetime-local"
+                                <input id="date-form-width" type="datetime-local" class="bg-transparent text-white"
                                        name="departureDate"
                                        th:field="*{departureDate}">
                             </div>
                         </div>
                         <div class="form-group">
-                            <label id="arrivalEdit">Arrival - date/time</label>
+                            <label id="arrivalEdit" class="bg-transparent text-white">Arrival - date/time</label>
                             <div class="form-group form-control inline bg-transparent">
-                                <input id="date-form-width" type="datetime-local"
+                                <input id="date-form-width" type="datetime-local" class="bg-transparent text-white"
                                        name="arrivalDate"
                                        th:field="*{arrivalDate}">
                             </div>
                         </div>
                         <div class="form-group">
-                            <label id="flightEdit">Flight number</label>
-                            <input type="text" class="form-control"
+                            <label id="flightEdit" class="bg-transparent text-white">Flight number</label>
+                            <input type="text" class="form-control bg-transparent text-white"
                                    name="flightNumber"
                                    th:field="*{flightNumber}">
                         </div>

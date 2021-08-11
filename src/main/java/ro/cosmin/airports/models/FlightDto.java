@@ -4,6 +4,7 @@ import ro.cosmin.airports.entities.Airline;
 import ro.cosmin.airports.entities.Airport;
 
 import javax.validation.constraints.NotEmpty;
+import java.util.Objects;
 
 public class FlightDto {
 
@@ -98,4 +99,21 @@ public class FlightDto {
     public void setArrivalAirport(Airport arrivalAirport) {
         this.arrivalAirport = arrivalAirport;
     }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        FlightDto flightDto = (FlightDto) o;
+        return Objects.equals(id, flightDto.id) && flightNumber.equals(flightDto.flightNumber) && departureDate.equals(flightDto.departureDate) && arrivalDate.equals(flightDto.arrivalDate) && Objects.equals(airline, flightDto.airline) && Objects.equals(departureAirport, flightDto.departureAirport) && Objects.equals(arrivalAirport, flightDto.arrivalAirport);
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(id, flightNumber, departureDate, arrivalDate, airline, departureAirport, arrivalAirport);
+    }
+
+
+
 }
+

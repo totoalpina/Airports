@@ -62,47 +62,112 @@
     </div>
 </section>
 <section>
-
     <div class="container">
-        <div class="jumbotron">
-            <div class="controls-row row">
-                <div class="control-group col-md-6">
-                    <table>
-                        <th></th>
-                        <tr th:each="airport : ${airportList}">
-                            <td>
-                                <a id="airport_list_index"
-                                   th:text="${airport.airportName} + ' (' + ${airport.airportCode} + ')' + ' - ' + ${airport.airportCountry}"
-                                   href="https://www.google.com">link</a>
-                            </td>
-                        </tr>
-                    </table>
-                </div>
-                <div class="control-group col-md-6">
-                    <table>
-                        <th></th>
-                        <tr th:each="airline: ${airlines}">
-                            <td>
-                                <a id="airline_list_index"
-                                   th:text="${airline.airlineName} + ' (' + ${airline.airlineCode} + ')' + ' - ' + ${airline.airlineCountry}"
-                                   href="https://www.google.com">link</a>
-                            </td>
-                        </tr>
-                    </table>
-                </div>
-                <div class="row" th:fragment="pagination">
-                    <div class="col-md-2"></div>
-                    <div class="col-md-8">
-                        <nav aria-label="Pagination">
-                            <ul class="pagination justify-content-center">
-                                <li class="page-item" th:each="pageNumber : ${pageNumbers}">
-                                    <a class="page-link" th:href="@{|/airports/${pageNumber}|}"
-                                       th:text=${pageNumber}>1</a>
-                                </li>
-                            </ul>
-                        </nav>
+        <div>
+            <div class="row">
+                <div class="col-sm-6">
+                    <div class="card bg-transparent">
+                        <div class="card-body bg-transparent text-white">
+                            <h5 class="card-title">Search flights by AIRPORTS</h5>
+                            <form th:action="@{/searchByAirport}">
+                                <div class="row">
+                                    <div class="control-group col-sm-6">
+                                        <label for="select-search-airport" class="form-control bg-transparent text-white">Select Airport</label>
+                                        <div class="control-group col-sm-12">
+                                            <select th:name="id" id="select-search-airport" class="bg-transparent text-white">
+                                                <option value="-1" selected></option>
+                                                <option th:each="airport : ${airports}"
+                                                        th:value="${airport.id}"
+                                                        th:text="${airport.airportName} + ' (' + ${airport.airportCode} + ')' + ' - ' + ${airport.airportCountry}">
+                                                    Option
+                                                </option>
+                                            </select>
+                                        </div>
+                                    </div>
+                                    <div class="control-group col-sm-6">
+                                        <label class="form-control bg-transparent text-white" for="select-type">Select flight type</label>
+                                        <div class="control-group col-sm-12">
+                                            <select name="flightType" id="select-type" class="bg-transparent text-white">
+                                                <option value="-1" selected></option>
+                                                <option value="departure">departure flights</option>
+                                                <option value="arrival">arrival flights</option>
+                                                <option value="both">arrivals and departure flights</option>
+                                            </select>
+                                        </div>
+                                    </div>
+                                </div>
+                                <hr>
+                                <div class="row">
+                                    <div class="control-group col-sm-6">
+                                        <label class="form-control bg-transparent text-white" for="select-start-date">Select start date</label>
+                                        <input id="select-start-date" class="form-control bg-transparent text-white" th:name="startDate"
+                                               type="datetime-local">
+                                    </div>
+                                    <div class="control-group col-sm-6">
+                                        <label for="select-end-date" class="form-control bg-transparent text-white">Select end date</label>
+                                        <input id="select-end-date" class="form-control bg-transparent text-white" th:name="endDate"
+                                               type="datetime-local">
+                                    </div>
+                                </div>
+                                <hr>
+                                <div class="control-group col-sm-4">
+                                    <button class="btn btn-outline-light" type="sbumit">Search flights
+                                    </button>
+                                </div>
+                            </form>
+                        </div>
                     </div>
-                    <div class="col-md-2"></div>
+                </div>
+                <div class="col-sm-6">
+                    <div class="card bg-transparent">
+                        <div class="card-body bg-transparent text-white">
+                            <h5 class="card-title">Search flights by AIRLINES</h5>
+                            <form th:action="@{/searchByAirline}">
+                                <div class="row">
+                                    <div class="control-group col-sm-6">
+                                        <label for="select-search-airport" class="form-control bg-transparent text-white">Select Airline</label>
+                                        <div class="control-group col-sm-12">
+                                            <select th:name="id" id="select-search-airline" class="bg-transparent text-white">
+                                                <option value="-1" selected></option>
+                                                <option th:each="airline : ${airlines}"
+                                                        th:value="${airline.id}"
+                                                        th:text="${airline.airlineName} + ' (' + ${airline.airlineCode} + ')' + ' - ' + ${airline.airlineCountry}">
+                                                    Option
+                                                </option>
+                                            </select>
+                                        </div>
+                                    </div>
+                                    <div class="control-group col-sm-6">
+                                        <label class="form-control bg-transparent text-white" for="select-type">Select flight type</label>
+                                        <div class="control-group col-sm-12">
+                                            <select name="flightType" id="select-type" class="bg-transparent text-white">
+                                                <option value="-1" selected>All flights</option>
+
+                                            </select>
+                                        </div>
+                                    </div>
+                                </div>
+                                <hr>
+                                <div class="row">
+                                    <div class="control-group col-sm-6">
+                                        <label class="form-control bg-transparent text-white" for="select-start-date">Select start date</label>
+                                        <input id="select-start-date" class="form-control bg-transparent text-white" th:name="startDate"
+                                               type="datetime-local">
+                                    </div>
+                                    <div class="control-group col-sm-6">
+                                        <label for="select-end-date" class="form-control bg-transparent text-white">Select end date</label>
+                                        <input id="select-end-date" class="form-control bg-transparent text-white" th:name="endDate"
+                                               type="datetime-local">
+                                    </div>
+                                </div>
+                                <hr>
+                                <div class="control-group col-sm-4">
+                                    <button class="btn btn-outline-light" type="sbumit">Search flights
+                                    </button>
+                                </div>
+                            </form>
+                        </div>
+                    </div>
                 </div>
             </div>
         </div>

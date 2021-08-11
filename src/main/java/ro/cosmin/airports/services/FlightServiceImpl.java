@@ -9,6 +9,7 @@ import ro.cosmin.airports.repository.FlightRepository;
 
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
+import java.util.Comparator;
 import java.util.List;
 import java.util.Optional;
 import java.util.stream.Collectors;
@@ -17,6 +18,7 @@ import java.util.stream.Collectors;
 public class FlightServiceImpl implements FlightService {
 
     private DateTimeFormatter dtf = DateTimeFormatter.ISO_LOCAL_DATE_TIME;
+
     @Autowired
     private FlightRepository flightRepository;
 
@@ -49,6 +51,7 @@ public class FlightServiceImpl implements FlightService {
                         e.getAirline(),
                         e.getDepartureAirport(),
                         e.getArrivalAirport()))
+                .sorted(Comparator.comparing(FlightDto::getFlightNumber))
                 .collect(Collectors.toList());
         return flightList;
     }
@@ -108,5 +111,20 @@ public class FlightServiceImpl implements FlightService {
     @Override
     public List<FlightSearchDto> findFlightByAirline(Long id) {
         return flightRepository.findFlightsByAirlineFromCurrentDate(id);
+    }
+
+    @Override
+    public List<FlightSearchDto> searchDepartureFlightsByAirportBetweenTwoDates(Long id, LocalDateTime startDate, LocalDateTime endDate) {
+        return flightRepository.findDepartureFlightsByAirportBetweenTwoDates(id, startDate, endDate);
+    }
+
+    @Override
+    public List<FlightSearchDto> searchArrivalFlightsByAirportBetweenTwoDates(Long id, LocalDateTime startDate, LocalDateTime endDate) {
+        return flightRepository.findArrivalFlightsByAirportBetweenTwoDates(id, startDate, endDate);
+    }
+
+    @Override
+    public List<FlightSearchDto> searchFlightsByAirlineBetweenTwoDates(Long id, LocalDateTime startDate, LocalDateTime endDate){
+        return flightRepository.findFlightsByAirlineBetweenTwoDates(id, startDate, endDate);
     }
 }

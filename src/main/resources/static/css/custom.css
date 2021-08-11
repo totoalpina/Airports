@@ -74,6 +74,10 @@ body {
     color: white;
 }
 
+#select-type, #select-search-airport, #select-search-airline {
+    width: 100%;
+}
+
 a {
     text-decoration: none;
 }
